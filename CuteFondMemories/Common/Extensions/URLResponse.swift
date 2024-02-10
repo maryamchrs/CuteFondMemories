@@ -20,7 +20,8 @@ extension URLResponse {
 
 extension  URLRequest {
     
-    func printCurlCommand() {
+    func printCurlOfRequest() {
+        
         if let url = self.url,
            let httpMethod = self.httpMethod {
             
@@ -34,7 +35,7 @@ extension  URLRequest {
                 curlCommand += " -d '\(httpBodyString)'"
             }
             
-            print(curlCommand)
+            Logger.log(text: curlCommand)
         }
     }
     

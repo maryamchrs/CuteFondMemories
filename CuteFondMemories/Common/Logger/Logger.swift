@@ -9,19 +9,17 @@ import Foundation
 
 class Logger {
     
-    private static let separator = " ---> "
-    
     class func logInit(owner: String) {
-        let string = "LifeCycle" + separator + owner + " init"
+        let string = "LifeCycle" + " ---> " + owner + " init"
         debugPrint(string)
     }
     
     class func logDeinit(prefix: String? = nil, owner: String) {
-        let string = "LifeCycle" + separator + owner + " deinit"
+        let string = "LifeCycle" + " ---> " + owner + " deinit"
         debugPrint(string)
     }
     
-    class func log(prefix: String? = nil, text: String) {
-        debugPrint(text)
+    class func log(prefix: String = "", text: String) {
+        debugPrint(prefix, text)
     }
 }

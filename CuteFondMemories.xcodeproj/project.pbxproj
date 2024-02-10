@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B724F4F92B77ED8D003BEB03 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B724F4F82B77ED8D003BEB03 /* LocationService.swift */; };
+		B724F4FB2B77EF97003BEB03 /* CLLocationManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B724F4FA2B77EF97003BEB03 /* CLLocationManagerProtocol.swift */; };
 		B794E0B52B768D83009E5697 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794E0B42B768D83009E5697 /* AppDelegate.swift */; };
 		B794E0B72B768D83009E5697 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794E0B62B768D83009E5697 /* SceneDelegate.swift */; };
 		B794E0BF2B768D83009E5697 /* CuteFondMemories.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B794E0BD2B768D83009E5697 /* CuteFondMemories.xcdatamodeld */; };
@@ -46,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B724F4F82B77ED8D003BEB03 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		B724F4FA2B77EF97003BEB03 /* CLLocationManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManagerProtocol.swift; sourceTree = "<group>"; };
 		B794E0B12B768D83009E5697 /* CuteFondMemories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CuteFondMemories.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B794E0B42B768D83009E5697 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B794E0B62B768D83009E5697 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +100,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B724F4F72B77ED76003BEB03 /* LocationService */ = {
+			isa = PBXGroup;
+			children = (
+				B724F4F82B77ED8D003BEB03 /* LocationService.swift */,
+				B724F4FA2B77EF97003BEB03 /* CLLocationManagerProtocol.swift */,
+			);
+			path = LocationService;
+			sourceTree = "<group>";
+		};
 		B794E0A82B768D83009E5697 = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +166,7 @@
 				B794E1052B7692EB009E5697 /* Constants.swift */,
 				B794E1082B769381009E5697 /* DependencyContainer */,
 				B794E1072B769377009E5697 /* Extensions */,
+				B724F4F72B77ED76003BEB03 /* LocationService */,
 				B794E0F72B769125009E5697 /* Logger */,
 				B794E0FA2B76921B009E5697 /* Remote */,
 				B794E0EF2B768F84009E5697 /* Storage */,
@@ -387,6 +401,7 @@
 				B794E0FE2B76927C009E5697 /* EndPoint.swift in Sources */,
 				B794E0B72B768D83009E5697 /* SceneDelegate.swift in Sources */,
 				B794E0F92B769191009E5697 /* Logger.swift in Sources */,
+				B724F4F92B77ED8D003BEB03 /* LocationService.swift in Sources */,
 				B794E1062B7692EB009E5697 /* Constants.swift in Sources */,
 				B794E1002B769297009E5697 /* HTTPClient.swift in Sources */,
 				B794E0FC2B769226009E5697 /* APIHTTPRequestMapper.swift in Sources */,
@@ -394,6 +409,7 @@
 				B794E0F62B7690A1009E5697 /* DependencyContainer.swift in Sources */,
 				B794E10A2B76939F009E5697 /* URLResponse.swift in Sources */,
 				B794E0F12B768FC5009E5697 /* StorageManager.swift in Sources */,
+				B724F4FB2B77EF97003BEB03 /* CLLocationManagerProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

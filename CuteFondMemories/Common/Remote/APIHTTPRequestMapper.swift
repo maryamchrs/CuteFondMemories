@@ -9,7 +9,7 @@ import Foundation
 
 struct APIHTTPRequestMapper {
     /*
-     With this map you are able to make some generic decision
+     With this map you are able to make some generic decision.
      for instance if you want you can deal with server in case they send 401 you navigate the user to the ogin and authorize again.
      You can have a lot more for every single status code.
      */
