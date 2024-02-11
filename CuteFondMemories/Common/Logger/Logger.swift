@@ -9,6 +9,10 @@ import Foundation
 
 class Logger {
     
+    class var prefix: String {
+        return "Unknown Prefixs"
+    }
+    
     class func logInit(owner: String) {
         let string = "LifeCycle" + " ---> " + owner + " init"
         debugPrint(string)
@@ -19,7 +23,7 @@ class Logger {
         debugPrint(string)
     }
     
-    class func log(prefix: String = "", text: String) {
+    class func log(text: String) {
         debugPrint(prefix, text)
     }
 }

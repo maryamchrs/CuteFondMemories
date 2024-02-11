@@ -36,6 +36,6 @@ extension URLSession: HTTPClient {
     }
    
     func perform(_ request: URLRequest) async throws {
-        try await data(for: request)
+        let _ = try await data(for: request)
     }
 }
