@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B716151F2B78AE01008E7FB8 /* DashboardFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71615132B78AE01008E7FB8 /* DashboardFactory.swift */; };
+		B71615202B78AE01008E7FB8 /* DashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71615142B78AE01008E7FB8 /* DashboardPresenter.swift */; };
+		B71615212B78AE01008E7FB8 /* DashboardWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71615152B78AE01008E7FB8 /* DashboardWorker.swift */; };
+		B71615222B78AE01008E7FB8 /* DashboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71615162B78AE01008E7FB8 /* DashboardRouter.swift */; };
+		B71615232B78AE01008E7FB8 /* DashboardEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71615172B78AE01008E7FB8 /* DashboardEndpoint.swift */; };
+		B71615242B78AE01008E7FB8 /* DashboardModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71615182B78AE01008E7FB8 /* DashboardModels.swift */; };
+		B71615252B78AE01008E7FB8 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71615192B78AE01008E7FB8 /* DashboardViewController.swift */; };
+		B71615262B78AE01008E7FB8 /* DashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716151A2B78AE01008E7FB8 /* DashboardInteractor.swift */; };
+		B71615272B78AE01008E7FB8 /* DashboardLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716151B2B78AE01008E7FB8 /* DashboardLogger.swift */; };
+		B71615282B78AE01008E7FB8 /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B716151C2B78AE01008E7FB8 /* DashboardViewController.xib */; };
+		B71615292B78AE01008E7FB8 /* DashboardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716151D2B78AE01008E7FB8 /* DashboardService.swift */; };
+		B71615332B78B38F008E7FB8 /* XibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71615322B78B38F008E7FB8 /* XibLoadable.swift */; };
 		B724F4F92B77ED8D003BEB03 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B724F4F82B77ED8D003BEB03 /* LocationService.swift */; };
 		B724F4FB2B77EF97003BEB03 /* CLLocationManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B724F4FA2B77EF97003BEB03 /* CLLocationManagerProtocol.swift */; };
 		B794E0B52B768D83009E5697 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794E0B42B768D83009E5697 /* AppDelegate.swift */; };
@@ -48,6 +60,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B71615132B78AE01008E7FB8 /* DashboardFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFactory.swift; sourceTree = "<group>"; };
+		B71615142B78AE01008E7FB8 /* DashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPresenter.swift; sourceTree = "<group>"; };
+		B71615152B78AE01008E7FB8 /* DashboardWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardWorker.swift; sourceTree = "<group>"; };
+		B71615162B78AE01008E7FB8 /* DashboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardRouter.swift; sourceTree = "<group>"; };
+		B71615172B78AE01008E7FB8 /* DashboardEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardEndpoint.swift; sourceTree = "<group>"; };
+		B71615182B78AE01008E7FB8 /* DashboardModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardModels.swift; sourceTree = "<group>"; };
+		B71615192B78AE01008E7FB8 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		B716151A2B78AE01008E7FB8 /* DashboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardInteractor.swift; sourceTree = "<group>"; };
+		B716151B2B78AE01008E7FB8 /* DashboardLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLogger.swift; sourceTree = "<group>"; };
+		B716151C2B78AE01008E7FB8 /* DashboardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
+		B716151D2B78AE01008E7FB8 /* DashboardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardService.swift; sourceTree = "<group>"; };
+		B71615322B78B38F008E7FB8 /* XibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibLoadable.swift; sourceTree = "<group>"; };
 		B724F4F82B77ED8D003BEB03 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		B724F4FA2B77EF97003BEB03 /* CLLocationManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManagerProtocol.swift; sourceTree = "<group>"; };
 		B794E0B12B768D83009E5697 /* CuteFondMemories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CuteFondMemories.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +124,80 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B71615122B78ADA6008E7FB8 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				B716151B2B78AE01008E7FB8 /* DashboardLogger.swift */,
+				B716152E2B78AFE2008E7FB8 /* Factory */,
+				B716152F2B78AFF1008E7FB8 /* Interactor+Presenter */,
+				B71615302B78B12F008E7FB8 /* Model */,
+				B71615312B78B139008E7FB8 /* Router */,
+				B716152C2B78AFCE008E7FB8 /* Services */,
+				B716152B2B78AFC6008E7FB8 /* Views */,
+				B716152D2B78AFD9008E7FB8 /* Workers */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		B716152B2B78AFC6008E7FB8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B71615192B78AE01008E7FB8 /* DashboardViewController.swift */,
+				B716151C2B78AE01008E7FB8 /* DashboardViewController.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B716152C2B78AFCE008E7FB8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B71615172B78AE01008E7FB8 /* DashboardEndpoint.swift */,
+				B716151D2B78AE01008E7FB8 /* DashboardService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B716152D2B78AFD9008E7FB8 /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				B71615152B78AE01008E7FB8 /* DashboardWorker.swift */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
+		B716152E2B78AFE2008E7FB8 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				B71615132B78AE01008E7FB8 /* DashboardFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		B716152F2B78AFF1008E7FB8 /* Interactor+Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B716151A2B78AE01008E7FB8 /* DashboardInteractor.swift */,
+				B71615142B78AE01008E7FB8 /* DashboardPresenter.swift */,
+			);
+			path = "Interactor+Presenter";
+			sourceTree = "<group>";
+		};
+		B71615302B78B12F008E7FB8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B71615182B78AE01008E7FB8 /* DashboardModels.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B71615312B78B139008E7FB8 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B71615162B78AE01008E7FB8 /* DashboardRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		B724F4F72B77ED76003BEB03 /* LocationService */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				B794E1092B76939F009E5697 /* URLResponse.swift */,
+				B71615322B78B38F008E7FB8 /* XibLoadable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -228,17 +327,10 @@
 			path = DependencyContainer;
 			sourceTree = "<group>";
 		};
-		B794E10B2B7694A0009E5697 /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Onboarding;
-			sourceTree = "<group>";
-		};
 		B794E10C2B7694AF009E5697 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				B794E10B2B7694A0009E5697 /* Onboarding */,
+				B71615122B78ADA6008E7FB8 /* Dashboard */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -350,6 +442,7 @@
 			files = (
 				B794E0C42B768D84009E5697 /* LaunchScreen.storyboard in Resources */,
 				B794E0C12B768D84009E5697 /* Assets.xcassets in Resources */,
+				B71615282B78AE01008E7FB8 /* DashboardViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,21 +488,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				B794E0B52B768D83009E5697 /* AppDelegate.swift in Sources */,
+				B71615252B78AE01008E7FB8 /* DashboardViewController.swift in Sources */,
+				B71615232B78AE01008E7FB8 /* DashboardEndpoint.swift in Sources */,
 				B794E0F32B768FDC009E5697 /* UserDefaultsManager.swift in Sources */,
 				B794E0BF2B768D83009E5697 /* CuteFondMemories.xcdatamodeld in Sources */,
+				B716151F2B78AE01008E7FB8 /* DashboardFactory.swift in Sources */,
 				B794E1022B7692B2009E5697 /* HTTPMethod.swift in Sources */,
+				B71615202B78AE01008E7FB8 /* DashboardPresenter.swift in Sources */,
 				B794E0FE2B76927C009E5697 /* EndPoint.swift in Sources */,
 				B794E0B72B768D83009E5697 /* SceneDelegate.swift in Sources */,
 				B794E0F92B769191009E5697 /* Logger.swift in Sources */,
 				B724F4F92B77ED8D003BEB03 /* LocationService.swift in Sources */,
+				B71615332B78B38F008E7FB8 /* XibLoadable.swift in Sources */,
 				B794E1062B7692EB009E5697 /* Constants.swift in Sources */,
 				B794E1002B769297009E5697 /* HTTPClient.swift in Sources */,
 				B794E0FC2B769226009E5697 /* APIHTTPRequestMapper.swift in Sources */,
+				B71615242B78AE01008E7FB8 /* DashboardModels.swift in Sources */,
+				B71615212B78AE01008E7FB8 /* DashboardWorker.swift in Sources */,
+				B71615272B78AE01008E7FB8 /* DashboardLogger.swift in Sources */,
 				B794E1042B7692CA009E5697 /* NetworkError.swift in Sources */,
 				B794E0F62B7690A1009E5697 /* DependencyContainer.swift in Sources */,
+				B71615292B78AE01008E7FB8 /* DashboardService.swift in Sources */,
 				B794E10A2B76939F009E5697 /* URLResponse.swift in Sources */,
+				B71615222B78AE01008E7FB8 /* DashboardRouter.swift in Sources */,
 				B794E0F12B768FC5009E5697 /* StorageManager.swift in Sources */,
 				B724F4FB2B77EF97003BEB03 /* CLLocationManagerProtocol.swift in Sources */,
+				B71615262B78AE01008E7FB8 /* DashboardInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
