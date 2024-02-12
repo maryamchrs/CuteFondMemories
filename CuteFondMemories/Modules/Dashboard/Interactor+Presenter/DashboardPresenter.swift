@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DashboardPresentationLogic {
-    //    func presentSomething(response: Dashboard.Something.Response)
+    func presentSelectedPlace(response: Dashboard.AddingAnnotaion.Response) async
 }
 
 class DashboardPresenter {
@@ -37,4 +37,9 @@ private extension DashboardPresenter {}
 extension DashboardPresenter {}
 
 // MARK: - Presentation Logic
-extension DashboardPresenter: DashboardPresentationLogic {}
+extension DashboardPresenter: DashboardPresentationLogic {
+    func presentSelectedPlace(response: Dashboard.AddingAnnotaion.Response) async {
+        let viewModel = Dashboard.AddingAnnotaion.ViewModel(annotaions: [response.selectedLocation])
+        await viewController?.displayAnnotations(viewModel: viewModel)
+    }
+}

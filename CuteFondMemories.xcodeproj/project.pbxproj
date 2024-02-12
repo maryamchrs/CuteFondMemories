@@ -40,6 +40,8 @@
 		B794E1042B7692CA009E5697 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794E1032B7692CA009E5697 /* NetworkError.swift */; };
 		B794E1062B7692EB009E5697 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794E1052B7692EB009E5697 /* Constants.swift */; };
 		B794E10A2B76939F009E5697 /* URLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794E1092B76939F009E5697 /* URLResponse.swift */; };
+		B7F40F992B7A8EC200EDA856 /* AnnotaionInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F40F982B7A8EC200EDA856 /* AnnotaionInfoModel.swift */; };
+		B7F40F9B2B7A8F4100EDA856 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F40F9A2B7A8F4100EDA856 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,8 @@
 		B794E1032B7692CA009E5697 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B794E1052B7692EB009E5697 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B794E1092B76939F009E5697 /* URLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLResponse.swift; sourceTree = "<group>"; };
+		B7F40F982B7A8EC200EDA856 /* AnnotaionInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotaionInfoModel.swift; sourceTree = "<group>"; };
+		B7F40F9A2B7A8F4100EDA856 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +190,8 @@
 			isa = PBXGroup;
 			children = (
 				B71615182B78AE01008E7FB8 /* DashboardModels.swift */,
+				B7F40F9A2B7A8F4100EDA856 /* Location.swift */,
+				B7F40F982B7A8EC200EDA856 /* AnnotaionInfoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -492,6 +498,8 @@
 				B71615232B78AE01008E7FB8 /* DashboardEndpoint.swift in Sources */,
 				B794E0F32B768FDC009E5697 /* UserDefaultsManager.swift in Sources */,
 				B794E0BF2B768D83009E5697 /* CuteFondMemories.xcdatamodeld in Sources */,
+				B7F40F992B7A8EC200EDA856 /* AnnotaionInfoModel.swift in Sources */,
+				B7F40F9B2B7A8F4100EDA856 /* Location.swift in Sources */,
 				B716151F2B78AE01008E7FB8 /* DashboardFactory.swift in Sources */,
 				B794E1022B7692B2009E5697 /* HTTPMethod.swift in Sources */,
 				B71615202B78AE01008E7FB8 /* DashboardPresenter.swift in Sources */,

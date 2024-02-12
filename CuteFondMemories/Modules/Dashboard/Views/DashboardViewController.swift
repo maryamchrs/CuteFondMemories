@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import MapKit
 
-@MainActor protocol DashboardDisplayLogic: AnyObject {}
+@MainActor protocol DashboardDisplayLogic: AnyObject {
+    func displayAnnotations(viewModel: Dashboard.AddingAnnotaion.ViewModel)
+}
 
 @MainActor final class DashboardViewController: UIViewController, NibLoadable {
     // MARK: - Object lifecycle
@@ -16,7 +19,7 @@ import UIKit
         fatalError("DashboardViewController - Initialization using coder Not Allowed.")
     }
     
-   @MainActor init() {
+    @MainActor init() {
         super.init(nibName: DashboardViewController.nibName, bundle: nil)
         DashboardLogger.logInit(owner: String(describing: DashboardViewController.self))
     }
@@ -36,10 +39,13 @@ import UIKit
     
     // MARK: - Outlets
     
+    @IBOutlet private weak var mapView: MKMapView!
+    
     // MARK: Life Cycle
     // swiftlint:disable:next unneeded_override
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
     }
 }
 
@@ -49,13 +55,69 @@ import UIKit
 extension DashboardViewController {}
 
 // MARK: Private
-private extension DashboardViewController {}
+private extension DashboardViewController {
+    func setupViews() {
+        setupMap()
+        setColor()
+        setFont()
+    }
+    
+    func setupMap() {
+        mapView.delegate = self
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        mapView.addGestureRecognizer(longPressGesture)
+    }
+    
+    func addAnnotaions(markers: [CLLocationCoordinate2D]) {
+        // Add a pin at the touched point for demonstration
+        mapView.addAnnotations(markers.map {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = $0
+            return annotation
+        })
+    }
+}
 
 // MARK: - Display Logic
-extension DashboardViewController: DashboardDisplayLogic {}
+extension DashboardViewController: DashboardDisplayLogic {
+    func displayAnnotations(viewModel: Dashboard.AddingAnnotaion.ViewModel) {
+        addAnnotaions(markers: viewModel.annotaions)
+    }
+}
 
 // MARK: - Actions
-extension DashboardViewController {}
+extension DashboardViewController {
+    @objc func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
+        if gestureReconizer.state != .began {
+            return
+        }
+        
+        let touchPoint = gestureReconizer.location(in: mapView)
+        let coordinate = mapView.convert(touchPoint, 
+                                         toCoordinateFrom: mapView)
+        let request = Dashboard.AddingAnnotaion.Request(selectedLocation: coordinate)
+        interactor?.oneLocationSelected(request: request)
+    }
+}
+
+// MARK: - MKMapViewDelegate
+extension DashboardViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, didDeselect annotation: MKAnnotation) {}
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        // TODO: - Complete this part
+        return nil
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        // This method gets called when the user taps on a map annotation.
+        // You can retrieve the coordinates of the touched point from the annotation.
+        if let annotation = view.annotation {
+            let coordinate = annotation.coordinate
+            // TODO: - Complete this part
+        }
+    }
+}
 
 private extension DashboardViewController {
     func setColor() {}

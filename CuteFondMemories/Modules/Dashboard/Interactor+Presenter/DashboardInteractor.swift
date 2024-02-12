@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DashboardBusinessLogic {
-    //    func doSomething(request: Dashboard.Something.Request)
+    func oneLocationSelected(request: Dashboard.AddingAnnotaion.Request)
 }
 
 protocol DashboardDataStore {}
@@ -38,4 +38,11 @@ extension DashboardInteractor {}
 // MARK: Private
 private extension DashboardInteractor {}
 // MARK: - Business Logics
-extension DashboardInteractor: DashboardBusinessLogic {}
+extension DashboardInteractor: DashboardBusinessLogic {
+    func oneLocationSelected(request: Dashboard.AddingAnnotaion.Request) {
+        Task {
+            let response = Dashboard.AddingAnnotaion.Response(selectedLocation: request.selectedLocation)
+            await presenter?.presentSelectedPlace(response: response)
+        }
+    }
+}
