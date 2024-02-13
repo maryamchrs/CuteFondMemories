@@ -40,6 +40,17 @@
 		B794E1042B7692CA009E5697 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794E1032B7692CA009E5697 /* NetworkError.swift */; };
 		B794E1062B7692EB009E5697 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794E1052B7692EB009E5697 /* Constants.swift */; };
 		B794E10A2B76939F009E5697 /* URLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794E1092B76939F009E5697 /* URLResponse.swift */; };
+		B7D9571A2B7BDA8F00AC33D1 /* MemoryDetailsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D9570E2B7BDA8F00AC33D1 /* MemoryDetailsFactory.swift */; };
+		B7D9571B2B7BDA8F00AC33D1 /* MemoryDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D9570F2B7BDA8F00AC33D1 /* MemoryDetailsPresenter.swift */; };
+		B7D9571C2B7BDA8F00AC33D1 /* MemoryDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D957102B7BDA8F00AC33D1 /* MemoryDetailsWorker.swift */; };
+		B7D9571D2B7BDA8F00AC33D1 /* MemoryDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D957112B7BDA8F00AC33D1 /* MemoryDetailsRouter.swift */; };
+		B7D9571E2B7BDA8F00AC33D1 /* MemoryDetailsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D957122B7BDA8F00AC33D1 /* MemoryDetailsEndpoint.swift */; };
+		B7D9571F2B7BDA8F00AC33D1 /* MemoryDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D957132B7BDA8F00AC33D1 /* MemoryDetailsModels.swift */; };
+		B7D957202B7BDA8F00AC33D1 /* MemoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D957142B7BDA8F00AC33D1 /* MemoryDetailsViewController.swift */; };
+		B7D957212B7BDA8F00AC33D1 /* MemoryDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D957152B7BDA8F00AC33D1 /* MemoryDetailsInteractor.swift */; };
+		B7D957222B7BDA8F00AC33D1 /* MemoryDetailsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D957162B7BDA8F00AC33D1 /* MemoryDetailsLogger.swift */; };
+		B7D957232B7BDA8F00AC33D1 /* MemoryDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7D957172B7BDA8F00AC33D1 /* MemoryDetailsViewController.xib */; };
+		B7D957242B7BDA8F00AC33D1 /* MemoryDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D957182B7BDA8F00AC33D1 /* MemoryDetailsService.swift */; };
 		B7F40F992B7A8EC200EDA856 /* AnnotaionInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F40F982B7A8EC200EDA856 /* AnnotaionInfoModel.swift */; };
 		B7F40F9B2B7A8F4100EDA856 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F40F9A2B7A8F4100EDA856 /* Location.swift */; };
 /* End PBXBuildFile section */
@@ -99,6 +110,17 @@
 		B794E1032B7692CA009E5697 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B794E1052B7692EB009E5697 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B794E1092B76939F009E5697 /* URLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLResponse.swift; sourceTree = "<group>"; };
+		B7D9570E2B7BDA8F00AC33D1 /* MemoryDetailsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsFactory.swift; sourceTree = "<group>"; };
+		B7D9570F2B7BDA8F00AC33D1 /* MemoryDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsPresenter.swift; sourceTree = "<group>"; };
+		B7D957102B7BDA8F00AC33D1 /* MemoryDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsWorker.swift; sourceTree = "<group>"; };
+		B7D957112B7BDA8F00AC33D1 /* MemoryDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsRouter.swift; sourceTree = "<group>"; };
+		B7D957122B7BDA8F00AC33D1 /* MemoryDetailsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsEndpoint.swift; sourceTree = "<group>"; };
+		B7D957132B7BDA8F00AC33D1 /* MemoryDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsModels.swift; sourceTree = "<group>"; };
+		B7D957142B7BDA8F00AC33D1 /* MemoryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsViewController.swift; sourceTree = "<group>"; };
+		B7D957152B7BDA8F00AC33D1 /* MemoryDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsInteractor.swift; sourceTree = "<group>"; };
+		B7D957162B7BDA8F00AC33D1 /* MemoryDetailsLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsLogger.swift; sourceTree = "<group>"; };
+		B7D957172B7BDA8F00AC33D1 /* MemoryDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryDetailsViewController.xib; sourceTree = "<group>"; };
+		B7D957182B7BDA8F00AC33D1 /* MemoryDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsService.swift; sourceTree = "<group>"; };
 		B7F40F982B7A8EC200EDA856 /* AnnotaionInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotaionInfoModel.swift; sourceTree = "<group>"; };
 		B7F40F9A2B7A8F4100EDA856 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -337,8 +359,83 @@
 			isa = PBXGroup;
 			children = (
 				B71615122B78ADA6008E7FB8 /* Dashboard */,
+				B7D9570D2B7BD9E300AC33D1 /* MemoryDetails */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		B7D9570D2B7BD9E300AC33D1 /* MemoryDetails */ = {
+			isa = PBXGroup;
+			children = (
+				B7D957162B7BDA8F00AC33D1 /* MemoryDetailsLogger.swift */,
+				B7D9572C2B7BDB2D00AC33D1 /* Factory */,
+				B7D9572B2B7BDB0D00AC33D1 /* Interactor+Presenter */,
+				B7D9572A2B7BDB0800AC33D1 /* Model */,
+				B7D957292B7BDB0100AC33D1 /* Router */,
+				B7D957282B7BDAAB00AC33D1 /* Services */,
+				B7D957272B7BDAA500AC33D1 /* Views */,
+				B7D957262B7BDA9B00AC33D1 /* Workers */,
+			);
+			path = MemoryDetails;
+			sourceTree = "<group>";
+		};
+		B7D957262B7BDA9B00AC33D1 /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				B7D957102B7BDA8F00AC33D1 /* MemoryDetailsWorker.swift */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
+		B7D957272B7BDAA500AC33D1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B7D957142B7BDA8F00AC33D1 /* MemoryDetailsViewController.swift */,
+				B7D957172B7BDA8F00AC33D1 /* MemoryDetailsViewController.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B7D957282B7BDAAB00AC33D1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B7D957122B7BDA8F00AC33D1 /* MemoryDetailsEndpoint.swift */,
+				B7D957182B7BDA8F00AC33D1 /* MemoryDetailsService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B7D957292B7BDB0100AC33D1 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B7D957112B7BDA8F00AC33D1 /* MemoryDetailsRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B7D9572A2B7BDB0800AC33D1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B7D957132B7BDA8F00AC33D1 /* MemoryDetailsModels.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B7D9572B2B7BDB0D00AC33D1 /* Interactor+Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B7D957152B7BDA8F00AC33D1 /* MemoryDetailsInteractor.swift */,
+				B7D9570F2B7BDA8F00AC33D1 /* MemoryDetailsPresenter.swift */,
+			);
+			path = "Interactor+Presenter";
+			sourceTree = "<group>";
+		};
+		B7D9572C2B7BDB2D00AC33D1 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				B7D9570E2B7BDA8F00AC33D1 /* MemoryDetailsFactory.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -448,6 +545,7 @@
 			files = (
 				B794E0C42B768D84009E5697 /* LaunchScreen.storyboard in Resources */,
 				B794E0C12B768D84009E5697 /* Assets.xcassets in Resources */,
+				B7D957232B7BDA8F00AC33D1 /* MemoryDetailsViewController.xib in Resources */,
 				B71615282B78AE01008E7FB8 /* DashboardViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -494,9 +592,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B794E0B52B768D83009E5697 /* AppDelegate.swift in Sources */,
+				B7D957212B7BDA8F00AC33D1 /* MemoryDetailsInteractor.swift in Sources */,
 				B71615252B78AE01008E7FB8 /* DashboardViewController.swift in Sources */,
+				B7D957242B7BDA8F00AC33D1 /* MemoryDetailsService.swift in Sources */,
 				B71615232B78AE01008E7FB8 /* DashboardEndpoint.swift in Sources */,
 				B794E0F32B768FDC009E5697 /* UserDefaultsManager.swift in Sources */,
+				B7D9571B2B7BDA8F00AC33D1 /* MemoryDetailsPresenter.swift in Sources */,
 				B794E0BF2B768D83009E5697 /* CuteFondMemories.xcdatamodeld in Sources */,
 				B7F40F992B7A8EC200EDA856 /* AnnotaionInfoModel.swift in Sources */,
 				B7F40F9B2B7A8F4100EDA856 /* Location.swift in Sources */,
@@ -504,10 +605,14 @@
 				B794E1022B7692B2009E5697 /* HTTPMethod.swift in Sources */,
 				B71615202B78AE01008E7FB8 /* DashboardPresenter.swift in Sources */,
 				B794E0FE2B76927C009E5697 /* EndPoint.swift in Sources */,
+				B7D9571E2B7BDA8F00AC33D1 /* MemoryDetailsEndpoint.swift in Sources */,
 				B794E0B72B768D83009E5697 /* SceneDelegate.swift in Sources */,
+				B7D9571C2B7BDA8F00AC33D1 /* MemoryDetailsWorker.swift in Sources */,
 				B794E0F92B769191009E5697 /* Logger.swift in Sources */,
+				B7D957222B7BDA8F00AC33D1 /* MemoryDetailsLogger.swift in Sources */,
 				B724F4F92B77ED8D003BEB03 /* LocationService.swift in Sources */,
 				B71615332B78B38F008E7FB8 /* XibLoadable.swift in Sources */,
+				B7D957202B7BDA8F00AC33D1 /* MemoryDetailsViewController.swift in Sources */,
 				B794E1062B7692EB009E5697 /* Constants.swift in Sources */,
 				B794E1002B769297009E5697 /* HTTPClient.swift in Sources */,
 				B794E0FC2B769226009E5697 /* APIHTTPRequestMapper.swift in Sources */,
@@ -517,9 +622,12 @@
 				B794E1042B7692CA009E5697 /* NetworkError.swift in Sources */,
 				B794E0F62B7690A1009E5697 /* DependencyContainer.swift in Sources */,
 				B71615292B78AE01008E7FB8 /* DashboardService.swift in Sources */,
+				B7D9571A2B7BDA8F00AC33D1 /* MemoryDetailsFactory.swift in Sources */,
 				B794E10A2B76939F009E5697 /* URLResponse.swift in Sources */,
 				B71615222B78AE01008E7FB8 /* DashboardRouter.swift in Sources */,
 				B794E0F12B768FC5009E5697 /* StorageManager.swift in Sources */,
+				B7D9571F2B7BDA8F00AC33D1 /* MemoryDetailsModels.swift in Sources */,
+				B7D9571D2B7BDA8F00AC33D1 /* MemoryDetailsRouter.swift in Sources */,
 				B724F4FB2B77EF97003BEB03 /* CLLocationManagerProtocol.swift in Sources */,
 				B71615262B78AE01008E7FB8 /* DashboardInteractor.swift in Sources */,
 			);
