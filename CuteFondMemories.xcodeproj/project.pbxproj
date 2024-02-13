@@ -51,6 +51,7 @@
 		B7D957222B7BDA8F00AC33D1 /* MemoryDetailsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D957162B7BDA8F00AC33D1 /* MemoryDetailsLogger.swift */; };
 		B7D957232B7BDA8F00AC33D1 /* MemoryDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7D957172B7BDA8F00AC33D1 /* MemoryDetailsViewController.xib */; };
 		B7D957242B7BDA8F00AC33D1 /* MemoryDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D957182B7BDA8F00AC33D1 /* MemoryDetailsService.swift */; };
+		B7D9572E2B7BE9AD00AC33D1 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D9572D2B7BE9AD00AC33D1 /* UITextField.swift */; };
 		B7F40F992B7A8EC200EDA856 /* AnnotaionInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F40F982B7A8EC200EDA856 /* AnnotaionInfoModel.swift */; };
 		B7F40F9B2B7A8F4100EDA856 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F40F9A2B7A8F4100EDA856 /* Location.swift */; };
 /* End PBXBuildFile section */
@@ -121,6 +122,7 @@
 		B7D957162B7BDA8F00AC33D1 /* MemoryDetailsLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsLogger.swift; sourceTree = "<group>"; };
 		B7D957172B7BDA8F00AC33D1 /* MemoryDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryDetailsViewController.xib; sourceTree = "<group>"; };
 		B7D957182B7BDA8F00AC33D1 /* MemoryDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsService.swift; sourceTree = "<group>"; };
+		B7D9572D2B7BE9AD00AC33D1 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		B7F40F982B7A8EC200EDA856 /* AnnotaionInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotaionInfoModel.swift; sourceTree = "<group>"; };
 		B7F40F9A2B7A8F4100EDA856 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -343,6 +345,7 @@
 			children = (
 				B794E1092B76939F009E5697 /* URLResponse.swift */,
 				B71615322B78B38F008E7FB8 /* XibLoadable.swift */,
+				B7D9572D2B7BE9AD00AC33D1 /* UITextField.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 				B7F40F992B7A8EC200EDA856 /* AnnotaionInfoModel.swift in Sources */,
 				B7F40F9B2B7A8F4100EDA856 /* Location.swift in Sources */,
 				B716151F2B78AE01008E7FB8 /* DashboardFactory.swift in Sources */,
+				B7D9572E2B7BE9AD00AC33D1 /* UITextField.swift in Sources */,
 				B794E1022B7692B2009E5697 /* HTTPMethod.swift in Sources */,
 				B71615202B78AE01008E7FB8 /* DashboardPresenter.swift in Sources */,
 				B794E0FE2B76927C009E5697 /* EndPoint.swift in Sources */,
