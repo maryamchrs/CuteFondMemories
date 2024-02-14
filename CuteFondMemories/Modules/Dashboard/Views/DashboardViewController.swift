@@ -10,6 +10,7 @@ import MapKit
 
 @MainActor protocol DashboardDisplayLogic: AnyObject {
     func displayAnnotations(viewModel: Dashboard.AddingAnnotaion.ViewModel)
+    func displayMemoryDetailsScene(viewModel: Dashboard.MemoryDetailsScene.ViewModel)
 }
 
 @MainActor final class DashboardViewController: UIViewController, NibLoadable {
@@ -82,6 +83,10 @@ private extension DashboardViewController {
 extension DashboardViewController: DashboardDisplayLogic {
     func displayAnnotations(viewModel: Dashboard.AddingAnnotaion.ViewModel) {
         addAnnotaions(markers: viewModel.annotaions)
+    }
+    
+    func displayMemoryDetailsScene(viewModel: Dashboard.MemoryDetailsScene.ViewModel) {
+        router?.presentMemoryDetailsView()
     }
 }
 

@@ -22,4 +22,14 @@ enum Dashboard {
             let annotaions: [CLLocationCoordinate2D]
         }
     }
+    
+    enum MemoryDetailsScene {
+        struct Request {
+        }
+        struct Response {
+        }
+        struct ViewModel {
+        }
+    }
+    
 }

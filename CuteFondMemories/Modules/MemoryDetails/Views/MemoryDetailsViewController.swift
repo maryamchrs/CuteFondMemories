@@ -16,7 +16,7 @@ import UIKit
         fatalError("MemoryDetailsViewController - Initialization using coder Not Allowed.")
     }
     
-   @MainActor init() {
+    @MainActor init() {
         super.init(nibName: MemoryDetailsViewController.nibName, bundle: nil)
         MemoryDetailsLogger.logInit(owner: String(describing: MemoryDetailsViewController.self))
     }
@@ -43,6 +43,7 @@ import UIKit
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var datePiker: UIDatePicker!
     @IBOutlet private weak var mainButton: UIButton!
+    @IBOutlet private weak var DescriptionTextViewHeightConstraint: NSLayoutConstraint!
 }
 
 // MARK: - View Controller
@@ -63,6 +64,7 @@ private extension MemoryDetailsViewController {
         setupDatePickerView()
         setupButtons()
         setupTextField()
+        setupTextView()
         setColor()
         setFont()
     }
@@ -82,6 +84,24 @@ private extension MemoryDetailsViewController {
         titleTextFeild.layer.cornerRadius = 10
         titleTextFeild.setLeftPaddingPoints(10)
     }
+    
+    func setupTextView() {
+        descriptionTextView.layer.borderWidth = 1
+        descriptionTextView.layer.cornerRadius = 10
+        descriptionTextView.delegate = self
+        descriptionTextView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        descriptionTextView.adjustUITextViewHeight()
+    }
+    
+    func resizeTxtDescription() {
+        let newSize = descriptionTextView.calculateTextDescription()
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let self else { return }
+            self.DescriptionTextViewHeightConstraint.constant = newSize.height
+            self.view.setNeedsLayout()
+            self.view.layoutIfNeeded()
+        }
+    }
 }
 
 // MARK: Public
@@ -93,6 +113,22 @@ extension MemoryDetailsViewController: MemoryDetailsDisplayLogic {}
 // MARK: - Actions
 extension MemoryDetailsViewController {}
 
+// MARK: - UITextViewDelegate
+extension MemoryDetailsViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        if textView == descriptionTextView {
+            resizeTxtDescription()
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView == descriptionTextView {
+            textView.text = textView.text.trimmingCharacters(in: .whitespacesAndNewlines)
+            resizeTxtDescription()
+        }
+    }
+}
+
 // MARK: - Appearance
 extension MemoryDetailsViewController {
     func setColor() {
@@ -101,6 +137,7 @@ extension MemoryDetailsViewController {
         exitButton.tintColor = .black
         titleTextFeild.layer.borderColor = UIColor.gray.cgColor
         mainButton.layer.borderColor = UIColor.gray.cgColor
+        descriptionTextView.layer.borderColor = UIColor.gray.cgColor
     }
     
     func setFont() {

@@ -9,6 +9,7 @@ import UIKit
 
 protocol DashboardPresentationLogic {
     func presentSelectedPlace(response: Dashboard.AddingAnnotaion.Response) async
+    func presentMemoryDetailsScene(response: Dashboard.MemoryDetailsScene.Response) async
 }
 
 class DashboardPresenter {
@@ -41,5 +42,10 @@ extension DashboardPresenter: DashboardPresentationLogic {
     func presentSelectedPlace(response: Dashboard.AddingAnnotaion.Response) async {
         let viewModel = Dashboard.AddingAnnotaion.ViewModel(annotaions: [response.selectedLocation])
         await viewController?.displayAnnotations(viewModel: viewModel)
+    }
+    
+    func presentMemoryDetailsScene(response: Dashboard.MemoryDetailsScene.Response) async {
+        let viewModel = Dashboard.MemoryDetailsScene.ViewModel()
+        await viewController?.displayMemoryDetailsScene(viewModel: viewModel)
     }
 }

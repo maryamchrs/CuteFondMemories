@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DashboardRoutingLogic {
-    // func navigateToSomewhere()
+    @MainActor func presentMemoryDetailsView()
 }
 
 protocol DashboardDataPassing {
@@ -44,5 +44,10 @@ extension DashboardRouter {}
 
 // MARK: - Routing Logic
 extension DashboardRouter: DashboardRoutingLogic {
-
+    @MainActor func presentMemoryDetailsView() {
+        let destinationViewController = MemoryDetailsFactory().makeMemoryDetailsViewController()
+        destinationViewController.modalTransitionStyle = .coverVertical
+        destinationViewController.modalPresentationStyle = .fullScreen
+        viewController?.navigationController?.present(destinationViewController, animated: true)
+    }
 }

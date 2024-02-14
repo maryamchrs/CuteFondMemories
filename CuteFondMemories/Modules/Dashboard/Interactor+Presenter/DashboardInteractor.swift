@@ -41,8 +41,10 @@ private extension DashboardInteractor {}
 extension DashboardInteractor: DashboardBusinessLogic {
     func oneLocationSelected(request: Dashboard.AddingAnnotaion.Request) {
         Task {
-            let response = Dashboard.AddingAnnotaion.Response(selectedLocation: request.selectedLocation)
-            await presenter?.presentSelectedPlace(response: response)
+//            let response = Dashboard.AddingAnnotaion.Response(selectedLocation: request.selectedLocation)
+//            await presenter?.presentSelectedPlace(response: response)
+            await presenter?.presentMemoryDetailsScene(response: Dashboard.MemoryDetailsScene.Response())
+            
         }
     }
 }
