@@ -18,9 +18,11 @@
 		B71615272B78AE01008E7FB8 /* DashboardLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716151B2B78AE01008E7FB8 /* DashboardLogger.swift */; };
 		B71615282B78AE01008E7FB8 /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B716151C2B78AE01008E7FB8 /* DashboardViewController.xib */; };
 		B71615292B78AE01008E7FB8 /* DashboardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716151D2B78AE01008E7FB8 /* DashboardService.swift */; };
-		B71615332B78B38F008E7FB8 /* XibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71615322B78B38F008E7FB8 /* XibLoadable.swift */; };
+		B71615332B78B38F008E7FB8 /* XibLoadableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71615322B78B38F008E7FB8 /* XibLoadableExtension.swift */; };
 		B724F4F92B77ED8D003BEB03 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B724F4F82B77ED8D003BEB03 /* LocationService.swift */; };
 		B724F4FB2B77EF97003BEB03 /* CLLocationManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B724F4FA2B77EF97003BEB03 /* CLLocationManagerProtocol.swift */; };
+		B74684C72B7CA1E8001CA9DC /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74684C62B7CA1E8001CA9DC /* UITextViewExtension.swift */; };
+		B74684C92B7CA82F001CA9DC /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74684C82B7CA82F001CA9DC /* UIViewExtension.swift */; };
 		B794E0B52B768D83009E5697 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794E0B42B768D83009E5697 /* AppDelegate.swift */; };
 		B794E0B72B768D83009E5697 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794E0B62B768D83009E5697 /* SceneDelegate.swift */; };
 		B794E0BF2B768D83009E5697 /* CuteFondMemories.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B794E0BD2B768D83009E5697 /* CuteFondMemories.xcdatamodeld */; };
@@ -39,7 +41,7 @@
 		B794E1022B7692B2009E5697 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794E1012B7692B2009E5697 /* HTTPMethod.swift */; };
 		B794E1042B7692CA009E5697 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794E1032B7692CA009E5697 /* NetworkError.swift */; };
 		B794E1062B7692EB009E5697 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794E1052B7692EB009E5697 /* Constants.swift */; };
-		B794E10A2B76939F009E5697 /* URLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794E1092B76939F009E5697 /* URLResponse.swift */; };
+		B794E10A2B76939F009E5697 /* URLResponseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794E1092B76939F009E5697 /* URLResponseExtension.swift */; };
 		B7D9571A2B7BDA8F00AC33D1 /* MemoryDetailsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D9570E2B7BDA8F00AC33D1 /* MemoryDetailsFactory.swift */; };
 		B7D9571B2B7BDA8F00AC33D1 /* MemoryDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D9570F2B7BDA8F00AC33D1 /* MemoryDetailsPresenter.swift */; };
 		B7D9571C2B7BDA8F00AC33D1 /* MemoryDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D957102B7BDA8F00AC33D1 /* MemoryDetailsWorker.swift */; };
@@ -51,7 +53,7 @@
 		B7D957222B7BDA8F00AC33D1 /* MemoryDetailsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D957162B7BDA8F00AC33D1 /* MemoryDetailsLogger.swift */; };
 		B7D957232B7BDA8F00AC33D1 /* MemoryDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7D957172B7BDA8F00AC33D1 /* MemoryDetailsViewController.xib */; };
 		B7D957242B7BDA8F00AC33D1 /* MemoryDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D957182B7BDA8F00AC33D1 /* MemoryDetailsService.swift */; };
-		B7D9572E2B7BE9AD00AC33D1 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D9572D2B7BE9AD00AC33D1 /* UITextField.swift */; };
+		B7D9572E2B7BE9AD00AC33D1 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D9572D2B7BE9AD00AC33D1 /* UITextFieldExtension.swift */; };
 		B7F40F992B7A8EC200EDA856 /* AnnotaionInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F40F982B7A8EC200EDA856 /* AnnotaionInfoModel.swift */; };
 		B7F40F9B2B7A8F4100EDA856 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F40F9A2B7A8F4100EDA856 /* Location.swift */; };
 /* End PBXBuildFile section */
@@ -85,9 +87,11 @@
 		B716151B2B78AE01008E7FB8 /* DashboardLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLogger.swift; sourceTree = "<group>"; };
 		B716151C2B78AE01008E7FB8 /* DashboardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
 		B716151D2B78AE01008E7FB8 /* DashboardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardService.swift; sourceTree = "<group>"; };
-		B71615322B78B38F008E7FB8 /* XibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibLoadable.swift; sourceTree = "<group>"; };
+		B71615322B78B38F008E7FB8 /* XibLoadableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibLoadableExtension.swift; sourceTree = "<group>"; };
 		B724F4F82B77ED8D003BEB03 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		B724F4FA2B77EF97003BEB03 /* CLLocationManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManagerProtocol.swift; sourceTree = "<group>"; };
+		B74684C62B7CA1E8001CA9DC /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
+		B74684C82B7CA82F001CA9DC /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		B794E0B12B768D83009E5697 /* CuteFondMemories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CuteFondMemories.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B794E0B42B768D83009E5697 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B794E0B62B768D83009E5697 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,7 +114,7 @@
 		B794E1012B7692B2009E5697 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		B794E1032B7692CA009E5697 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B794E1052B7692EB009E5697 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		B794E1092B76939F009E5697 /* URLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLResponse.swift; sourceTree = "<group>"; };
+		B794E1092B76939F009E5697 /* URLResponseExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLResponseExtension.swift; sourceTree = "<group>"; };
 		B7D9570E2B7BDA8F00AC33D1 /* MemoryDetailsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsFactory.swift; sourceTree = "<group>"; };
 		B7D9570F2B7BDA8F00AC33D1 /* MemoryDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsPresenter.swift; sourceTree = "<group>"; };
 		B7D957102B7BDA8F00AC33D1 /* MemoryDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsWorker.swift; sourceTree = "<group>"; };
@@ -122,7 +126,7 @@
 		B7D957162B7BDA8F00AC33D1 /* MemoryDetailsLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsLogger.swift; sourceTree = "<group>"; };
 		B7D957172B7BDA8F00AC33D1 /* MemoryDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryDetailsViewController.xib; sourceTree = "<group>"; };
 		B7D957182B7BDA8F00AC33D1 /* MemoryDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsService.swift; sourceTree = "<group>"; };
-		B7D9572D2B7BE9AD00AC33D1 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		B7D9572D2B7BE9AD00AC33D1 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		B7F40F982B7A8EC200EDA856 /* AnnotaionInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotaionInfoModel.swift; sourceTree = "<group>"; };
 		B7F40F9A2B7A8F4100EDA856 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -343,9 +347,11 @@
 		B794E1072B769377009E5697 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				B794E1092B76939F009E5697 /* URLResponse.swift */,
-				B71615322B78B38F008E7FB8 /* XibLoadable.swift */,
-				B7D9572D2B7BE9AD00AC33D1 /* UITextField.swift */,
+				B7D9572D2B7BE9AD00AC33D1 /* UITextFieldExtension.swift */,
+				B794E1092B76939F009E5697 /* URLResponseExtension.swift */,
+				B71615322B78B38F008E7FB8 /* XibLoadableExtension.swift */,
+				B74684C62B7CA1E8001CA9DC /* UITextViewExtension.swift */,
+				B74684C82B7CA82F001CA9DC /* UIViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -605,17 +611,18 @@
 				B7F40F992B7A8EC200EDA856 /* AnnotaionInfoModel.swift in Sources */,
 				B7F40F9B2B7A8F4100EDA856 /* Location.swift in Sources */,
 				B716151F2B78AE01008E7FB8 /* DashboardFactory.swift in Sources */,
-				B7D9572E2B7BE9AD00AC33D1 /* UITextField.swift in Sources */,
+				B7D9572E2B7BE9AD00AC33D1 /* UITextFieldExtension.swift in Sources */,
 				B794E1022B7692B2009E5697 /* HTTPMethod.swift in Sources */,
 				B71615202B78AE01008E7FB8 /* DashboardPresenter.swift in Sources */,
 				B794E0FE2B76927C009E5697 /* EndPoint.swift in Sources */,
 				B7D9571E2B7BDA8F00AC33D1 /* MemoryDetailsEndpoint.swift in Sources */,
 				B794E0B72B768D83009E5697 /* SceneDelegate.swift in Sources */,
 				B7D9571C2B7BDA8F00AC33D1 /* MemoryDetailsWorker.swift in Sources */,
+				B74684C92B7CA82F001CA9DC /* UIViewExtension.swift in Sources */,
 				B794E0F92B769191009E5697 /* Logger.swift in Sources */,
 				B7D957222B7BDA8F00AC33D1 /* MemoryDetailsLogger.swift in Sources */,
 				B724F4F92B77ED8D003BEB03 /* LocationService.swift in Sources */,
-				B71615332B78B38F008E7FB8 /* XibLoadable.swift in Sources */,
+				B71615332B78B38F008E7FB8 /* XibLoadableExtension.swift in Sources */,
 				B7D957202B7BDA8F00AC33D1 /* MemoryDetailsViewController.swift in Sources */,
 				B794E1062B7692EB009E5697 /* Constants.swift in Sources */,
 				B794E1002B769297009E5697 /* HTTPClient.swift in Sources */,
@@ -627,8 +634,9 @@
 				B794E0F62B7690A1009E5697 /* DependencyContainer.swift in Sources */,
 				B71615292B78AE01008E7FB8 /* DashboardService.swift in Sources */,
 				B7D9571A2B7BDA8F00AC33D1 /* MemoryDetailsFactory.swift in Sources */,
-				B794E10A2B76939F009E5697 /* URLResponse.swift in Sources */,
+				B794E10A2B76939F009E5697 /* URLResponseExtension.swift in Sources */,
 				B71615222B78AE01008E7FB8 /* DashboardRouter.swift in Sources */,
+				B74684C72B7CA1E8001CA9DC /* UITextViewExtension.swift in Sources */,
 				B794E0F12B768FC5009E5697 /* StorageManager.swift in Sources */,
 				B7D9571F2B7BDA8F00AC33D1 /* MemoryDetailsModels.swift in Sources */,
 				B7D9571D2B7BDA8F00AC33D1 /* MemoryDetailsRouter.swift in Sources */,
