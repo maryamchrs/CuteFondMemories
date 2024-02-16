@@ -42,6 +42,9 @@
 		B794E1042B7692CA009E5697 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794E1032B7692CA009E5697 /* NetworkError.swift */; };
 		B794E1062B7692EB009E5697 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794E1052B7692EB009E5697 /* Constants.swift */; };
 		B794E10A2B76939F009E5697 /* URLResponseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794E1092B76939F009E5697 /* URLResponseExtension.swift */; };
+		B7B76EFA2B7FC87300D15D67 /* CDMemory+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B76EF92B7FC87300D15D67 /* CDMemory+Helper.swift */; };
+		B7B76EFC2B7FCC6000D15D67 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B76EFB2B7FCC6000D15D67 /* PersistanceManager.swift */; };
+		B7B76EFE2B7FD35400D15D67 /* NSPredicateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B76EFD2B7FD35400D15D67 /* NSPredicateExtension.swift */; };
 		B7D9571A2B7BDA8F00AC33D1 /* MemoryDetailsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D9570E2B7BDA8F00AC33D1 /* MemoryDetailsFactory.swift */; };
 		B7D9571B2B7BDA8F00AC33D1 /* MemoryDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D9570F2B7BDA8F00AC33D1 /* MemoryDetailsPresenter.swift */; };
 		B7D9571C2B7BDA8F00AC33D1 /* MemoryDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D957102B7BDA8F00AC33D1 /* MemoryDetailsWorker.swift */; };
@@ -115,6 +118,9 @@
 		B794E1032B7692CA009E5697 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B794E1052B7692EB009E5697 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B794E1092B76939F009E5697 /* URLResponseExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLResponseExtension.swift; sourceTree = "<group>"; };
+		B7B76EF92B7FC87300D15D67 /* CDMemory+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDMemory+Helper.swift"; sourceTree = "<group>"; };
+		B7B76EFB2B7FCC6000D15D67 /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
+		B7B76EFD2B7FD35400D15D67 /* NSPredicateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPredicateExtension.swift; sourceTree = "<group>"; };
 		B7D9570E2B7BDA8F00AC33D1 /* MemoryDetailsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsFactory.swift; sourceTree = "<group>"; };
 		B7D9570F2B7BDA8F00AC33D1 /* MemoryDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsPresenter.swift; sourceTree = "<group>"; };
 		B7D957102B7BDA8F00AC33D1 /* MemoryDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsWorker.swift; sourceTree = "<group>"; };
@@ -268,6 +274,7 @@
 				B794E0B42B768D83009E5697 /* AppDelegate.swift */,
 				B794E0B62B768D83009E5697 /* SceneDelegate.swift */,
 				B794E0EE2B768F6F009E5697 /* Common */,
+				B7B76EF82B7FC85A00D15D67 /* CoreData */,
 				B794E0BD2B768D83009E5697 /* CuteFondMemories.xcdatamodeld */,
 				B794E10C2B7694AF009E5697 /* Modules */,
 				B794E0F42B769047009E5697 /* Resources */,
@@ -371,6 +378,16 @@
 				B7D9570D2B7BD9E300AC33D1 /* MemoryDetails */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		B7B76EF82B7FC85A00D15D67 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				B7B76EF92B7FC87300D15D67 /* CDMemory+Helper.swift */,
+				B7B76EFD2B7FD35400D15D67 /* NSPredicateExtension.swift */,
+				B7B76EFB2B7FCC6000D15D67 /* PersistanceManager.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		B7D9570D2B7BD9E300AC33D1 /* MemoryDetails */ = {
@@ -604,6 +621,7 @@
 				B7D957212B7BDA8F00AC33D1 /* MemoryDetailsInteractor.swift in Sources */,
 				B71615252B78AE01008E7FB8 /* DashboardViewController.swift in Sources */,
 				B7D957242B7BDA8F00AC33D1 /* MemoryDetailsService.swift in Sources */,
+				B7B76EFE2B7FD35400D15D67 /* NSPredicateExtension.swift in Sources */,
 				B71615232B78AE01008E7FB8 /* DashboardEndpoint.swift in Sources */,
 				B794E0F32B768FDC009E5697 /* UserDefaultsManager.swift in Sources */,
 				B7D9571B2B7BDA8F00AC33D1 /* MemoryDetailsPresenter.swift in Sources */,
@@ -611,6 +629,7 @@
 				B7F40F992B7A8EC200EDA856 /* AnnotaionInfoModel.swift in Sources */,
 				B7F40F9B2B7A8F4100EDA856 /* Location.swift in Sources */,
 				B716151F2B78AE01008E7FB8 /* DashboardFactory.swift in Sources */,
+				B7B76EFC2B7FCC6000D15D67 /* PersistanceManager.swift in Sources */,
 				B7D9572E2B7BE9AD00AC33D1 /* UITextFieldExtension.swift in Sources */,
 				B794E1022B7692B2009E5697 /* HTTPMethod.swift in Sources */,
 				B71615202B78AE01008E7FB8 /* DashboardPresenter.swift in Sources */,
@@ -641,6 +660,7 @@
 				B7D9571F2B7BDA8F00AC33D1 /* MemoryDetailsModels.swift in Sources */,
 				B7D9571D2B7BDA8F00AC33D1 /* MemoryDetailsRouter.swift in Sources */,
 				B724F4FB2B77EF97003BEB03 /* CLLocationManagerProtocol.swift in Sources */,
+				B7B76EFA2B7FC87300D15D67 /* CDMemory+Helper.swift in Sources */,
 				B71615262B78AE01008E7FB8 /* DashboardInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
