@@ -12,7 +12,12 @@ enum UserDefaultCase: String {
     case lastLocation = "last_location"
 }
 
-class UserDefaultsManager {
+protocol UserDefaultsManagerProtocol {
+    func saveIsTheFirstTimeStatus(_ isFirstTime: Bool)
+    func getIsTheFirstTimeStatus() -> Bool
+}
+
+class UserDefaultsManager: UserDefaultsManagerProtocol{
     func saveIsTheFirstTimeStatus(_ isFirstTime: Bool) {
         UserDefaults.standard.setValue(isFirstTime,
                                        forKey: UserDefaultCase.isTheFirstTime.rawValue)

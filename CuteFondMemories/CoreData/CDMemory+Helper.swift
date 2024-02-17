@@ -10,10 +10,6 @@ import CoreData
  
 extension CDMemory {
     
-    var uuid: UUID {
-        uuid_ ?? UUID()
-    }
-    
     convenience init(title: String, 
                      desctiprionOfMemory: String,
                      date: Date?,
@@ -30,13 +26,14 @@ extension CDMemory {
         self.longitude = longitude
     }
     
-    public override func awakeFromInsert() {
-        uuid_ = UUID()
+    static func save(_ memory: CDMemory) throws {
+        guard let context = memory.managedObjectContext else { return }
+        try context.save()
     }
     
-    static func delete(memory: CDMemory) {
+    static func update(_ memory: CDMemory) throws {
         guard let context = memory.managedObjectContext else { return }
-        context.delete(memory)
+        try context.save()
     }
     
     static func fetch(_ predicate: NSPredicate = .all) -> NSFetchRequest<CDMemory> {
@@ -44,5 +41,10 @@ extension CDMemory {
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         request.predicate = predicate
         return request
+    }
+    
+    static func delete(_ memory: CDMemory) {
+        guard let context = memory.managedObjectContext else { return }
+        context.delete(memory)
     }
 }

@@ -8,11 +8,12 @@
 import Foundation
 
 class DependencyContainer {
-    private let storageManager: StorageManager = StorageManager(userDefaultManager: UserDefaultsManager())
+    private let storageManager: StorageManager = StorageManager(userDefaultManager: UserDefaultsManager(),
+                                                                persistanceManager: PersistanceManager.shared)
 }
 
 extension DependencyContainer {
     func makeStorageManager() -> StorageManager {
-        return storageManager
+        storageManager
     }
 }
