@@ -3,29 +3,30 @@
 //  CuteFondMemories
 //
 //  Created by Maryam Chrs on 17/02/2024.
-//  Copyright (c) 2024 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import UIKit
 
-protocol MemoryDetailsFileWorkerLogic {}
+protocol MemoryDetailsFileWorkerLogic {
+    func saveMemory(memory: CDMemory) throws
+}
 
 class MemoryDetailsFileWorker {
     // MARK: - Object lifecycle
-    init(service: MemoryDetailsFileServiceProtocol) {
-        MemoryDetailsFileLogger.logInit(owner: String(describing: MemoryDetailsFileWorker.self))
-        self.service = service
+    init(storageManager: StorageManagerProtocol) {
+        MemoryDetailsLogger.logInit(owner: String(describing: MemoryDetailsFileWorker.self))
+        self.storageManager = storageManager
     }
     
     // MARK: - Deinit
     deinit {
-        MemoryDetailsFileLogger.logDeinit(owner: String(describing: MemoryDetailsFileWorker.self))
+        MemoryDetailsLogger.logDeinit(owner: String(describing: MemoryDetailsFileWorker.self))
     }
     
     // MARK: - Properties
     
     // MARK: Private
-    private let service: MemoryDetailsFileServiceProtocol
+    private let storageManager: StorageManagerProtocol
 }
 
 // MARK: - Methods
@@ -34,4 +35,8 @@ class MemoryDetailsFileWorker {
 private extension MemoryDetailsFileWorker {}
 
 // MARK: - Worker Logic
-extension MemoryDetailsFileWorker: MemoryDetailsFileWorkerLogic {}
+extension MemoryDetailsFileWorker: MemoryDetailsFileWorkerLogic {
+    func saveMemory(memory: CDMemory) throws {
+        try storageManager.saveMemory(memory: memory)
+    }
+}

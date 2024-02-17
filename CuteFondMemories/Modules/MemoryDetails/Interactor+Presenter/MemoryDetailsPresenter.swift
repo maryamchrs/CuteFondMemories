@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MemoryDetailsPresentationLogic {
-    //    func presentSomething(response: MemoryDetails.Something.Response) async
+    func presentMainButtonTitle(response: MemoryDetails.MainButtonTitle.Response) async
 }
 
 class MemoryDetailsPresenter {
@@ -36,4 +36,9 @@ extension MemoryDetailsPresenter {}
 private extension MemoryDetailsPresenter {}
 
 // MARK: - Presentation Logic
-extension MemoryDetailsPresenter: MemoryDetailsPresentationLogic {}
+extension MemoryDetailsPresenter: MemoryDetailsPresentationLogic {
+    func presentMainButtonTitle(response: MemoryDetails.MainButtonTitle.Response) async {
+        let viewModel = MemoryDetails.MainButtonTitle.ViewModel(title: response.state.buttonTitle)
+        await viewController?.displayMainButtonTitle(viewModel: viewModel)
+    }
+}

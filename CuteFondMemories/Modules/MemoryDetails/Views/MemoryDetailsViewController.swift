@@ -7,7 +7,9 @@
 
 import UIKit
 
-@MainActor protocol MemoryDetailsDisplayLogic: AnyObject {}
+@MainActor protocol MemoryDetailsDisplayLogic: AnyObject {
+    func displayMainButtonTitle(viewModel: MemoryDetails.MainButtonTitle.ViewModel)
+}
 
 @MainActor final class MemoryDetailsViewController: UIViewController, NibLoadable {
     // MARK: - Object lifecycle
@@ -40,7 +42,6 @@ import UIKit
     @IBOutlet private weak var exitButton: UIButton!
     @IBOutlet private weak var titleTextFeild: UITextField!
     @IBOutlet private weak var descriptionTextView: UITextView!
-    @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var datePiker: UIDatePicker!
     @IBOutlet private weak var mainButton: UIButton!
     @IBOutlet private weak var DescriptionTextViewHeightConstraint: NSLayoutConstraint!
@@ -108,10 +109,19 @@ private extension MemoryDetailsViewController {
 extension MemoryDetailsViewController {}
 
 // MARK: - Display Logic
-extension MemoryDetailsViewController: MemoryDetailsDisplayLogic {}
+extension MemoryDetailsViewController: MemoryDetailsDisplayLogic {
+    func displayMainButtonTitle(viewModel: MemoryDetails.MainButtonTitle.ViewModel) {
+        mainButton.setTitle(viewModel.title, for: .normal)
+    }
+}
 
 // MARK: - Actions
-extension MemoryDetailsViewController {}
+private extension MemoryDetailsViewController {
+    
+    @IBAction func mainButtonTapped(_ sender: Any) {
+        interactor?.mainButtonTapped(request: MemoryDetails.MainButton.Request())
+    }
+}
 
 // MARK: - UITextViewDelegate
 extension MemoryDetailsViewController: UITextViewDelegate {

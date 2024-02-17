@@ -8,10 +8,15 @@
 import UIKit
 
 protocol MemoryDetailsBusinessLogic {
-    //    func doSomething(request: MemoryDetails.Something.Request)
+    func viewDidLoad(request: MemoryDetails.ViewDidLoad.Request)
+    func mainButtonTapped(request: MemoryDetails.MainButton.Request)
 }
 
-protocol MemoryDetailsDataStore {}
+protocol MemoryDetailsDataStore {
+    var state: MemoryDetails.State { get set }
+    var latitude: Double { get set }
+    var longitude: Double { get set }
+}
 
 class MemoryDetailsInteractor: MemoryDetailsDataStore {
     // MARK: - Object lifecycle
@@ -21,6 +26,7 @@ class MemoryDetailsInteractor: MemoryDetailsDataStore {
     
     // MARK: - Deinit
     deinit {
+        viewDidLoadTask?.cancel()
         MemoryDetailsLogger.logDeinit(owner: String(describing: MemoryDetailsInteractor.self))
     }
     
@@ -29,6 +35,13 @@ class MemoryDetailsInteractor: MemoryDetailsDataStore {
     // MARK: Public
     var presenter: MemoryDetailsPresentationLogic?
     var worker: MemoryDetailsWorkerLogic?
+    var fileWorker: MemoryDetailsFileWorkerLogic?
+    
+    var state: MemoryDetails.State = .add
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
+    
+    private var viewDidLoadTask: (Task<(), Never>)?
 }
 
 // MARK: - Methods
@@ -39,4 +52,21 @@ extension MemoryDetailsInteractor {}
 private extension MemoryDetailsInteractor {}
 
 // MARK: - Business Logics
-extension MemoryDetailsInteractor: MemoryDetailsBusinessLogic {}
+extension MemoryDetailsInteractor: MemoryDetailsBusinessLogic {
+    
+    func viewDidLoad(request: MemoryDetails.ViewDidLoad.Request) {
+        // TODO: - If user selected this location before show prefield information
+        // fetch data based on location
+        // if it find in the core data show the informaton
+        // otherwise change the name of button based on the status
+        viewDidLoadTask?.cancel()
+        viewDidLoadTask = Task {
+            
+        }
+    }
+    
+    func mainButtonTapped(request: MemoryDetails.MainButton.Request) {
+        Task {
+        }
+    }
+}
