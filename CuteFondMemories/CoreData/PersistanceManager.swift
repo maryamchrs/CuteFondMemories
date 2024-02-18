@@ -21,6 +21,10 @@ struct PersistanceManager {
         persistentContainer.viewContext
     }
     
+    // An initializer to load Core Data, optionally able to use an in-memory store.
+    /*
+     The in-memory store part of that code is important, because when you configure Core Data to save information into memory rather than disk it means all the changes you make get thrown away when your program ends.
+     */
     private init(inMemory: Bool = false) {
         self.persistentContainer = NSPersistentContainer(name: "CuteFondMemories")
         /*

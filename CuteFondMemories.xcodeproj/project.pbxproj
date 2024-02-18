@@ -42,7 +42,7 @@
 		B794E1042B7692CA009E5697 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794E1032B7692CA009E5697 /* NetworkError.swift */; };
 		B794E1062B7692EB009E5697 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794E1052B7692EB009E5697 /* Constants.swift */; };
 		B794E10A2B76939F009E5697 /* URLResponseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794E1092B76939F009E5697 /* URLResponseExtension.swift */; };
-		B7B76EFA2B7FC87300D15D67 /* CDMemory+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B76EF92B7FC87300D15D67 /* CDMemory+Helper.swift */; };
+		B7B76EFA2B7FC87300D15D67 /* Memory+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B76EF92B7FC87300D15D67 /* Memory+Helper.swift */; };
 		B7B76EFC2B7FCC6000D15D67 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B76EFB2B7FCC6000D15D67 /* PersistanceManager.swift */; };
 		B7B76EFE2B7FD35400D15D67 /* NSPredicateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B76EFD2B7FD35400D15D67 /* NSPredicateExtension.swift */; };
 		B7D9571A2B7BDA8F00AC33D1 /* MemoryDetailsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D9570E2B7BDA8F00AC33D1 /* MemoryDetailsFactory.swift */; };
@@ -119,7 +119,7 @@
 		B794E1032B7692CA009E5697 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B794E1052B7692EB009E5697 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B794E1092B76939F009E5697 /* URLResponseExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLResponseExtension.swift; sourceTree = "<group>"; };
-		B7B76EF92B7FC87300D15D67 /* CDMemory+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDMemory+Helper.swift"; sourceTree = "<group>"; };
+		B7B76EF92B7FC87300D15D67 /* Memory+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Memory+Helper.swift"; sourceTree = "<group>"; };
 		B7B76EFB2B7FCC6000D15D67 /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
 		B7B76EFD2B7FD35400D15D67 /* NSPredicateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPredicateExtension.swift; sourceTree = "<group>"; };
 		B7D9570E2B7BDA8F00AC33D1 /* MemoryDetailsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsFactory.swift; sourceTree = "<group>"; };
@@ -309,6 +309,7 @@
 				B794E1072B769377009E5697 /* Extensions */,
 				B724F4F72B77ED76003BEB03 /* LocationService */,
 				B794E0F72B769125009E5697 /* Logger */,
+				B7EEBE952B814A6500D85DA5 /* Models */,
 				B794E0FA2B76921B009E5697 /* Remote */,
 				B794E0EF2B768F84009E5697 /* Storage */,
 			);
@@ -385,7 +386,7 @@
 		B7B76EF82B7FC85A00D15D67 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				B7B76EF92B7FC87300D15D67 /* CDMemory+Helper.swift */,
+				B7B76EF92B7FC87300D15D67 /* Memory+Helper.swift */,
 				B7B76EFD2B7FD35400D15D67 /* NSPredicateExtension.swift */,
 				B7B76EFB2B7FCC6000D15D67 /* PersistanceManager.swift */,
 			);
@@ -465,6 +466,13 @@
 				B7D9570E2B7BDA8F00AC33D1 /* MemoryDetailsFactory.swift */,
 			);
 			path = Factory;
+			sourceTree = "<group>";
+		};
+		B7EEBE952B814A6500D85DA5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -664,7 +672,7 @@
 				B7D9571F2B7BDA8F00AC33D1 /* MemoryDetailsModels.swift in Sources */,
 				B7D9571D2B7BDA8F00AC33D1 /* MemoryDetailsRouter.swift in Sources */,
 				B724F4FB2B77EF97003BEB03 /* CLLocationManagerProtocol.swift in Sources */,
-				B7B76EFA2B7FC87300D15D67 /* CDMemory+Helper.swift in Sources */,
+				B7B76EFA2B7FC87300D15D67 /* Memory+Helper.swift in Sources */,
 				B71615262B78AE01008E7FB8 /* DashboardInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

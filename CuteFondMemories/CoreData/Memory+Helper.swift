@@ -8,12 +8,12 @@
 import Foundation
 import CoreData
  
-extension CDMemory {
+extension Memory {
     
-    convenience init(title: String, 
+    convenience init(title: String,
                      desctiprionOfMemory: String,
-                     date: Date?,
-                     image: Data?,
+                     date: Date? = nil,
+                     image: Data? = nil,
                      latitude: Double,
                      longitude: Double,
                      context: NSManagedObjectContext) {
@@ -26,25 +26,26 @@ extension CDMemory {
         self.longitude = longitude
     }
     
-    static func save(_ memory: CDMemory) throws {
+    static func save(_ memory: Memory) throws {
         guard let context = memory.managedObjectContext else { return }
         try context.save()
     }
     
-    static func update(_ memory: CDMemory) throws {
+    static func update(_ memory: Memory) throws {
         guard let context = memory.managedObjectContext else { return }
         try context.save()
     }
     
-    static func fetch(_ predicate: NSPredicate = .all) -> NSFetchRequest<CDMemory> {
-        let request = CDMemory.fetchRequest()
+    static func fetch(_ predicate: NSPredicate = .all) -> NSFetchRequest<Memory> {
+        let request = Memory.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         request.predicate = predicate
         return request
     }
     
-    static func delete(_ memory: CDMemory) {
+    static func delete(_ memory: Memory) throws {
         guard let context = memory.managedObjectContext else { return }
         context.delete(memory)
+        try context.save()
     }
 }
