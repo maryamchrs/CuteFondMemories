@@ -8,7 +8,14 @@
 import UIKit
 
 protocol MemoryDetailsFileWorkerLogic {
-    func saveMemory(memory: CDMemory) throws
+    func saveMemory(title: String,
+                    desctiprionOfMemory: String,
+                    date: Date?,
+                    image: Data?,
+                    latitude: Double,
+                    longitude: Double) async throws
+    func fetchMemories() async throws -> [Memory]
+    func retriveMemoryBasedOnLocation(latitude: Double, longitude: Double) async throws -> Memory?
 }
 
 class MemoryDetailsFileWorker {
@@ -36,7 +43,26 @@ private extension MemoryDetailsFileWorker {}
 
 // MARK: - Worker Logic
 extension MemoryDetailsFileWorker: MemoryDetailsFileWorkerLogic {
-    func saveMemory(memory: CDMemory) throws {
-        try storageManager.saveMemory(memory: memory)
+    func saveMemory(title: String,
+                    desctiprionOfMemory: String,
+                    date: Date?,
+                    image: Data?,
+                    latitude: Double,
+                    longitude: Double) async throws {
+        
+        try await storageManager.saveMemory(title: title,
+                                            desctiprionOfMemory: desctiprionOfMemory,
+                                            date: date,
+                                            image: image,
+                                            latitude: latitude,
+                                            longitude: longitude)
+    }
+    
+    func fetchMemories() async throws -> [Memory] {
+        try await storageManager.fetchMemories()
+    }
+    
+    func retriveMemoryBasedOnLocation(latitude: Double, longitude: Double) async throws -> Memory? {
+        try await storageManager.retriveMemoryBasedOnLocation(latitude: latitude, longitude: longitude)
     }
 }

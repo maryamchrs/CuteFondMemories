@@ -54,6 +54,7 @@ extension MemoryDetailsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        interactor?.viewDidLoad(request: MemoryDetails.ViewDidLoad.Request())
     }
 }
 

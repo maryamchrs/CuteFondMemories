@@ -15,17 +15,19 @@ protocol MemoryDetailsServiceFactory {
     func makeMemoryDetailsService() -> MemoryDetailsService
 }
 
-class MemoryDetailsFactory {
- @MainActor func makeMemoryDetailsViewController() -> MemoryDetailsViewController {
+class MemoryDetailsFactory: DependencyContainer {
+    @MainActor func makeMemoryDetailsViewController() -> MemoryDetailsViewController {
         let viewController = MemoryDetailsViewController()
         let interactor = MemoryDetailsInteractor()
         let presenter = MemoryDetailsPresenter()
         let router = MemoryDetailsRouter()
         let worker = MemoryDetailsWorker(service: makeMemoryDetailsService())
+        let fileWorker = MemoryDetailsFileWorker(storageManager: makeStorageManager())
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
         interactor.worker = worker
+        interactor.fileWorker = fileWorker
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
@@ -33,8 +35,8 @@ class MemoryDetailsFactory {
         
         return viewController
     }
-
-func makeMemoryDetailsService() -> MemoryDetailsService {
-return MemoryDetailsService(httpClient: URLSession.shared)
-}
+    
+    func makeMemoryDetailsService() -> MemoryDetailsService {
+        return MemoryDetailsService(httpClient: URLSession.shared)
+    }
 }

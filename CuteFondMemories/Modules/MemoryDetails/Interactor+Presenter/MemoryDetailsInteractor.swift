@@ -36,11 +36,12 @@ class MemoryDetailsInteractor: MemoryDetailsDataStore {
     var presenter: MemoryDetailsPresentationLogic?
     var worker: MemoryDetailsWorkerLogic?
     var fileWorker: MemoryDetailsFileWorkerLogic?
-    
     var state: MemoryDetails.State = .add
     var latitude: Double = 0.0
     var longitude: Double = 0.0
     
+    // MARK: Private
+    private var memories: [Memory] = []
     private var viewDidLoadTask: (Task<(), Never>)?
 }
 
@@ -61,12 +62,23 @@ extension MemoryDetailsInteractor: MemoryDetailsBusinessLogic {
         // otherwise change the name of button based on the status
         viewDidLoadTask?.cancel()
         viewDidLoadTask = Task {
-            
+            do {
+                guard let fileWorker, let presenter else { return }
+                let response = MemoryDetails.MainButtonTitle.Response(state: state)
+                await presenter.presentMainButtonTitle(response: response)
+                memories = try await fileWorker.fetchMemories()
+            } catch {
+                print(error)
+            }
         }
     }
     
     func mainButtonTapped(request: MemoryDetails.MainButton.Request) {
-        Task {
+        switch state {
+        case .add:
+            Logger.log(text: "Save this memory to the core data")
+        case .edit:
+            Logger.log(text: "Update this memory to the core data")
         }
     }
 }
