@@ -9,15 +9,32 @@ import Foundation
 import CoreData
 
 protocol StorageManagerProtocol {
-    func isFirstTimeUserOpenApp() -> Bool
-    func saveMemory(memory: CDMemory) throws
-    func retriveMemoryBasedOnLocation(latitude: Double, longitude: Double) throws -> CDMemory?
-    func updateMemory(memory: CDMemory) throws
-    func deleteMemory(memory: CDMemory)
+    func isFirstTimeUserOpenApp() async -> Bool
+    func saveMemory(title: String,
+                    desctiprionOfMemory: String,
+                    date: Date?,
+                    image: Data?,
+                    latitude: Double,
+                    longitude: Double) async throws
+    func retriveMemoryBasedOnLocation(latitude: Double, longitude: Double) async throws -> Memory?
+    func fetchMemories() async throws -> [Memory]
+    func updateMemory(memory: Memory) async throws
+    func deleteMemory(memory: Memory) async throws
+}
+
+extension StorageManagerProtocol {
+    func saveMemory(title: String,
+                    desctiprionOfMemory: String,
+                    date: Date? = nil,
+                    image: Data? = nil,
+                    latitude: Double,
+                    longitude: Double) async throws {
+        try await saveMemory(title: title, desctiprionOfMemory: desctiprionOfMemory, date: date, image: image, latitude: latitude, longitude: longitude)
+    }
 }
 
 /* The main purpos of using actor instead of class is being safe when we want to read and write from different Tasks */
-actor StorageManager {
+actor StorageManager: StorageManagerProtocol {
     
     /*
      TIP:
@@ -44,23 +61,42 @@ actor StorageManager {
         userDefaultManager.getIsTheFirstTimeStatus()
     }
     
-    func saveMemory(memory: CDMemory) throws {
-        try CDMemory.save(memory)
+    func saveMemory(title: String,
+                    desctiprionOfMemory: String,
+                    date: Date? = nil,
+                    image: Data? = nil,
+                    latitude: Double,
+                    longitude: Double) throws {
+        let memory = Memory(title: title,
+                              desctiprionOfMemory: desctiprionOfMemory,
+                              date: date,
+                              image: image,
+                              latitude: latitude,
+                              longitude: longitude,
+                              context: persistanceManager.context)
+        try Memory.save(memory)
     }
     
-    func retriveMemoryBasedOnLocation(latitude: Double, longitude: Double) throws -> CDMemory? {
-        let fetchRequest: NSFetchRequest<CDMemory> = CDMemory.fetchRequest()
+    func fetchMemories() async throws -> [Memory] {
+        let fetchRequest: NSFetchRequest<Memory> = Memory.fetchRequest()
+        let sort = NSSortDescriptor(key: "title", ascending: true)
+        fetchRequest.sortDescriptors = [sort]
+        return try persistanceManager.context.fetch(fetchRequest)
+    }
+    
+    func retriveMemoryBasedOnLocation(latitude: Double, longitude: Double) throws -> Memory? {
+        let fetchRequest: NSFetchRequest<Memory> = Memory.fetchRequest()
         let predicate = NSPredicate(format: "latitude == %@ AND longitude == %@",
                                     argumentArray: [latitude, longitude])
         fetchRequest.predicate = predicate
         return try persistanceManager.context.fetch(fetchRequest).first
     }
    
-    func updateMemory(memory: CDMemory) throws {
-        try CDMemory.update(memory)
+    func updateMemory(memory: Memory) throws {
+        try Memory.update(memory)
     }
     
-    func deleteMemory(memory: CDMemory) {
-        CDMemory.delete(memory)
+    func deleteMemory(memory: Memory) throws {
+        try Memory.delete(memory)
     }
 }
