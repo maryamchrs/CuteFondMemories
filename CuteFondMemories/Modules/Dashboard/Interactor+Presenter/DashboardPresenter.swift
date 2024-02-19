@@ -8,6 +8,8 @@
 import UIKit
 
 protocol DashboardPresentationLogic {
+    func presentFirstlySetup(response: Dashboard.ViewDidLoad.Response) async
+    func presentCameraOnLocation(response: Dashboard.DisplayLocation.Response) async
     func presentSelectedPlace(response: Dashboard.AddingAnnotaion.Response) async
     func presentMemoryDetailsScene(response: Dashboard.MemoryDetailsScene.Response) async
 }
@@ -39,6 +41,20 @@ extension DashboardPresenter {}
 
 // MARK: - Presentation Logic
 extension DashboardPresenter: DashboardPresentationLogic {
+    
+    func presentFirstlySetup(response: Dashboard.ViewDidLoad.Response) async {
+       
+    }
+    
+    func presentCameraOnLocation(response: Dashboard.DisplayLocation.Response) async {
+        let viweModel = Dashboard.DisplayLocation.ViewModel(latitude: response.latitude, 
+                                                            longitude: response.longitude,
+                                                            latitudinalMeters: response.latitudinalMeters, 
+                                                            longitudinalMeters: response.longitudinalMeters,
+                                                            withAnimation: response.withAnimation)
+        await viewController?.displayCameraOnLocation(viewModel: viweModel)
+    }
+    
     func presentSelectedPlace(response: Dashboard.AddingAnnotaion.Response) async {
         let viewModel = Dashboard.AddingAnnotaion.ViewModel(annotaions: [response.selectedLocation])
         await viewController?.displayAnnotations(viewModel: viewModel)

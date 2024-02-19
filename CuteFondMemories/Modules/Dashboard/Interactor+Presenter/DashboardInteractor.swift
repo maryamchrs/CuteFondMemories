@@ -8,6 +8,7 @@
 import UIKit
 
 protocol DashboardBusinessLogic {
+    func viewDidLoad(request: Dashboard.ViewDidLoad.Request)
     func oneLocationSelected(request: Dashboard.AddingAnnotaion.Request)
 }
 
@@ -39,6 +40,19 @@ extension DashboardInteractor {}
 private extension DashboardInteractor {}
 // MARK: - Business Logics
 extension DashboardInteractor: DashboardBusinessLogic {
+    
+    func viewDidLoad(request: Dashboard.ViewDidLoad.Request) {
+        Task {
+            let response = Dashboard.DisplayLocation.Response(latitude: 51.50735,
+                                                              longitude: -0.12776,
+                                                              latitudinalMeters: 1500,
+                                                              longitudinalMeters: 1500,
+                                                              withAnimation: true)
+            await presenter?.presentCameraOnLocation(response: response)
+            
+        }
+    }
+    
     func oneLocationSelected(request: Dashboard.AddingAnnotaion.Request) {
         Task {
 //            let response = Dashboard.AddingAnnotaion.Response(selectedLocation: request.selectedLocation)

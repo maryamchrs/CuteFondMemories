@@ -9,6 +9,7 @@ import UIKit
 import MapKit
 
 @MainActor protocol DashboardDisplayLogic: AnyObject {
+    func displayCameraOnLocation(viewModel: Dashboard.DisplayLocation.ViewModel)
     func displayAnnotations(viewModel: Dashboard.AddingAnnotaion.ViewModel)
     func displayMemoryDetailsScene(viewModel: Dashboard.MemoryDetailsScene.ViewModel)
 }
@@ -47,6 +48,7 @@ import MapKit
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        interactor?.viewDidLoad(request: Dashboard.ViewDidLoad.Request())
     }
 }
 
@@ -81,6 +83,15 @@ private extension DashboardViewController {
 
 // MARK: - Display Logic
 extension DashboardViewController: DashboardDisplayLogic {
+    func displayCameraOnLocation(viewModel: Dashboard.DisplayLocation.ViewModel) {
+        let location = CLLocationCoordinate2D(latitude: viewModel.latitude, longitude: viewModel.longitude)
+        let viewRegion = MKCoordinateRegion(center: location,
+                                            latitudinalMeters: viewModel.latitudinalMeters,
+                                            longitudinalMeters: viewModel.longitudinalMeters)
+        
+        mapView.setRegion(viewRegion, animated: viewModel.withAnimation)
+    }
+    
     func displayAnnotations(viewModel: Dashboard.AddingAnnotaion.ViewModel) {
         addAnnotaions(markers: viewModel.annotaions)
     }

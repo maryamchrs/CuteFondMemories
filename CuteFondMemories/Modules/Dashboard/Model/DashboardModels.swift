@@ -10,6 +10,33 @@ import MapKit
 
 enum Dashboard {
     // MARK: Use cases
+    enum ViewDidLoad {
+        struct Request {
+        }
+        struct Response {
+        }
+        struct ViewModel {
+        }
+    }
+    
+    enum DisplayLocation {
+        struct Request {
+        }
+        struct Response {
+            let latitude: Double
+            let longitude: Double
+            let latitudinalMeters: Double
+            let longitudinalMeters: Double
+            let withAnimation: Bool
+        }
+        struct ViewModel {
+            let latitude: Double
+            let longitude: Double
+            let latitudinalMeters: Double
+            let longitudinalMeters: Double
+            let withAnimation: Bool
+        }
+    }
     
     enum AddingAnnotaion {
         struct Request {
