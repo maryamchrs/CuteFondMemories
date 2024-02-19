@@ -15,7 +15,7 @@ protocol MemoryDetailsDataPassing {
     var dataStore: MemoryDetailsDataStore? { get }
 }
 
-class MemoryDetailsRouter: NSObject, MemoryDetailsDataPassing {
+final class MemoryDetailsRouter: NSObject, MemoryDetailsDataPassing {
     // MARK: - Object lifecycle
     override init() {
         MemoryDetailsLogger.logInit(owner: String(describing: MemoryDetailsRouter.self))

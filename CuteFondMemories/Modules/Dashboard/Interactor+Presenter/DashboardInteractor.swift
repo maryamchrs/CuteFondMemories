@@ -14,7 +14,7 @@ protocol DashboardBusinessLogic {
 
 protocol DashboardDataStore {}
 
-class DashboardInteractor: DashboardDataStore {
+final class DashboardInteractor: DashboardDataStore {
     // MARK: - Object lifecycle
     init() {
         DashboardLogger.logInit(owner: String(describing: DashboardInteractor.self))

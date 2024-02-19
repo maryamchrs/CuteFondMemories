@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MemoryDetailsLogger: Logger {
+final class MemoryDetailsLogger: Logger {
     override class var prefix: String {
         return "MemoryDetails"
     }

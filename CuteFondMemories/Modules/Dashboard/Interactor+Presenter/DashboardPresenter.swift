@@ -14,7 +14,7 @@ protocol DashboardPresentationLogic {
     func presentMemoryDetailsScene(response: Dashboard.MemoryDetailsScene.Response) async
 }
 
-class DashboardPresenter {
+final class DashboardPresenter {
     // MARK: - Object lifecycle
     init() {
         DashboardLogger.logInit(owner: String(describing: DashboardPresenter.self))

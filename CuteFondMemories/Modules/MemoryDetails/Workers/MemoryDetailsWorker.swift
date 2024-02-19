@@ -9,7 +9,7 @@ import UIKit
 
 protocol MemoryDetailsWorkerLogic {}
 
-class MemoryDetailsWorker {
+final class MemoryDetailsWorker {
     // MARK: - Object lifecycle
     init(service: MemoryDetailsService) {
         MemoryDetailsLogger.logInit(owner: String(describing: MemoryDetailsWorker.self))

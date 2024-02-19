@@ -11,7 +11,7 @@ protocol MemoryDetailsPresentationLogic {
     func presentMainButtonTitle(response: MemoryDetails.MainButtonTitle.Response) async
 }
 
-class MemoryDetailsPresenter {
+final class MemoryDetailsPresenter {
     // MARK: - Object lifecycle
     init() {
         MemoryDetailsLogger.logInit(owner: String(describing: MemoryDetailsPresenter.self))

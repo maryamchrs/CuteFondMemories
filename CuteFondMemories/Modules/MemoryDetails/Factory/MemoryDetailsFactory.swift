@@ -15,7 +15,7 @@ protocol MemoryDetailsServiceFactory {
     func makeMemoryDetailsService() -> MemoryDetailsService
 }
 
-class MemoryDetailsFactory: DependencyContainer {
+final class MemoryDetailsFactory: DependencyContainer {
     @MainActor func makeMemoryDetailsViewController() -> MemoryDetailsViewController {
         let viewController = MemoryDetailsViewController()
         let interactor = MemoryDetailsInteractor()

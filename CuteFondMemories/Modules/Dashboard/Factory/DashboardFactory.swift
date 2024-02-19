@@ -11,7 +11,7 @@ protocol DashboardFactoryProtocol {
     func makeDashboardViewController() -> DashboardViewController
 }
 
-class DashboardFactory: DashboardFactoryProtocol {
+final class DashboardFactory: DashboardFactoryProtocol {
     
     @MainActor func makeDashboardViewController() -> DashboardViewController {
         let viewController = DashboardViewController()

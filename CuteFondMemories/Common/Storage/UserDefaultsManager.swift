@@ -17,7 +17,7 @@ protocol UserDefaultsManagerProtocol {
     func getIsTheFirstTimeStatus() -> Bool
 }
 
-class UserDefaultsManager: UserDefaultsManagerProtocol{
+final class UserDefaultsManager: UserDefaultsManagerProtocol{
     func saveIsTheFirstTimeStatus(_ isFirstTime: Bool) {
         UserDefaults.standard.setValue(isFirstTime,
                                        forKey: UserDefaultCase.isTheFirstTime.rawValue)

@@ -18,7 +18,7 @@ protocol MemoryDetailsDataStore {
     var longitude: Double { get set }
 }
 
-class MemoryDetailsInteractor: MemoryDetailsDataStore {
+final class MemoryDetailsInteractor: MemoryDetailsDataStore {
     // MARK: - Object lifecycle
     init() {
         MemoryDetailsLogger.logInit(owner: String(describing: MemoryDetailsInteractor.self))

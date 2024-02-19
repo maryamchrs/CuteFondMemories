@@ -15,7 +15,7 @@ protocol DashboardDataPassing {
     var dataStore: DashboardDataStore? { get }
 }
 
-class DashboardRouter: NSObject, DashboardDataPassing {
+final class DashboardRouter: NSObject, DashboardDataPassing {
     // MARK: - Object lifecycle
     override init() {
         DashboardLogger.logInit(owner: String(describing: DashboardRouter.self))

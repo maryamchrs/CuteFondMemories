@@ -9,7 +9,7 @@ import UIKit
 
 protocol DashboardWorkerLogic {}
 
-class DashboardWorker {
+final class DashboardWorker {
     // MARK: - Object lifecycle
     init(service: DashboardService) {
         DashboardLogger.logInit(owner: String(describing: DashboardWorker.self))

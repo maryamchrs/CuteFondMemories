@@ -18,7 +18,7 @@ protocol MemoryDetailsFileWorkerLogic {
     func retriveMemoryBasedOnLocation(latitude: Double, longitude: Double) async throws -> Memory?
 }
 
-class MemoryDetailsFileWorker {
+final class MemoryDetailsFileWorker {
     // MARK: - Object lifecycle
     init(storageManager: StorageManagerProtocol) {
         MemoryDetailsLogger.logInit(owner: String(describing: MemoryDetailsFileWorker.self))
