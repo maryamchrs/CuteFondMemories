@@ -10,10 +10,15 @@ import Foundation
 class DependencyContainer {
     private let storageManager: StorageManager = StorageManager(userDefaultManager: UserDefaultsManager(),
                                                                 persistanceManager: PersistanceManager.shared)
+    private lazy var locationService: LocationService = LocationService()
 }
 
 extension DependencyContainer {
     func makeStorageManager() -> StorageManager {
         storageManager
+    }
+    
+    func makeLocationService() -> LocationService {
+        locationService
     }
 }

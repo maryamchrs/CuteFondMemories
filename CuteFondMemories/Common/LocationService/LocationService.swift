@@ -15,7 +15,7 @@ protocol LocationServiceProtocol: AnyObject {
     func stopGettingLocation()
 }
 
-class LocationService: NSObject {
+final class LocationService: NSObject {
     
     private var manager: CLLocationManagerProtocol?
     
