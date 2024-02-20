@@ -26,20 +26,26 @@ final class LocationService: NSObject {
     
     init(manager: CLLocationManagerProtocol = CLLocationManager()) {
         super.init()
-        self.manager = manager
-        self.manager?.delegate = self
+        setupManager(manager)
     }
 }
 
 // MARK: - Private Methods
 
-extension LocationService {}
+private extension LocationService {
+    func setupManager(_ manager: CLLocationManagerProtocol) {
+        self.manager = manager
+        self.manager?.delegate = self
+        self.manager?.requestWhenInUseAuthorization()
+        self.manager?.requestLocation()
+    }
+}
 
 // MARK: - LocationServiceProtocol
 
 extension LocationService: LocationServiceProtocol {
     func requestLocation() {
-        manager?.requestLocation()
+        manager?.startUpdatingLocation()
     }
     
     func stopGettingLocation() {

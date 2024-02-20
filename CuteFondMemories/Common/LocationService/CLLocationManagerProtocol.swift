@@ -12,7 +12,9 @@ protocol CLLocationManagerProtocol {
     var delegate: CLLocationManagerDelegate? { get set }
     
     func requestLocation()
+    func startUpdatingLocation()
     func stopUpdatingLocation()
+    func requestWhenInUseAuthorization()
 }
 
 extension CLLocationManager: CLLocationManagerProtocol {}
