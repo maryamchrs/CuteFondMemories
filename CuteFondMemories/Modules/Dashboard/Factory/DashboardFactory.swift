@@ -11,7 +11,7 @@ protocol DashboardFactoryProtocol {
     func makeDashboardViewController() -> DashboardViewController
 }
 
-final class DashboardFactory: DashboardFactoryProtocol {
+final class DashboardFactory: DependencyContainer, DashboardFactoryProtocol {
     
     @MainActor func makeDashboardViewController() -> DashboardViewController {
         let viewController = DashboardViewController()
@@ -23,11 +23,11 @@ final class DashboardFactory: DashboardFactoryProtocol {
         viewController.router = router
         interactor.presenter = presenter
         interactor.worker = worker
+        interactor.locationService = makeLocationService()
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
         router.factory = self
-        
         return viewController
     }
     
