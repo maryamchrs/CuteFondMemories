@@ -10,7 +10,7 @@ import CoreLocation
 import Combine
 
 protocol LocationServiceProtocol: AnyObject {
-    var locationPublisher: AnyPublisher<CLLocationCoordinate2D?, Never> { get }
+    var locationPublisher: (AnyPublisher<CLLocationCoordinate2D?, Never>)? { get }
     func requestLocation()
     func stopGettingLocation()
 }
@@ -20,7 +20,7 @@ final class LocationService: NSObject {
     private var manager: CLLocationManagerProtocol?
     
     private let locationSubject = PassthroughSubject<CLLocationCoordinate2D?, Never>()
-    var locationPublisher: AnyPublisher<CLLocationCoordinate2D?, Never> {
+    var locationPublisher: (AnyPublisher<CLLocationCoordinate2D?, Never>)? {
         locationSubject.eraseToAnyPublisher()
     }
     

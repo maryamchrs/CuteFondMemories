@@ -46,7 +46,7 @@ extension DashboardInteractor {}
 // MARK: Private
 private extension DashboardInteractor {
     func addObserver() {
-        locationService?.locationPublisher
+        locationService?.locationPublisher?
             .sink(receiveValue: { [weak self] userLocation in
                 guard let self, let userLocation else { return }
                 Task {
