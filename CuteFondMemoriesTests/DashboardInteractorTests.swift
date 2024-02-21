@@ -12,58 +12,106 @@
 
 @testable import CuteFondMemories
 import XCTest
+import Combine
+import MapKit
 
 class DashboardInteractorTests: XCTestCase
 {
-  // MARK: Subject under test
-  
-  var sut: DashboardInteractor!
-  
-  // MARK: Test lifecycle
-  
-  override func setUp()
-  {
-    super.setUp()
-    setupDashboardInteractor()
-  }
-  
-  override func tearDown()
-  {
-    super.tearDown()
-  }
-  
-  // MARK: Test setup
-  
-  func setupDashboardInteractor()
-  {
-    sut = DashboardInteractor()
-  }
-  
-  // MARK: Test doubles
-  
-  class DashboardPresentationLogicSpy: DashboardPresentationLogic
-  {
-    var presentSomethingCalled = false
+    // MARK: Subject under test
     
-    func presentSomething(response: Dashboard.Something.Response)
+    var sut: DashboardInteractor!
+    
+    // MARK: Test lifecycle
+    
+    override func setUp()
     {
-      presentSomethingCalled = true
+        super.setUp()
+        setupDashboardInteractor()
     }
-  }
-  
-  // MARK: Tests
-  
-  func testDoSomething()
-  {
-    // Given
-    let spy = DashboardPresentationLogicSpy()
-    sut.presenter = spy
-    let request = Dashboard.Something.Request()
     
-    // When
-    sut.doSomething(request: request)
+    override func tearDown()
+    {
+        super.tearDown()
+    }
     
-    // Then
-    XCTAssertTrue(spy.presentSomethingCalled, "doSomething(request:) should ask the presenter to format the result")
-  }
+    // MARK: Test setup
+    
+    func setupDashboardInteractor()
+    {
+        sut = DashboardInteractor()
+    }
+    
+    // MARK: Test doubles
+    
+    class DashboardPresentationLogicSpy: DashboardPresentationLogic
+    {
+        var isPresentFirstlySetup: Bool = false
+        var isPresentCameraOnLocation: Bool = false
+        var isPresentSelectedPlace: Bool = false
+        var isPresentMemoryDetailsScene: Bool = false
+        
+        func presentFirstlySetup(response: CuteFondMemories.Dashboard.ViewDidLoad.Response) async {
+            isPresentFirstlySetup = true
+        }
+        
+        func presentCameraOnLocation(response: CuteFondMemories.Dashboard.DisplayLocation.Response) async {
+            isPresentCameraOnLocation = true
+        }
+        
+        func presentSelectedPlace(response: CuteFondMemories.Dashboard.AddingAnnotaion.Response) async {
+            isPresentSelectedPlace = true
+        }
+        
+        func presentMemoryDetailsScene(response: CuteFondMemories.Dashboard.MemoryDetailsScene.Response) async {
+            isPresentMemoryDetailsScene = true
+        }
+    }
+    
+    class LocationServiceSpy: LocationServiceProtocol
+    {
+        var locationPublisher: (AnyPublisher<CLLocationCoordinate2D?, Never>)?
+    
+        var requestLocationIsCalled: Bool = false
+        var stopGettingLocationIsCalled: Bool = false
+        
+        func requestLocation() {
+            requestLocationIsCalled = true
+        }
+        
+        func stopGettingLocation() {
+            stopGettingLocationIsCalled = true
+        }
+    }
+    
+    // MARK: Tests
+    
+    func test_viewDidLoad_observerShouldBeCalled()
+    {
+        // Given
+        let spy = LocationServiceSpy()
+        spy.requestLocationIsCalled = true
+        let request = Dashboard.ViewDidLoad.Request()
+        
+        // When
+        sut.viewDidLoad(request: request)
+        
+        // Then
+        XCTAssertTrue(spy.requestLocationIsCalled,
+                      "viewDidLoad(request:) should request to getting user location.")
+    }
+    
+    func test_oneLocationSelected_shouldPresentMemoryDetailsScene() {
+        
+        // Given
+        let spy = DashboardPresentationLogicSpy()
+        spy.isPresentMemoryDetailsScene = true
+        let request = Dashboard.AddingAnnotaion.Request(selectedLocation: CLLocationCoordinate2D(latitude: Constants.LondonCLLocation2D.latitude, longitude: Constants.LondonCLLocation2D.longitude))
+        
+        // When
+        sut.oneLocationSelected(request: request)
+        
+        // Then
+        XCTAssertTrue(spy.isPresentMemoryDetailsScene,
+                      "oneLocationSelected(request:) should navigate user to the DetailsMemory scene.")
+    }
 }
