@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Combine
 
 protocol MemoryDetailsBusinessLogic {
     func viewDidLoad(request: MemoryDetails.ViewDidLoad.Request)
     func mainButtonTapped(request: MemoryDetails.MainButton.Request)
+    func datePickerChanged(request: MemoryDetails.DatePicker.Request)
 }
 
 protocol MemoryDetailsDataStore {
@@ -26,6 +28,7 @@ final class MemoryDetailsInteractor: MemoryDetailsDataStore {
     
     // MARK: - Deinit
     deinit {
+        cancellable.removeAll()
         viewDidLoadTask?.cancel()
         MemoryDetailsLogger.logDeinit(owner: String(describing: MemoryDetailsInteractor.self))
     }
@@ -42,6 +45,9 @@ final class MemoryDetailsInteractor: MemoryDetailsDataStore {
     
     // MARK: Private
     private var memories: [Memory] = []
+    private var selectedDate: Date?
+    
+    private var cancellable = Set<AnyCancellable>()
     private var viewDidLoadTask: (Task<(), Never>)?
 }
 
@@ -80,5 +86,11 @@ extension MemoryDetailsInteractor: MemoryDetailsBusinessLogic {
         case .edit:
             Logger.log(text: "Update this memory to the core data")
         }
+    }
+    
+    func datePickerChanged(request: MemoryDetails.DatePicker.Request) {
+        print(request.selectedDate)
+        print( request.selectedDate.withoutTime)
+        selectedDate = request.selectedDate
     }
 }

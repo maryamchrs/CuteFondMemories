@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MemoryDetailsRoutingLogic {
-    //    func navigateToSomewhere()
+    func dismiss()
 }
 
 protocol MemoryDetailsDataPassing {
@@ -44,5 +44,7 @@ private extension MemoryDetailsRouter {}
 
 // MARK: - Routing Logic
 extension MemoryDetailsRouter: MemoryDetailsRoutingLogic {
-
+    func dismiss() {
+        viewController?.dismiss(animated: true)
+    }
 }

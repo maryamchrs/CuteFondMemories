@@ -72,8 +72,10 @@ private extension MemoryDetailsViewController {
     }
     
     func setupDatePickerView() {
+        datePiker.datePickerMode = .date
         datePiker.maximumDate = Date()
         datePiker.date = Date()
+        datePiker.addTarget(self, action: #selector(handleDateSelection), for: .valueChanged)
     }
     
     func setupButtons() {
@@ -119,8 +121,17 @@ extension MemoryDetailsViewController: MemoryDetailsDisplayLogic {
 // MARK: - Actions
 private extension MemoryDetailsViewController {
     
+    @objc func handleDateSelection() {
+        let request = MemoryDetails.DatePicker.Request(selectedDate: datePiker.date)
+        interactor?.datePickerChanged(request: request)
+    }
+    
     @IBAction func mainButtonTapped(_ sender: Any) {
         interactor?.mainButtonTapped(request: MemoryDetails.MainButton.Request())
+    }
+    
+    @IBAction func closeButtunTapped(_ sender: Any) {
+        router?.dismiss()
     }
 }
 

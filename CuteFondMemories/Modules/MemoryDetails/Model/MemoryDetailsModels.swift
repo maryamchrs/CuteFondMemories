@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 enum MemoryDetails {
     // MARK: Use cases
@@ -50,6 +51,17 @@ enum MemoryDetails {
         }
         struct ViewModel {
             let title: String
+        }
+    }
+    
+    enum DatePicker {
+        struct Request {
+            let selectedDate: Date
+        }
+        struct Response {
+            
+        }
+        struct ViewModel {
         }
     }
 }
