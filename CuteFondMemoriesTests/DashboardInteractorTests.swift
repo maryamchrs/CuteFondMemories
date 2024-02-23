@@ -20,6 +20,7 @@ class DashboardInteractorTests: XCTestCase
     // MARK: Subject under test
     
     var sut: DashboardInteractor!
+    private var cancellables: Set<AnyCancellable>!
     
     // MARK: Test lifecycle
     
@@ -31,6 +32,7 @@ class DashboardInteractorTests: XCTestCase
     
     override func tearDown()
     {
+        cancellables = []
         super.tearDown()
     }
     
@@ -39,6 +41,7 @@ class DashboardInteractorTests: XCTestCase
     func setupDashboardInteractor()
     {
         sut = DashboardInteractor()
+        sut.locationService = LocationServiceSpy()
     }
     
     // MARK: Test doubles
@@ -112,6 +115,25 @@ class DashboardInteractorTests: XCTestCase
         
         // Then
         XCTAssertTrue(spy.isPresentMemoryDetailsScene,
+                      "oneLocationSelected(request:) should navigate user to the DetailsMemory scene.")
+    }
+    
+    func test_addObserver_shouldCallPresentCameraOnLocation() {
+        /*
+         The idea of this test is to be sure after getting user location with publisher, camera should be updated.*/
+        // Given
+        let spy = DashboardPresentationLogicSpy()
+        spy.isPresentCameraOnLocation = false
+        let requset =  Dashboard.ViewDidLoad.Request()
+        
+        guard let publisher = sut.locationService?.locationPublisher else { return }
+        
+        // When
+        let _ = try? awaitPublisher(publisher)
+        sut.viewDidLoad(request: requset)
+        
+        // Then
+        XCTAssertTrue(spy.isPresentCameraOnLocation,
                       "oneLocationSelected(request:) should navigate user to the DetailsMemory scene.")
     }
 }
