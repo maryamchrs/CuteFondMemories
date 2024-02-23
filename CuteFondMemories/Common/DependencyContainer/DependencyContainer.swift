@@ -18,7 +18,7 @@ extension DependencyContainer {
         storageManager
     }
     
-    func makeLocationService() -> LocationService {
+    func makeLocationService() -> LocationServiceProtocol {
         locationService
     }
 }
