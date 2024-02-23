@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Combine
 
 protocol MemoryDetailsBusinessLogic {
     func viewDidLoad(request: MemoryDetails.ViewDidLoad.Request)
@@ -28,7 +27,6 @@ final class MemoryDetailsInteractor: MemoryDetailsDataStore {
     
     // MARK: - Deinit
     deinit {
-        cancellable.removeAll()
         viewDidLoadTask?.cancel()
         MemoryDetailsLogger.logDeinit(owner: String(describing: MemoryDetailsInteractor.self))
     }
@@ -47,7 +45,6 @@ final class MemoryDetailsInteractor: MemoryDetailsDataStore {
     private var memories: [Memory] = []
     private var selectedDate: Date?
     
-    private var cancellable = Set<AnyCancellable>()
     private var viewDidLoadTask: (Task<(), Never>)?
 }
 
@@ -89,8 +86,8 @@ extension MemoryDetailsInteractor: MemoryDetailsBusinessLogic {
     }
     
     func datePickerChanged(request: MemoryDetails.DatePicker.Request) {
-        print(request.selectedDate)
-        print( request.selectedDate.withoutTime)
+        Logger.log(text: "\(request.selectedDate)")
+        Logger.log(text: request.selectedDate.withoutTime)
         selectedDate = request.selectedDate
     }
 }
