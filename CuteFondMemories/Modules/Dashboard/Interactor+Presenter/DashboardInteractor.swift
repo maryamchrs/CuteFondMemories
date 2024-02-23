@@ -13,9 +13,7 @@ protocol DashboardBusinessLogic {
     func oneLocationSelected(request: Dashboard.AddingAnnotaion.Request)
 }
 
-protocol DashboardDataStore {
-    var locationService: LocationService? { get set }
-}
+protocol DashboardDataStore {}
 
 final class DashboardInteractor: DashboardDataStore {
     // MARK: - Object lifecycle
@@ -35,7 +33,7 @@ final class DashboardInteractor: DashboardDataStore {
     var presenter: DashboardPresentationLogic?
     var worker: DashboardWorkerLogic?
     
-    var locationService: LocationService?
+    var locationService: LocationServiceProtocol?
     private var cancellable = Set<AnyCancellable>()
 }
 
