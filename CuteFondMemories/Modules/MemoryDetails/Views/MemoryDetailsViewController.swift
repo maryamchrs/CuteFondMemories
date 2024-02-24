@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol MemoryDetailsViewControllerDelegate: AnyObject {
+    func memoryAddedSuccessfully(memory: Memory)
+}
+
 @MainActor protocol MemoryDetailsDisplayLogic: AnyObject {
     func displayMainButtonTitle(viewModel: MemoryDetails.MainButtonTitle.ViewModel)
 }
@@ -127,7 +131,10 @@ private extension MemoryDetailsViewController {
     }
     
     @IBAction func mainButtonTapped(_ sender: Any) {
-        interactor?.mainButtonTapped(request: MemoryDetails.MainButton.Request())
+        interactor?.mainButtonTapped(request: MemoryDetails.MainButton.Request(title: titleTextFeild.text,
+                                                                               description: descriptionTextView.text,
+                                                                               date: datePiker.date,
+                                                                               image: nil))
     }
     
     @IBAction func closeButtunTapped(_ sender: Any) {
