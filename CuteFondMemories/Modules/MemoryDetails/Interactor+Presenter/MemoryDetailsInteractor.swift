@@ -77,11 +77,30 @@ extension MemoryDetailsInteractor: MemoryDetailsBusinessLogic {
     }
     
     func mainButtonTapped(request: MemoryDetails.MainButton.Request) {
-        switch state {
-        case .add:
-            Logger.log(text: "Save this memory to the core data")
-        case .edit:
-            Logger.log(text: "Update this memory to the core data")
+        Task {
+            guard let title = request.title, let desctiprionOfMemory = request.description else {
+                //TODO: - Show an error message.
+                return
+            }
+            do {
+                switch state {
+                case .add:
+                    Logger.log(text: "Save this memory to the core data")
+                    try await fileWorker?.saveMemory(title: title,
+                                                     desctiprionOfMemory: desctiprionOfMemory,
+                                                     date: request.date,
+                                                     image: nil,
+                                                     latitude: latitude,
+                                                     longitude: longitude)
+                    
+                    //TODO: - call delegate -> show annotation on the place.
+                    
+                case .edit:
+                    Logger.log(text: "Update this memory to the core data")
+                }
+            } catch {
+                
+            }
         }
     }
     
