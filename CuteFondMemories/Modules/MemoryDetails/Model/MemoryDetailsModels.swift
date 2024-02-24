@@ -36,6 +36,10 @@ enum MemoryDetails {
     
     enum MainButton {
         struct Request {
+            let title: String?
+            let description: String?
+            let date: Date?
+            let image: UIImage?
         }
         struct Response {
         }
