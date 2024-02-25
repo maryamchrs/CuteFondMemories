@@ -61,6 +61,7 @@
 		B7D957242B7BDA8F00AC33D1 /* MemoryDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D957182B7BDA8F00AC33D1 /* MemoryDetailsService.swift */; };
 		B7D9572E2B7BE9AD00AC33D1 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D9572D2B7BE9AD00AC33D1 /* UITextFieldExtension.swift */; };
 		B7EEBE942B81435300D85DA5 /* MemoryDetailsFileWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EEBE932B81435300D85DA5 /* MemoryDetailsFileWorker.swift */; };
+		B7F2756D2B8B162400B245B2 /* DashboardFileWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F2756C2B8B162400B245B2 /* DashboardFileWorker.swift */; };
 		B7F40F992B7A8EC200EDA856 /* AnnotaionInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F40F982B7A8EC200EDA856 /* AnnotaionInfoModel.swift */; };
 		B7F40F9B2B7A8F4100EDA856 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F40F9A2B7A8F4100EDA856 /* Location.swift */; };
 /* End PBXBuildFile section */
@@ -141,6 +142,7 @@
 		B7D957182B7BDA8F00AC33D1 /* MemoryDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsService.swift; sourceTree = "<group>"; };
 		B7D9572D2B7BE9AD00AC33D1 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		B7EEBE932B81435300D85DA5 /* MemoryDetailsFileWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsFileWorker.swift; sourceTree = "<group>"; };
+		B7F2756C2B8B162400B245B2 /* DashboardFileWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFileWorker.swift; sourceTree = "<group>"; };
 		B7F40F982B7A8EC200EDA856 /* AnnotaionInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotaionInfoModel.swift; sourceTree = "<group>"; };
 		B7F40F9A2B7A8F4100EDA856 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -206,6 +208,7 @@
 		B716152D2B78AFD9008E7FB8 /* Workers */ = {
 			isa = PBXGroup;
 			children = (
+				B7F2756C2B8B162400B245B2 /* DashboardFileWorker.swift */,
 				B71615152B78AE01008E7FB8 /* DashboardWorker.swift */,
 			);
 			path = Workers;
@@ -675,6 +678,7 @@
 				B794E0F62B7690A1009E5697 /* DependencyContainer.swift in Sources */,
 				B71615292B78AE01008E7FB8 /* DashboardService.swift in Sources */,
 				B7D9571A2B7BDA8F00AC33D1 /* MemoryDetailsFactory.swift in Sources */,
+				B7F2756D2B8B162400B245B2 /* DashboardFileWorker.swift in Sources */,
 				B794E10A2B76939F009E5697 /* URLResponseExtension.swift in Sources */,
 				B71615222B78AE01008E7FB8 /* DashboardRouter.swift in Sources */,
 				B74684C72B7CA1E8001CA9DC /* UITextViewExtension.swift in Sources */,
