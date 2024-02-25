@@ -97,7 +97,9 @@ extension DashboardViewController: DashboardDisplayLogic {
     }
     
     func displayMemoryDetailsScene(viewModel: Dashboard.MemoryDetailsScene.ViewModel) {
-        router?.presentMemoryDetailsView()
+        router?.presentMemoryDetailsView(memory: viewModel.memory, 
+                                         latitude: viewModel.latitude, 
+                                         longitude: viewModel.longitude)
     }
 }
 
@@ -121,8 +123,9 @@ extension DashboardViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didDeselect annotation: MKAnnotation) {}
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        // TODO: - Complete this part
-        return nil
+        let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "")
+        annotationView.markerTintColor = .green
+        return annotationView
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {

@@ -61,7 +61,7 @@ class DashboardInteractorTests: XCTestCase
             isPresentCameraOnLocation = true
         }
         
-        func presentSelectedPlace(response: CuteFondMemories.Dashboard.AddingAnnotaion.Response) async {
+        func presentAnnotation(response: CuteFondMemories.Dashboard.AddingAnnotaion.Response) async {
             isPresentSelectedPlace = true
         }
         

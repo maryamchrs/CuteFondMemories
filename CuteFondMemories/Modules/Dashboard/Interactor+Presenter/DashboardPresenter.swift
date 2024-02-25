@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import MapKit
 
 protocol DashboardPresentationLogic {
     func presentFirstlySetup(response: Dashboard.ViewDidLoad.Response) async
     func presentCameraOnLocation(response: Dashboard.DisplayLocation.Response) async
-    func presentSelectedPlace(response: Dashboard.AddingAnnotaion.Response) async
+    func presentAnnotation(response: Dashboard.AddingAnnotaion.Response) async
     func presentMemoryDetailsScene(response: Dashboard.MemoryDetailsScene.Response) async
 }
 
@@ -55,13 +56,17 @@ extension DashboardPresenter: DashboardPresentationLogic {
         await viewController?.displayCameraOnLocation(viewModel: viweModel)
     }
     
-    func presentSelectedPlace(response: Dashboard.AddingAnnotaion.Response) async {
-        let viewModel = Dashboard.AddingAnnotaion.ViewModel(annotaions: [response.selectedLocation])
+    func presentAnnotation(response: Dashboard.AddingAnnotaion.Response) async {
+        guard !response.memories.isEmpty else { return }
+        let locations: [CLLocationCoordinate2D] = response.memories.map { CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude) }
+        let viewModel = Dashboard.AddingAnnotaion.ViewModel(annotaions: locations)
         await viewController?.displayAnnotations(viewModel: viewModel)
     }
     
     func presentMemoryDetailsScene(response: Dashboard.MemoryDetailsScene.Response) async {
-        let viewModel = Dashboard.MemoryDetailsScene.ViewModel()
+        let viewModel = Dashboard.MemoryDetailsScene.ViewModel(memory: response.memory,
+                                                               latitude: response.latitude,
+                                                               longitude: response.longitude)
         await viewController?.displayMemoryDetailsScene(viewModel: viewModel)
     }
 }

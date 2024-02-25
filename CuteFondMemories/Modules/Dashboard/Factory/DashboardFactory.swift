@@ -19,10 +19,12 @@ final class DashboardFactory: DependencyContainer, DashboardFactoryProtocol {
         let presenter = DashboardPresenter()
         let router = DashboardRouter()
         let worker = DashboardWorker(service: makeDashboardService())
+        let fileWorker = DashboardFileWorker(storageManager: makeStorageManager())
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
         interactor.worker = worker
+        interactor.fileWorker = fileWorker
         interactor.locationService = makeLocationService()
         presenter.viewController = viewController
         router.viewController = viewController

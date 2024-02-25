@@ -43,7 +43,7 @@ enum Dashboard {
             let selectedLocation: CLLocationCoordinate2D
         }
         struct Response {
-            let selectedLocation: CLLocationCoordinate2D
+            let memories: [Memory]
         }
         struct ViewModel {
             let annotaions: [CLLocationCoordinate2D]
@@ -54,8 +54,14 @@ enum Dashboard {
         struct Request {
         }
         struct Response {
+            let memory: Memory?
+            let latitude: Double
+            let longitude: Double
         }
         struct ViewModel {
+            let memory: Memory?
+            let latitude: Double
+            let longitude: Double
         }
     }
     
