@@ -16,7 +16,9 @@ protocol MemoryDetailsServiceFactory {
 }
 
 final class MemoryDetailsFactory: DependencyContainer {
-    @MainActor func makeMemoryDetailsViewController() -> MemoryDetailsViewController {
+    @MainActor func makeMemoryDetailsViewController(memory: Memory?,
+                                                    latitude: Double,
+                                                    longitude: Double) -> MemoryDetailsViewController {
         let viewController = MemoryDetailsViewController()
         let interactor = MemoryDetailsInteractor()
         let presenter = MemoryDetailsPresenter()
@@ -28,6 +30,11 @@ final class MemoryDetailsFactory: DependencyContainer {
         interactor.presenter = presenter
         interactor.worker = worker
         interactor.fileWorker = fileWorker
+        
+        interactor.memory = memory
+        interactor.latitude = latitude
+        interactor.longitude = longitude
+        
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor

@@ -14,7 +14,7 @@ protocol MemoryDetailsBusinessLogic {
 }
 
 protocol MemoryDetailsDataStore {
-    var state: MemoryDetails.State { get set }
+    var memory: Memory? { get set }
     var latitude: Double { get set }
     var longitude: Double { get set }
 }
@@ -37,9 +37,14 @@ final class MemoryDetailsInteractor: MemoryDetailsDataStore {
     var presenter: MemoryDetailsPresentationLogic?
     var worker: MemoryDetailsWorkerLogic?
     var fileWorker: MemoryDetailsFileWorkerLogic?
-    var state: MemoryDetails.State = .add
+    
+    var state: MemoryDetails.State {
+        return memory != nil ? .edit : .add
+    }
+    
     var latitude: Double = 0.0
     var longitude: Double = 0.0
+    var memory: Memory?
     
     // MARK: Private
     private var memories: [Memory] = []
