@@ -11,6 +11,7 @@ import Combine
 protocol DashboardBusinessLogic {
     func viewDidLoad(request: Dashboard.ViewDidLoad.Request)
     func oneLocationSelected(request: Dashboard.AddingAnnotaion.Request)
+    func oneAnnotaionSelected(request: Dashboard.AddingAnnotaion.Request)
 }
 
 protocol DashboardDataStore {}
@@ -65,6 +66,11 @@ private extension DashboardInteractor {
                                                           withAnimation: true)
         await presenter?.presentCameraOnLocation(response: response)
     }
+    
+    func findMemoryIfExists(latitude: Double, longitude: Double) async -> Memory? {
+        try? await fileWorker?.retriveMemoryBasedOnLocation(latitude: latitude,
+                                                            longitude: longitude)
+    }
 }
 // MARK: - Business Logics
 extension DashboardInteractor: DashboardBusinessLogic {
@@ -84,14 +90,25 @@ extension DashboardInteractor: DashboardBusinessLogic {
         Task {
 //            let response = Dashboard.AddingAnnotaion.Response(selectedLocation: request.selectedLocation)
 //            await presenter?.presentAnnotation(response: response)
-            var memory: Memory?
-            if let retriveMemory = try? await fileWorker?.retriveMemoryBasedOnLocation(latitude: request.selectedLocation.latitude, longitude: request.selectedLocation.longitude) {
-                memory = retriveMemory
-            }
-            
+            let latitude = request.selectedLocation.latitude
+            let longitude = request.selectedLocation.longitude
+            let memory = await findMemoryIfExists(latitude: latitude, longitude: longitude)
             let response = Dashboard.MemoryDetailsScene.Response(memory: memory,
-                                                                 latitude: request.selectedLocation.latitude,
-                                                                 longitude: request.selectedLocation.longitude)
+                                                                 latitude: latitude,
+                                                                 longitude: longitude)
+            
+            await presenter?.presentMemoryDetailsScene(response: response)
+        }
+    }
+    
+    func oneAnnotaionSelected(request: Dashboard.AddingAnnotaion.Request) {
+        Task {
+            let latitude = request.selectedLocation.latitude
+            let longitude = request.selectedLocation.longitude
+            let memory = await findMemoryIfExists(latitude: latitude, longitude: longitude)
+            let response = Dashboard.MemoryDetailsScene.Response(memory: memory,
+                                                                 latitude: latitude,
+                                                                 longitude: longitude)
             
             await presenter?.presentMemoryDetailsScene(response: response)
         }

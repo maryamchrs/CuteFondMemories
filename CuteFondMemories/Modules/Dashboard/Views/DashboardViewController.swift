@@ -133,7 +133,7 @@ extension DashboardViewController: MKMapViewDelegate {
         // You can retrieve the coordinates of the touched point from the annotation.
         if let annotation = view.annotation {
             let coordinate = annotation.coordinate
-            // TODO: - Complete this part
+            interactor?.oneAnnotaionSelected(request: Dashboard.AddingAnnotaion.Request(selectedLocation: coordinate))
         }
     }
 }
