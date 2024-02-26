@@ -13,6 +13,8 @@ protocol MemoryDetailsViewControllerDelegate: AnyObject {
 
 @MainActor protocol MemoryDetailsDisplayLogic: AnyObject {
     func displayMainButtonTitle(viewModel: MemoryDetails.MainButtonTitle.ViewModel)
+    func displayPrefilledData(viewModel: MemoryDetails.PrefilledData.ViewModel)
+    func displayActionSuccess(viewModel: MemoryDetails.ActionWasSuccessful.ViewModel)
 }
 
 @MainActor final class MemoryDetailsViewController: UIViewController, NibLoadable {
@@ -119,6 +121,17 @@ extension MemoryDetailsViewController {}
 extension MemoryDetailsViewController: MemoryDetailsDisplayLogic {
     func displayMainButtonTitle(viewModel: MemoryDetails.MainButtonTitle.ViewModel) {
         mainButton.setTitle(viewModel.title, for: .normal)
+    }
+    
+    func displayPrefilledData(viewModel: MemoryDetails.PrefilledData.ViewModel) {
+        titleTextFeild.text = viewModel.title
+        descriptionTextView.text = viewModel.description
+        datePiker.date = viewModel.date ?? Date()
+        //TODO: - Complete this part to show prefilled data
+    }
+    
+    func displayActionSuccess(viewModel: MemoryDetails.ActionWasSuccessful.ViewModel) {
+        router?.dismiss()
     }
 }
 

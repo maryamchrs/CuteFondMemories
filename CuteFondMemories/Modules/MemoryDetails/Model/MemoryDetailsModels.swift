@@ -68,4 +68,32 @@ enum MemoryDetails {
         struct ViewModel {
         }
     }
+    
+    enum PrefilledData {
+        struct Request {
+        }
+        struct Response {
+            let title: String?
+            let description: String?
+            let date: Date?
+            let image: UIImage?
+        }
+        struct ViewModel {
+            let title: String?
+            let description: String?
+            let date: Date?
+            let image: UIImage?
+        }
+    }
+    
+    enum ActionWasSuccessful {
+        struct Request {
+            let selectedDate: Date
+        }
+        struct Response {
+            
+        }
+        struct ViewModel {
+        }
+    }
 }

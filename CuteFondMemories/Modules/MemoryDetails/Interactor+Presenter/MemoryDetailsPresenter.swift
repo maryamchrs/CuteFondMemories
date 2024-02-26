@@ -9,6 +9,8 @@ import UIKit
 
 protocol MemoryDetailsPresentationLogic {
     func presentMainButtonTitle(response: MemoryDetails.MainButtonTitle.Response) async
+    func presenPrefilledData(response: MemoryDetails.PrefilledData.Response) async
+    func presentActionSuccess(response: MemoryDetails.ActionWasSuccessful.Response) async
 }
 
 final class MemoryDetailsPresenter {
@@ -40,5 +42,14 @@ extension MemoryDetailsPresenter: MemoryDetailsPresentationLogic {
     func presentMainButtonTitle(response: MemoryDetails.MainButtonTitle.Response) async {
         let viewModel = MemoryDetails.MainButtonTitle.ViewModel(title: response.state.buttonTitle)
         await viewController?.displayMainButtonTitle(viewModel: viewModel)
+    }
+    
+    func presenPrefilledData(response: MemoryDetails.PrefilledData.Response) async {
+        let viewModel = MemoryDetails.PrefilledData.ViewModel(title: response.title, description: response.description, date: response.date, image: response.image)
+        await viewController?.displayPrefilledData(viewModel: viewModel)
+    }
+    
+    func presentActionSuccess(response: MemoryDetails.ActionWasSuccessful.Response) async {
+        await viewController?.displayActionSuccess(viewModel: MemoryDetails.ActionWasSuccessful.ViewModel())
     }
 }

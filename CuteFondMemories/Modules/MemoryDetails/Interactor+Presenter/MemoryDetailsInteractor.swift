@@ -74,7 +74,13 @@ extension MemoryDetailsInteractor: MemoryDetailsBusinessLogic {
                 guard let fileWorker, let presenter else { return }
                 let response = MemoryDetails.MainButtonTitle.Response(state: state)
                 await presenter.presentMainButtonTitle(response: response)
-                memories = try await fileWorker.fetchMemories()
+                if let memory {
+                    let response = MemoryDetails.PrefilledData.Response(title: memory.title,
+                                                                        description: memory.descriptionOfMemory,
+                                                                        date: memory.date,
+                                                                        image: UIImage(data: memory.image ?? Data()))
+                   await presenter.presenPrefilledData(response: response)
+                }
             } catch {
                 print(error)
             }
@@ -98,10 +104,18 @@ extension MemoryDetailsInteractor: MemoryDetailsBusinessLogic {
                                                      latitude: latitude,
                                                      longitude: longitude)
                     
-                    //TODO: - call delegate -> show annotation on the place.
+                    await presenter?.presentActionSuccess(response: MemoryDetails.ActionWasSuccessful.Response())
                     
                 case .edit:
                     Logger.log(text: "Update this memory to the core data")
+                    guard let memory else { return }
+                    memory.title = title
+                    memory.descriptionOfMemory = desctiprionOfMemory
+                    memory.date = selectedDate ?? memory.date
+                    memory.image = request.image?.jpegData(compressionQuality: 1)
+                    try await fileWorker?.updateMemory(memory: memory)
+                    
+                    await presenter?.presentActionSuccess(response: MemoryDetails.ActionWasSuccessful.Response())
                 }
             } catch {
                 

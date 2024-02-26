@@ -14,6 +14,7 @@ protocol MemoryDetailsFileWorkerLogic {
                     image: Data?,
                     latitude: Double,
                     longitude: Double) async throws
+    func updateMemory(memory: Memory) async throws 
     func fetchMemories() async throws -> [Memory]
     func retriveMemoryBasedOnLocation(latitude: Double, longitude: Double) async throws -> Memory?
 }
@@ -56,6 +57,10 @@ extension MemoryDetailsFileWorker: MemoryDetailsFileWorkerLogic {
                                             image: image,
                                             latitude: latitude,
                                             longitude: longitude)
+    }
+    
+    func updateMemory(memory: Memory) async throws {
+        try await storageManager.updateMemory(memory: memory)
     }
     
     func fetchMemories() async throws -> [Memory] {
