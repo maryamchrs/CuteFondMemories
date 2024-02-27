@@ -11,6 +11,7 @@ protocol MemoryDetailsBusinessLogic {
     func viewDidLoad(request: MemoryDetails.ViewDidLoad.Request)
     func mainButtonTapped(request: MemoryDetails.MainButton.Request)
     func datePickerChanged(request: MemoryDetails.DatePicker.Request)
+    func oneImageSelected(request: MemoryDetails.ChosenImage.Request)
 }
 
 protocol MemoryDetailsDataStore {
@@ -49,7 +50,6 @@ final class MemoryDetailsInteractor: MemoryDetailsDataStore {
     // MARK: Private
     private var memories: [Memory] = []
     private var selectedDate: Date?
-    
     private var viewDidLoadTask: (Task<(), Never>)?
 }
 
@@ -127,5 +127,28 @@ extension MemoryDetailsInteractor: MemoryDetailsBusinessLogic {
         Logger.log(text: "\(request.selectedDate)")
         Logger.log(text: request.selectedDate.withoutTime)
         selectedDate = request.selectedDate
+    }
+    
+    func oneImageSelected(request: MemoryDetails.ChosenImage.Request) {
+        Task {
+            
+            var selectedImage: UIImage?
+            guard let fileWorker, let presenter else { return }
+            
+            if let editedImage = request.editedImage {
+                selectedImage = editedImage
+            } else if let originalImage = request.originalImage {
+                selectedImage = originalImage
+            }
+            
+            guard let selectedImage else { return }
+            let imageData = selectedImage.jpegData(compressionQuality: 1)
+    
+            await presenter.presentChosenImage(response: MemoryDetails.ChosenImage.Response(imageData: imageData))
+            if let memory {
+                memory.image = imageData
+                try? await fileWorker.updateMemory(memory: memory)
+            }
+        }
     }
 }
