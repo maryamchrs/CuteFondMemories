@@ -9,6 +9,8 @@ import UIKit
 
 protocol MemoryDetailsRoutingLogic {
     func dismiss()
+    func presentImagePicker(_ imagePicker: UIImagePickerController)
+    func dismissImagePickerView()
 }
 
 protocol MemoryDetailsDataPassing {
@@ -30,6 +32,7 @@ final class MemoryDetailsRouter: NSObject, MemoryDetailsDataPassing {
     
     // MARK: Public
     weak var viewController: MemoryDetailsViewController?
+    weak var umagePickerViewController: UIImagePickerController?
     weak var factory: MemoryDetailsFactory?
     var dataStore: MemoryDetailsDataStore?
     
@@ -46,5 +49,17 @@ private extension MemoryDetailsRouter {}
 extension MemoryDetailsRouter: MemoryDetailsRoutingLogic {
     func dismiss() {
         viewController?.dismiss(animated: true)
+    }
+    
+    func presentImagePicker(_ imagePicker: UIImagePickerController) {
+        umagePickerViewController = imagePicker
+        if let umagePickerViewController {
+            viewController?.present(imagePicker, animated: false, completion: nil)
+        }
+    }
+    
+    func dismissImagePickerView() {
+        umagePickerViewController?.dismiss(animated: true)
+        umagePickerViewController = nil
     }
 }
