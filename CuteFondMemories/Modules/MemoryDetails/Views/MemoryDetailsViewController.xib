@@ -11,11 +11,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MemoryDetailsViewController" customModule="CuteFondMemories" customModuleProvider="target">
             <connections>
-                <outlet property="DescriptionTextViewHeightConstraint" destination="xUa-If-az8" id="ceB-et-CJi"/>
+                <outlet property="DescriptionTextViewHeightConstraint" destination="xUa-If-az8" id="JEj-6n-egR"/>
                 <outlet property="containerView" destination="Cjj-zn-zDM" id="v9A-XX-bWY"/>
                 <outlet property="datePiker" destination="MmC-ig-TNR" id="9Pw-QO-3Bl"/>
                 <outlet property="descriptionTextView" destination="Pvt-CK-HgF" id="gw3-y4-3qm"/>
                 <outlet property="exitButton" destination="MyH-kX-yvf" id="Wth-Rr-rgU"/>
+                <outlet property="imageView" destination="ExX-mm-Ncm" id="3fy-nv-llM"/>
                 <outlet property="mainButton" destination="oaW-fY-Bw0" id="deK-Tv-Qry"/>
                 <outlet property="scrollView" destination="wB2-dx-Fd2" id="8Uf-nP-Ect"/>
                 <outlet property="titleTextFeild" destination="kKy-gz-kRb" id="ws2-Zd-77f"/>

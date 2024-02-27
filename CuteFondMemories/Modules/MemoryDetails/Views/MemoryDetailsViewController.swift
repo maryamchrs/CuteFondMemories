@@ -15,6 +15,7 @@ protocol MemoryDetailsViewControllerDelegate: AnyObject {
     func displayMainButtonTitle(viewModel: MemoryDetails.MainButtonTitle.ViewModel)
     func displayPrefilledData(viewModel: MemoryDetails.PrefilledData.ViewModel)
     func displayActionSuccess(viewModel: MemoryDetails.ActionWasSuccessful.ViewModel)
+    func displayChosenImage(viewModel: MemoryDetails.ChosenImage.ViewModel)
 }
 
 @MainActor final class MemoryDetailsViewController: UIViewController, NibLoadable {
@@ -37,6 +38,7 @@ protocol MemoryDetailsViewControllerDelegate: AnyObject {
     // MARK: - Properties
     
     // MARK: Private
+    private var imagePicker = UIImagePickerController()
     
     // MARK: Public
     var interactor: MemoryDetailsBusinessLogic?
@@ -51,6 +53,8 @@ protocol MemoryDetailsViewControllerDelegate: AnyObject {
     @IBOutlet private weak var datePiker: UIDatePicker!
     @IBOutlet private weak var mainButton: UIButton!
     @IBOutlet private weak var DescriptionTextViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var imageView: UIImageView!
+    
 }
 
 // MARK: - View Controller
@@ -73,6 +77,7 @@ private extension MemoryDetailsViewController {
         setupButtons()
         setupTextField()
         setupTextView()
+        setupImageView()
         setColor()
         setFont()
     }
@@ -112,6 +117,12 @@ private extension MemoryDetailsViewController {
             self.view.layoutIfNeeded()
         }
     }
+    
+    func setupImageView() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectOneImage))
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(tapGesture)
+    }
 }
 
 // MARK: Public
@@ -127,11 +138,16 @@ extension MemoryDetailsViewController: MemoryDetailsDisplayLogic {
         titleTextFeild.text = viewModel.title
         descriptionTextView.text = viewModel.description
         datePiker.date = viewModel.date ?? Date()
-        //TODO: - Complete this part to show prefilled data
+        imageView.image = viewModel.image
     }
     
     func displayActionSuccess(viewModel: MemoryDetails.ActionWasSuccessful.ViewModel) {
         router?.dismiss()
+    }
+    
+    func displayChosenImage(viewModel: MemoryDetails.ChosenImage.ViewModel) {
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = viewModel.selectedImage
     }
 }
 
@@ -143,11 +159,20 @@ private extension MemoryDetailsViewController {
         interactor?.datePickerChanged(request: request)
     }
     
+    @objc func selectOneImage() {
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
+            imagePicker.delegate = self
+            imagePicker.sourceType = .savedPhotosAlbum
+            imagePicker.allowsEditing = false
+            router?.presentImagePicker(imagePicker)
+        }
+    }
+    
     @IBAction func mainButtonTapped(_ sender: Any) {
         interactor?.mainButtonTapped(request: MemoryDetails.MainButton.Request(title: titleTextFeild.text,
                                                                                description: descriptionTextView.text,
                                                                                date: datePiker.date,
-                                                                               image: nil))
+                                                                               image: imageView.image))
     }
     
     @IBAction func closeButtunTapped(_ sender: Any) {
@@ -168,6 +193,27 @@ extension MemoryDetailsViewController: UITextViewDelegate {
             textView.text = textView.text.trimmingCharacters(in: .whitespacesAndNewlines)
             resizeTxtDescription()
         }
+    }
+}
+
+// MARK: -
+extension MemoryDetailsViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        
+        var originalImage: UIImage?
+        var editedImage: UIImage?
+        
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            originalImage = pickedImage
+        }
+        if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            editedImage = pickedImage
+        }
+        
+        interactor?.oneImageSelected(request: MemoryDetails.ChosenImage.Request(originalImage: originalImage, editedImage: editedImage))
+        router?.dismissImagePickerView()
     }
 }
 
