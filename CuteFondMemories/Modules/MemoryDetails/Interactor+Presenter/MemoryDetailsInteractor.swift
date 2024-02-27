@@ -131,17 +131,7 @@ extension MemoryDetailsInteractor: MemoryDetailsBusinessLogic {
     
     func oneImageSelected(request: MemoryDetails.ChosenImage.Request) {
         Task {
-            
-            var selectedImage: UIImage?
-            guard let fileWorker, let presenter else { return }
-            
-            if let editedImage = request.editedImage {
-                selectedImage = editedImage
-            } else if let originalImage = request.originalImage {
-                selectedImage = originalImage
-            }
-            
-            guard let selectedImage else { return }
+            guard let fileWorker, let presenter, let selectedImage = request.selectedImage else { return }
             let imageData = selectedImage.jpegData(compressionQuality: 1)
     
             await presenter.presentChosenImage(response: MemoryDetails.ChosenImage.Response(imageData: imageData))

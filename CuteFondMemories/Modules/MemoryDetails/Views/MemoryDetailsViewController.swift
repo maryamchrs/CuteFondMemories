@@ -202,17 +202,17 @@ extension MemoryDetailsViewController: UINavigationControllerDelegate, UIImagePi
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         
-        var originalImage: UIImage?
-        var editedImage: UIImage?
+        var newImage: UIImage
         
-        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            originalImage = pickedImage
-        }
-        if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            editedImage = pickedImage
+        if let possibleImage = info[.editedImage] as? UIImage {
+            newImage = possibleImage
+        } else if let possibleImage = info[.originalImage] as? UIImage {
+            newImage = possibleImage
+        } else {
+            return
         }
         
-        interactor?.oneImageSelected(request: MemoryDetails.ChosenImage.Request(originalImage: originalImage, editedImage: editedImage))
+        interactor?.oneImageSelected(request: MemoryDetails.ChosenImage.Request(selectedImage: newImage))
         router?.dismissImagePickerView()
     }
 }

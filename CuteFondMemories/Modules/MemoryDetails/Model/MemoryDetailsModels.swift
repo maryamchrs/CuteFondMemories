@@ -99,8 +99,7 @@ enum MemoryDetails {
     
     enum ChosenImage {
         struct Request {
-            let originalImage: UIImage?
-            let editedImage: UIImage?
+            let selectedImage: UIImage?
         }
         struct Response {
             let imageData: Data?
