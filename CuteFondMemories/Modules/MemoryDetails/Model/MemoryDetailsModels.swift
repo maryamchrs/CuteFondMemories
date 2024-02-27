@@ -96,4 +96,17 @@ enum MemoryDetails {
         struct ViewModel {
         }
     }
+    
+    enum ChosenImage {
+        struct Request {
+            let originalImage: UIImage?
+            let editedImage: UIImage?
+        }
+        struct Response {
+            let imageData: Data?
+        }
+        struct ViewModel {
+            let selectedImage: UIImage?
+        }
+    }
 }
