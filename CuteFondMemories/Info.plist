@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>CuteFondMemories needs accessing your camera to give you better experiance</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>CuteFondMemories needs your location to give you better experiance</string>
 	<key>UIApplicationSceneManifest</key>
