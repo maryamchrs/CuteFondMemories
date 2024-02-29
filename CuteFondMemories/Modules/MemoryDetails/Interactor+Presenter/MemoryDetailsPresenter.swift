@@ -12,6 +12,7 @@ protocol MemoryDetailsPresentationLogic {
     func presenPrefilledData(response: MemoryDetails.PrefilledData.Response) async
     func presentActionSuccess(response: MemoryDetails.ActionWasSuccessful.Response) async
     func presentChosenImage(response: MemoryDetails.ChosenImage.Response) async
+    func presentPickerImageView(response: MemoryDetails.PickerImageSetup.Response) async
 }
 
 final class MemoryDetailsPresenter {
@@ -57,5 +58,10 @@ extension MemoryDetailsPresenter: MemoryDetailsPresentationLogic {
     func presentChosenImage(response: MemoryDetails.ChosenImage.Response) async {
         guard let imageData = response.imageData, let image = UIImage(data: imageData) else { return }
         await viewController?.displayChosenImage(viewModel: MemoryDetails.ChosenImage.ViewModel(selectedImage: image))
+    }
+    
+    func presentPickerImageView(response: MemoryDetails.PickerImageSetup.Response) async {
+        let viewModel = MemoryDetails.PickerImageSetup.ViewModel(type: response.type)
+        await viewController?.displayPickerImageView(viewModel: viewModel)
     }
 }

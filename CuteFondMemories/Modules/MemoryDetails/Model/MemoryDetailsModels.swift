@@ -108,4 +108,45 @@ enum MemoryDetails {
             let selectedImage: UIImage?
         }
     }
+    
+    enum ImageType {
+        case photos
+        case cameras
+        
+        init?(rawValue: String) {
+            if rawValue == "photos".localize {
+                self = .photos
+            } else if rawValue == "camera".localize  {
+                self = .cameras
+            } else {
+                return nil
+            }
+        }
+    }
+    
+    enum PickerImageSetup {
+        struct Request {
+            
+        }
+        struct Response {
+            let type: ImageType
+            
+        }
+        struct ViewModel {
+            let type: ImageType
+        }
+    }
+    
+    
+    enum ActionOnAlertView{
+        struct Request {
+            let action: UIAlertAction
+        }
+        struct Response {
+            
+        }
+        struct ViewModel {
+        }
+    }
+    
 }

@@ -12,6 +12,7 @@ protocol MemoryDetailsBusinessLogic {
     func mainButtonTapped(request: MemoryDetails.MainButton.Request)
     func datePickerChanged(request: MemoryDetails.DatePicker.Request)
     func oneImageSelected(request: MemoryDetails.ChosenImage.Request)
+    func oneActionOnAlertViewSelected(request: MemoryDetails.ActionOnAlertView.Request)
 }
 
 protocol MemoryDetailsDataStore {
@@ -139,6 +140,13 @@ extension MemoryDetailsInteractor: MemoryDetailsBusinessLogic {
                 memory.image = imageData
                 try? await fileWorker.updateMemory(memory: memory)
             }
+        }
+    }
+    
+    func oneActionOnAlertViewSelected(request: MemoryDetails.ActionOnAlertView.Request) {
+        Task {
+            guard let type = await MemoryDetails.ImageType(rawValue: request.action.title ?? "" ) else { return }
+            await presenter?.presentPickerImageView(response: MemoryDetails.PickerImageSetup.Response(type: type))
         }
     }
 }

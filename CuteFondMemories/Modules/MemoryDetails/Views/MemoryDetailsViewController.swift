@@ -13,6 +13,7 @@ protocol MemoryDetailsViewControllerDelegate: AnyObject {
 
 @MainActor protocol MemoryDetailsDisplayLogic: AnyObject {
     func displayMainButtonTitle(viewModel: MemoryDetails.MainButtonTitle.ViewModel)
+    func displayPickerImageView(viewModel: MemoryDetails.PickerImageSetup.ViewModel)
     func displayPrefilledData(viewModel: MemoryDetails.PrefilledData.ViewModel)
     func displayActionSuccess(viewModel: MemoryDetails.ActionWasSuccessful.ViewModel)
     func displayChosenImage(viewModel: MemoryDetails.ChosenImage.ViewModel)
@@ -149,6 +150,21 @@ extension MemoryDetailsViewController: MemoryDetailsDisplayLogic {
         imageView.contentMode = .scaleAspectFit
         imageView.image = viewModel.selectedImage
     }
+    
+    func displayPickerImageView(viewModel: MemoryDetails.PickerImageSetup.ViewModel) {
+        switch viewModel.type {
+        case .cameras:
+            guard UIImagePickerController.isSourceTypeAvailable(.camera) else { return }
+            imagePicker.sourceType = .camera
+        case .photos:
+            guard UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) else { return }
+            imagePicker.sourceType = .savedPhotosAlbum
+        }
+        
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = false
+        router?.presentImagePicker(imagePicker)
+    }
 }
 
 // MARK: - Actions
@@ -160,11 +176,14 @@ private extension MemoryDetailsViewController {
     }
     
     @objc func selectOneImage() {
-        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
-            imagePicker.delegate = self
-            imagePicker.sourceType = .savedPhotosAlbum
-            imagePicker.allowsEditing = false
-            router?.presentImagePicker(imagePicker)
+        showAlert("pick_photo".localize, 
+                  message: "chose_One_photo_description".localize,
+                  actions: ["photos".localize: .default,
+                            "camera".localize: .default,
+                            "cancel".localize: .cancel]) { [weak self] action in
+            guard let self else { return }
+            let request = MemoryDetails.ActionOnAlertView.Request(action: action)
+            self.interactor?.oneActionOnAlertViewSelected(request: request)
         }
     }
     
