@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  CuteFondMemories
+
+  Created by Maryam Chrs on 29/02/2024.
+  
+*/
+
+"pick_photo" = "Pick a photo";
+"chose_One_photo_description" = "Chose one photo from Photos or Camera";
+"photos" = "Photos";
+"camera" = "Camera";
+"cancel" = "Cancel";
