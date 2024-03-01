@@ -65,4 +65,13 @@ enum Dashboard {
         }
     }
     
+    enum MemoryListUpdated {
+        struct Request {
+        }
+        struct Response {
+        }
+        struct ViewModel {
+        }
+    }
+    
 }

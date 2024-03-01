@@ -52,6 +52,7 @@ extension DashboardRouter: DashboardRoutingLogic {
         let destinationViewController = MemoryDetailsFactory().makeMemoryDetailsViewController(memory: memory,
                                                                                                latitude: latitude,
                                                                                                longitude: longitude)
+        destinationViewController.delegate = viewController
         destinationViewController.modalTransitionStyle = .coverVertical
         destinationViewController.modalPresentationStyle = .fullScreen
         viewController?.navigationController?.present(destinationViewController, animated: true)

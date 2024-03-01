@@ -137,6 +137,12 @@ extension DashboardViewController: MKMapViewDelegate {
         }
     }
 }
+// MARK: - MKMapViewDelegate
+extension DashboardViewController: MemoryDetailsViewControllerDelegate {
+    func memoryAddedSuccessfully() {
+        interactor?.oneMemoryAddedSuccessfuly(request: Dashboard.MemoryListUpdated.Request())
+    }
+}
 
 private extension DashboardViewController {
     func setColor() {}

@@ -12,6 +12,7 @@ protocol DashboardBusinessLogic {
     func viewDidLoad(request: Dashboard.ViewDidLoad.Request)
     func oneLocationSelected(request: Dashboard.AddingAnnotaion.Request)
     func oneAnnotaionSelected(request: Dashboard.AddingAnnotaion.Request)
+    func oneMemoryAddedSuccessfuly(request: Dashboard.MemoryListUpdated.Request)
 }
 
 protocol DashboardDataStore {}
@@ -71,6 +72,12 @@ private extension DashboardInteractor {
         try? await fileWorker?.retriveMemoryBasedOnLocation(latitude: latitude,
                                                             longitude: longitude)
     }
+    
+    func findAllExistedMemories() async throws {
+        if let memories = try await fileWorker?.fetchMemories() {
+            await presenter?.presentAnnotation(response: Dashboard.AddingAnnotaion.Response(memories: memories))
+        }
+    }
 }
 // MARK: - Business Logics
 extension DashboardInteractor: DashboardBusinessLogic {
@@ -79,9 +86,7 @@ extension DashboardInteractor: DashboardBusinessLogic {
         Task {
             addObserver()
             locationService?.requestLocation()
-            if let memories = try await fileWorker?.fetchMemories() {
-                await presenter?.presentAnnotation(response: Dashboard.AddingAnnotaion.Response(memories: memories))
-            }
+            try await findAllExistedMemories()
 //            await changeCameraLocation(latitude: 51.50735, longitude: -0.12776)
         }
     }
@@ -111,6 +116,12 @@ extension DashboardInteractor: DashboardBusinessLogic {
                                                                  longitude: longitude)
             
             await presenter?.presentMemoryDetailsScene(response: response)
+        }
+    }
+    
+    func oneMemoryAddedSuccessfuly(request: Dashboard.MemoryListUpdated.Request) {
+        Task {
+            try await findAllExistedMemories()
         }
     }
 }
