@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MemoryDetailsViewControllerDelegate: AnyObject {
-    func memoryAddedSuccessfully(memory: Memory)
+    func memoryAddedSuccessfully()
 }
 
 @MainActor protocol MemoryDetailsDisplayLogic: AnyObject {
@@ -44,6 +44,7 @@ protocol MemoryDetailsViewControllerDelegate: AnyObject {
     // MARK: Public
     var interactor: MemoryDetailsBusinessLogic?
     var router: (NSObjectProtocol & MemoryDetailsRoutingLogic & MemoryDetailsDataPassing)?
+    weak var delegate: MemoryDetailsViewControllerDelegate?
     
     // MARK: - Outlets
     @IBOutlet private weak var scrollView: UIScrollView!
@@ -143,6 +144,7 @@ extension MemoryDetailsViewController: MemoryDetailsDisplayLogic {
     }
     
     func displayActionSuccess(viewModel: MemoryDetails.ActionWasSuccessful.ViewModel) {
+        delegate?.memoryAddedSuccessfully()
         router?.dismiss()
     }
     
