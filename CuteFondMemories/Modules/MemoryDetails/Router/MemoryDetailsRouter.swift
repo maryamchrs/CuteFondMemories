@@ -53,7 +53,7 @@ extension MemoryDetailsRouter: MemoryDetailsRoutingLogic {
     
     func presentImagePicker(_ imagePicker: UIImagePickerController) {
         umagePickerViewController = imagePicker
-        if let umagePickerViewController {
+        if umagePickerViewController != nil {
             viewController?.present(imagePicker, animated: false, completion: nil)
         }
     }
