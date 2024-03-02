@@ -67,7 +67,6 @@ extension MemoryDetailsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        self.showToast(message: "Toast", seconds: 2)
         interactor?.viewDidLoad(request: MemoryDetails.ViewDidLoad.Request())
     }
 }
