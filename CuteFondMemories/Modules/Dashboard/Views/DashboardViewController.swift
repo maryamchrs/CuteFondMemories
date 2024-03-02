@@ -40,10 +40,11 @@ import MapKit
     var router: (NSObjectProtocol & DashboardRoutingLogic & DashboardDataPassing)?
     
     // MARK: - Outlets
-    
     @IBOutlet private weak var mapView: MKMapView!
-    
-    // MARK: Life Cycle
+}
+
+// MARK: Life Cycle
+extension DashboardViewController {
     // swiftlint:disable:next unneeded_override
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +52,6 @@ import MapKit
         interactor?.viewDidLoad(request: Dashboard.ViewDidLoad.Request())
     }
 }
-
 // MARK: - Methods
 
 // MARK: Public

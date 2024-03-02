@@ -63,9 +63,10 @@ enum MemoryDetails {
             let selectedDate: Date
         }
         struct Response {
-            
+            let selectedDate: Date
         }
         struct ViewModel {
+            let selectedDate: Date
         }
     }
     
@@ -137,7 +138,6 @@ enum MemoryDetails {
         }
     }
     
-    
     enum ActionOnAlertView{
         struct Request {
             let action: UIAlertAction
@@ -148,5 +148,4 @@ enum MemoryDetails {
         struct ViewModel {
         }
     }
-    
 }

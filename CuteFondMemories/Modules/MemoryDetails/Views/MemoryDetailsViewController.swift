@@ -14,6 +14,7 @@ protocol MemoryDetailsViewControllerDelegate: AnyObject {
 @MainActor protocol MemoryDetailsDisplayLogic: AnyObject {
     func displayMainButtonTitle(viewModel: MemoryDetails.MainButtonTitle.ViewModel)
     func displayPickerImageView(viewModel: MemoryDetails.PickerImageSetup.ViewModel)
+    func displaySelectedDate(viewModel: MemoryDetails.DatePicker.ViewModel)
     func displayPrefilledData(viewModel: MemoryDetails.PrefilledData.ViewModel)
     func displayActionSuccess(viewModel: MemoryDetails.ActionWasSuccessful.ViewModel)
     func displayChosenImage(viewModel: MemoryDetails.ChosenImage.ViewModel)
@@ -66,6 +67,7 @@ extension MemoryDetailsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        self.showToast(message: "Toast", seconds: 2)
         interactor?.viewDidLoad(request: MemoryDetails.ViewDidLoad.Request())
     }
 }
@@ -87,7 +89,6 @@ private extension MemoryDetailsViewController {
     func setupDatePickerView() {
         datePiker.datePickerMode = .date
         datePiker.maximumDate = Date()
-        datePiker.date = Date()
         datePiker.addTarget(self, action: #selector(handleDateSelection), for: .valueChanged)
     }
     
@@ -166,6 +167,10 @@ extension MemoryDetailsViewController: MemoryDetailsDisplayLogic {
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
         router?.presentImagePicker(imagePicker)
+    }
+    
+    func displaySelectedDate(viewModel: MemoryDetails.DatePicker.ViewModel) {
+        datePiker.date = viewModel.selectedDate
     }
 }
 

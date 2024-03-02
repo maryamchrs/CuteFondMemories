@@ -65,26 +65,24 @@ private extension MemoryDetailsInteractor {}
 extension MemoryDetailsInteractor: MemoryDetailsBusinessLogic {
     
     func viewDidLoad(request: MemoryDetails.ViewDidLoad.Request) {
-        // TODO: - If user selected this location before show prefield information
-        // fetch data based on location
-        // if it find in the core data show the informaton
+        // TODO: - fetch data based on location
+        // If it is found in the core data, display the corresponding information.
         // otherwise change the name of button based on the status
         viewDidLoadTask?.cancel()
         viewDidLoadTask = Task {
-            do {
-                guard let fileWorker, let presenter else { return }
-                let response = MemoryDetails.MainButtonTitle.Response(state: state)
-                await presenter.presentMainButtonTitle(response: response)
-                if let memory {
-                    let response = MemoryDetails.PrefilledData.Response(title: memory.title,
-                                                                        description: memory.descriptionOfMemory,
-                                                                        date: memory.date,
-                                                                        image: UIImage(data: memory.image ?? Data()))
-                   await presenter.presenPrefilledData(response: response)
-                }
-            } catch {
-                print(error)
+            guard let presenter else { return }
+            let response = MemoryDetails.MainButtonTitle.Response(state: state)
+            await presenter.presentMainButtonTitle(response: response)
+            guard let memory else {
+                let response = MemoryDetails.DatePicker.Response(selectedDate: Date())
+                await presenter.presentSelectedDate(response: response)
+                return
             }
+            let prefilledDataResponse = MemoryDetails.PrefilledData.Response(title: memory.title,
+                                                                             description: memory.descriptionOfMemory,
+                                                                             date: memory.date,
+                                                                             image: UIImage(data: memory.image ?? Data()))
+            await presenter.presenPrefilledData(response: prefilledDataResponse)
         }
     }
     

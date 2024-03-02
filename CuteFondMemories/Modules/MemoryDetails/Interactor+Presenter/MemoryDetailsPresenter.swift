@@ -13,6 +13,7 @@ protocol MemoryDetailsPresentationLogic {
     func presentActionSuccess(response: MemoryDetails.ActionWasSuccessful.Response) async
     func presentChosenImage(response: MemoryDetails.ChosenImage.Response) async
     func presentPickerImageView(response: MemoryDetails.PickerImageSetup.Response) async
+    func presentSelectedDate(response: MemoryDetails.DatePicker.Response) async
 }
 
 final class MemoryDetailsPresenter {
@@ -63,5 +64,10 @@ extension MemoryDetailsPresenter: MemoryDetailsPresentationLogic {
     func presentPickerImageView(response: MemoryDetails.PickerImageSetup.Response) async {
         let viewModel = MemoryDetails.PickerImageSetup.ViewModel(type: response.type)
         await viewController?.displayPickerImageView(viewModel: viewModel)
+    }
+    
+    func presentSelectedDate(response: MemoryDetails.DatePicker.Response) async {
+        let viewModel = MemoryDetails.DatePicker.ViewModel(selectedDate: response.selectedDate)
+        await viewController?.displaySelectedDate(viewModel: viewModel)
     }
 }

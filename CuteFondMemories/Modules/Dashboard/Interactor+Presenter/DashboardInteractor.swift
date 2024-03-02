@@ -87,14 +87,11 @@ extension DashboardInteractor: DashboardBusinessLogic {
             addObserver()
             locationService?.requestLocation()
             try await findAllExistedMemories()
-//            await changeCameraLocation(latitude: 51.50735, longitude: -0.12776)
         }
     }
     
     func oneLocationSelected(request: Dashboard.AddingAnnotaion.Request) {
         Task {
-//            let response = Dashboard.AddingAnnotaion.Response(selectedLocation: request.selectedLocation)
-//            await presenter?.presentAnnotation(response: response)
             let latitude = request.selectedLocation.latitude
             let longitude = request.selectedLocation.longitude
             let memory = await findMemoryIfExists(latitude: latitude, longitude: longitude)
