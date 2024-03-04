@@ -94,6 +94,7 @@ private extension MemoryDetailsViewController {
     func setupButtons() {
         mainButton.layer.borderWidth = 1
         mainButton.layer.cornerRadius = 10
+        addCustomBackButton()
     }
     
     func setupTextField() {
