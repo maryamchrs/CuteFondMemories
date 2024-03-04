@@ -55,6 +55,6 @@ extension DashboardRouter: DashboardRoutingLogic {
         destinationViewController.delegate = viewController
         destinationViewController.modalTransitionStyle = .coverVertical
         destinationViewController.modalPresentationStyle = .fullScreen
-        viewController?.navigationController?.present(destinationViewController, animated: true)
+        viewController?.navigationController?.pushViewController(destinationViewController, animated: true)
     }
 }
