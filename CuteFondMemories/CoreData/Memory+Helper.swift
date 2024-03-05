@@ -8,7 +8,14 @@
 import Foundation
 import CoreData
  
-extension Memory {
+protocol MemoryProtocol {
+    static func save(_ memory: Memory) throws
+    static func update(_ memory: Memory) throws
+    static func fetch(_ predicate: NSPredicate) -> NSFetchRequest<Memory>
+    static func delete(_ memory: Memory) throws
+}
+
+extension Memory: MemoryProtocol {
     
     convenience init(title: String,
                      desctiprionOfMemory: String,

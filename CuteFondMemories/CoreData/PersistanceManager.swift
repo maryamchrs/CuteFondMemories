@@ -8,11 +8,17 @@
 import Foundation
 import CoreData
 
+protocol PersistanceManagerProtocol {
+//    static var shared: PersistanceManagerProtocol { get }
+    var context: NSManagedObjectContext { get }
+    func saveContext ()
+}
+
 /*
  To ensure our database remains secure, it is crucial that only one instance can access it.
  Therefore, we must use the Singleton design pattern.
  */
-struct PersistanceManager {
+struct PersistanceManager: PersistanceManagerProtocol {
     
     static let shared = PersistanceManager()
     private let persistentContainer: NSPersistentContainer
