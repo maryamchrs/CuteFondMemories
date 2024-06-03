@@ -10,7 +10,7 @@ import UIKit
 enum MainTabBar {
     // MARK: Use cases
     
-    enum Something {
+    enum ViewDidLoad {
         struct Request {
         }
         struct Response {

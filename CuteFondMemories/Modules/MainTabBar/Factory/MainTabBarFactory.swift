@@ -6,22 +6,23 @@
 //
 
 import Foundation
+import UIKit
 
-protocol MainTabBarFactoryProtocol {
+@MainActor protocol MainTabBarFactoryProtocol {
     func makeMainTabBarViewController() -> MainTabBarViewController
+    func makeDashboardViewController() -> DashboardViewController
 }
 
-protocol MainTabBarServiceFactory {
-    func makeMainTabBarService() -> MainTabBarService
-}
+protocol MainTabBarServiceFactory {}
 
-class MainTabBarFactory {
- @MainActor func makeMainTabBarViewController() -> MainTabBarViewController {
+class MainTabBarFactory: MainTabBarFactoryProtocol {
+    
+    @MainActor func makeMainTabBarViewController() -> MainTabBarViewController {
         let viewController = MainTabBarViewController()
         let interactor = MainTabBarInteractor()
         let presenter = MainTabBarPresenter()
         let router = MainTabBarRouter()
-        let worker = MainTabBarWorker(service: makeMainTabBarService())
+        let worker = MainTabBarWorker()
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
@@ -31,10 +32,25 @@ class MainTabBarFactory {
         router.dataStore = interactor
         router.factory = self
         
+        let dashboardViewController = makeDashboardViewController()
+        let settingViewController = makeSettingViewController()
+        viewController.viewControllers = [dashboardViewController, settingViewController]
         return viewController
     }
-
-func makeMainTabBarService() -> MainTabBarService {
-return MainTabBarService(httpClient: URLSession.shared)
-}
+    
+    @MainActor func makeDashboardViewController() -> DashboardViewController {
+        let destinationVC = DashboardFactory().makeDashboardViewController()
+        destinationVC.tabBarItem = UITabBarItem(title: "Home",
+                                                image: UIImage(systemName: "house.fill"),
+                                                tag: 0)
+        return destinationVC
+    }
+    
+    @MainActor func makeSettingViewController() -> SettingViewController {
+        let destinationVC = SettingFactory().makeSettingViewController()
+        destinationVC.tabBarItem = UITabBarItem(title: "Setting",
+                                                image: UIImage(systemName: "slider.vertical.3"),
+                                                tag: 1)
+        return destinationVC
+    }
 }

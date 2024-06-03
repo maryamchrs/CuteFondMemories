@@ -11,9 +11,8 @@ protocol MainTabBarWorkerLogic {}
 
 class MainTabBarWorker {
     // MARK: - Object lifecycle
-    init(service: MainTabBarService) {
+    init() {
         MainTabBarLogger.logInit(owner: String(describing: MainTabBarWorker.self))
-        self.service = service
     }
     
     // MARK: - Deinit
@@ -24,7 +23,6 @@ class MainTabBarWorker {
     // MARK: - Properties
     
     // MARK: Private
-    private let service: MainTabBarService
 }
 
 // MARK: - Methods

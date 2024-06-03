@@ -3,14 +3,13 @@
 //  CuteFondMemories
 //
 //  Created by Maryam Chrs on 03/06/2024.
-//  Copyright (c) 2024 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import UIKit
 
 @MainActor protocol MainTabBarDisplayLogic: AnyObject {}
 
-@MainActor final class MainTabBarViewController: UIViewController {
+@MainActor final class MainTabBarViewController: UITabBarController {
     // MARK: - Object lifecycle
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -18,7 +17,7 @@ import UIKit
     }
     
    @MainActor init() {
-        super.init(nibName: MainTabBarViewController.nibName, bundle: nil)
+       super.init(nibName: MainTabBarViewController.nibName, bundle: nil)
         MainTabBarLogger.logInit(owner: String(describing: MainTabBarViewController.self))
     }
     
@@ -34,7 +33,6 @@ import UIKit
     // MARK: Public
     var interactor: MainTabBarBusinessLogic?
     var router: (NSObjectProtocol & MainTabBarRoutingLogic & MainTabBarDataPassing)?
-    
     // MARK: - Outlets
 }
 
@@ -44,13 +42,22 @@ import UIKit
 extension MainTabBarViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        setColor()
+        setFont()
+        tabBar.barTintColor = .white
+                tabBar.isTranslucent = false
     }
 }
 
 // MARK: - Methods
 
 // MARK: Private
-private extension MainTabBarViewController {}
+private extension MainTabBarViewController {
+    func setupUI() {
+//        tabBar.isTranslucent = false
+    }
+}
 
 // MARK: Public
 extension MainTabBarViewController {}
@@ -62,8 +69,12 @@ extension MainTabBarViewController: MainTabBarDisplayLogic {}
 extension MainTabBarViewController {}
 
 // MARK: - Appearance
-extension MainTabBarViewController: Appearance {
-    func setColor() {}
+extension MainTabBarViewController {
+    func setColor() {
+//        tabBar.barTintColor = .white
+//        tabBar.tintColor = UIColor.white // tab bar icon tint color
+//        UITabBar.appearance().barTintColor = UIColor.blue // tab bar background color
+    }
     
     func setFont() {}
 }

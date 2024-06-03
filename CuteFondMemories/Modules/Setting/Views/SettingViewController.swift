@@ -3,7 +3,6 @@
 //  CuteFondMemories
 //
 //  Created by Maryam Chrs on 03/06/2024.
-//  Copyright (c) 2024 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import UIKit
@@ -44,6 +43,8 @@ import UIKit
 extension SettingViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        setColor()
+        setFont()
     }
 }
 
@@ -62,8 +63,10 @@ extension SettingViewController: SettingDisplayLogic {}
 extension SettingViewController {}
 
 // MARK: - Appearance
-extension SettingViewController: Appearance {
-    func setColor() {}
+extension SettingViewController {
+    func setColor() {
+        view.backgroundColor = .cyan
+    }
     
     func setFont() {}
 }

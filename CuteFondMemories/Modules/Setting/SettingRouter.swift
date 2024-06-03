@@ -31,7 +31,7 @@ class SettingRouter: NSObject, SettingDataPassing {
     // MARK: Public
     weak var viewController: SettingViewController?
     var dataStore: SettingDataStore?
-    var factory: SettingFactoryProtocolr?
+    var factory: SettingFactoryProtocol?
 }
 
 // MARK: - Methods

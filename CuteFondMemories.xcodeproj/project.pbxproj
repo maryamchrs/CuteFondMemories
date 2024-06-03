@@ -21,6 +21,26 @@
 		B71615282B78AE01008E7FB8 /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B716151C2B78AE01008E7FB8 /* DashboardViewController.xib */; };
 		B71615292B78AE01008E7FB8 /* DashboardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716151D2B78AE01008E7FB8 /* DashboardService.swift */; };
 		B71615332B78B38F008E7FB8 /* XibLoadableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71615322B78B38F008E7FB8 /* XibLoadableExtension.swift */; };
+		B71B79262C0E3A130036DC6E /* MainTabBarFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71B791A2C0E3A130036DC6E /* MainTabBarFactory.swift */; };
+		B71B79272C0E3A130036DC6E /* MainTabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71B791B2C0E3A130036DC6E /* MainTabBarPresenter.swift */; };
+		B71B79282C0E3A130036DC6E /* MainTabBarWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71B791C2C0E3A130036DC6E /* MainTabBarWorker.swift */; };
+		B71B79292C0E3A130036DC6E /* MainTabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71B791D2C0E3A130036DC6E /* MainTabBarRouter.swift */; };
+		B71B792B2C0E3A130036DC6E /* MainTabBarModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71B791F2C0E3A130036DC6E /* MainTabBarModels.swift */; };
+		B71B792C2C0E3A130036DC6E /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71B79202C0E3A130036DC6E /* MainTabBarViewController.swift */; };
+		B71B792D2C0E3A130036DC6E /* MainTabBarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71B79212C0E3A130036DC6E /* MainTabBarInteractor.swift */; };
+		B71B792E2C0E3A130036DC6E /* MainTabBarLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71B79222C0E3A130036DC6E /* MainTabBarLogger.swift */; };
+		B71B792F2C0E3A130036DC6E /* MainTabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B71B79232C0E3A130036DC6E /* MainTabBarViewController.xib */; };
+		B71B79452C0E442C0036DC6E /* SettingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71B79392C0E442C0036DC6E /* SettingFactory.swift */; };
+		B71B79462C0E442C0036DC6E /* SettingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71B793A2C0E442C0036DC6E /* SettingPresenter.swift */; };
+		B71B79472C0E442C0036DC6E /* SettingWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71B793B2C0E442C0036DC6E /* SettingWorker.swift */; };
+		B71B79482C0E442C0036DC6E /* SettingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71B793C2C0E442C0036DC6E /* SettingRouter.swift */; };
+		B71B79492C0E442C0036DC6E /* SettingEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71B793D2C0E442C0036DC6E /* SettingEndpoint.swift */; };
+		B71B794A2C0E442C0036DC6E /* SettingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71B793E2C0E442C0036DC6E /* SettingModels.swift */; };
+		B71B794B2C0E442C0036DC6E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71B793F2C0E442C0036DC6E /* SettingViewController.swift */; };
+		B71B794C2C0E442C0036DC6E /* SettingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71B79402C0E442C0036DC6E /* SettingInteractor.swift */; };
+		B71B794D2C0E442C0036DC6E /* SettingLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71B79412C0E442C0036DC6E /* SettingLogger.swift */; };
+		B71B794E2C0E442C0036DC6E /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B71B79422C0E442C0036DC6E /* SettingViewController.xib */; };
+		B71B794F2C0E442C0036DC6E /* SettingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71B79432C0E442C0036DC6E /* SettingService.swift */; };
 		B724F4F92B77ED8D003BEB03 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B724F4F82B77ED8D003BEB03 /* LocationService.swift */; };
 		B724F4FB2B77EF97003BEB03 /* CLLocationManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B724F4FA2B77EF97003BEB03 /* CLLocationManagerProtocol.swift */; };
 		B7276BFB2B86729400E00D3D /* DashboardInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7276BF72B86729400E00D3D /* DashboardInteractorTests.swift */; };
@@ -102,6 +122,26 @@
 		B716151C2B78AE01008E7FB8 /* DashboardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
 		B716151D2B78AE01008E7FB8 /* DashboardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardService.swift; sourceTree = "<group>"; };
 		B71615322B78B38F008E7FB8 /* XibLoadableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibLoadableExtension.swift; sourceTree = "<group>"; };
+		B71B791A2C0E3A130036DC6E /* MainTabBarFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarFactory.swift; sourceTree = "<group>"; };
+		B71B791B2C0E3A130036DC6E /* MainTabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarPresenter.swift; sourceTree = "<group>"; };
+		B71B791C2C0E3A130036DC6E /* MainTabBarWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarWorker.swift; sourceTree = "<group>"; };
+		B71B791D2C0E3A130036DC6E /* MainTabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarRouter.swift; sourceTree = "<group>"; };
+		B71B791F2C0E3A130036DC6E /* MainTabBarModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarModels.swift; sourceTree = "<group>"; };
+		B71B79202C0E3A130036DC6E /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		B71B79212C0E3A130036DC6E /* MainTabBarInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarInteractor.swift; sourceTree = "<group>"; };
+		B71B79222C0E3A130036DC6E /* MainTabBarLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarLogger.swift; sourceTree = "<group>"; };
+		B71B79232C0E3A130036DC6E /* MainTabBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTabBarViewController.xib; sourceTree = "<group>"; };
+		B71B79392C0E442C0036DC6E /* SettingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFactory.swift; sourceTree = "<group>"; };
+		B71B793A2C0E442C0036DC6E /* SettingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPresenter.swift; sourceTree = "<group>"; };
+		B71B793B2C0E442C0036DC6E /* SettingWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWorker.swift; sourceTree = "<group>"; };
+		B71B793C2C0E442C0036DC6E /* SettingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRouter.swift; sourceTree = "<group>"; };
+		B71B793D2C0E442C0036DC6E /* SettingEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingEndpoint.swift; sourceTree = "<group>"; };
+		B71B793E2C0E442C0036DC6E /* SettingModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModels.swift; sourceTree = "<group>"; };
+		B71B793F2C0E442C0036DC6E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		B71B79402C0E442C0036DC6E /* SettingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingInteractor.swift; sourceTree = "<group>"; };
+		B71B79412C0E442C0036DC6E /* SettingLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLogger.swift; sourceTree = "<group>"; };
+		B71B79422C0E442C0036DC6E /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		B71B79432C0E442C0036DC6E /* SettingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingService.swift; sourceTree = "<group>"; };
 		B724F4F82B77ED8D003BEB03 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		B724F4FA2B77EF97003BEB03 /* CLLocationManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManagerProtocol.swift; sourceTree = "<group>"; };
 		B7276BF72B86729400E00D3D /* DashboardInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardInteractorTests.swift; sourceTree = "<group>"; };
@@ -257,6 +297,120 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		B71B79192C0E39E50036DC6E /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				B71B79222C0E3A130036DC6E /* MainTabBarLogger.swift */,
+				B71B791C2C0E3A130036DC6E /* MainTabBarWorker.swift */,
+				B71B79372C0E3AA20036DC6E /* Factory */,
+				B71B79362C0E3A940036DC6E /* Interactor+Presenter */,
+				B71B79352C0E3A8C0036DC6E /* Models */,
+				B71B79342C0E3A820036DC6E /* Router */,
+				B71B79322C0E3A5B0036DC6E /* Views */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		B71B79322C0E3A5B0036DC6E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B71B79202C0E3A130036DC6E /* MainTabBarViewController.swift */,
+				B71B79232C0E3A130036DC6E /* MainTabBarViewController.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B71B79342C0E3A820036DC6E /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B71B791D2C0E3A130036DC6E /* MainTabBarRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B71B79352C0E3A8C0036DC6E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B71B791F2C0E3A130036DC6E /* MainTabBarModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B71B79362C0E3A940036DC6E /* Interactor+Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B71B79212C0E3A130036DC6E /* MainTabBarInteractor.swift */,
+				B71B791B2C0E3A130036DC6E /* MainTabBarPresenter.swift */,
+			);
+			path = "Interactor+Presenter";
+			sourceTree = "<group>";
+		};
+		B71B79372C0E3AA20036DC6E /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				B71B791A2C0E3A130036DC6E /* MainTabBarFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		B71B79382C0E44150036DC6E /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				B71B79412C0E442C0036DC6E /* SettingLogger.swift */,
+				B71B793C2C0E442C0036DC6E /* SettingRouter.swift */,
+				B71B793B2C0E442C0036DC6E /* SettingWorker.swift */,
+				B71B79522C0E44550036DC6E /* Factory */,
+				B71B79532C0E44610036DC6E /* Interactor+Presenter */,
+				B71B79552C0E448D0036DC6E /* Models */,
+				B71B79542C0E447E0036DC6E /* Service */,
+				B71B79512C0E443D0036DC6E /* Views */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		B71B79512C0E443D0036DC6E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B71B793F2C0E442C0036DC6E /* SettingViewController.swift */,
+				B71B79422C0E442C0036DC6E /* SettingViewController.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B71B79522C0E44550036DC6E /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				B71B79392C0E442C0036DC6E /* SettingFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		B71B79532C0E44610036DC6E /* Interactor+Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B71B79402C0E442C0036DC6E /* SettingInteractor.swift */,
+				B71B793A2C0E442C0036DC6E /* SettingPresenter.swift */,
+			);
+			path = "Interactor+Presenter";
+			sourceTree = "<group>";
+		};
+		B71B79542C0E447E0036DC6E /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				B71B793D2C0E442C0036DC6E /* SettingEndpoint.swift */,
+				B71B79432C0E442C0036DC6E /* SettingService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		B71B79552C0E448D0036DC6E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B71B793E2C0E442C0036DC6E /* SettingModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		B724F4F72B77ED76003BEB03 /* LocationService */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,7 +556,9 @@
 			isa = PBXGroup;
 			children = (
 				B71615122B78ADA6008E7FB8 /* Dashboard */,
+				B71B79192C0E39E50036DC6E /* MainTabBar */,
 				B7D9570D2B7BD9E300AC33D1 /* MemoryDetails */,
+				B71B79382C0E44150036DC6E /* Setting */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -604,9 +760,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B71B794E2C0E442C0036DC6E /* SettingViewController.xib in Resources */,
 				B755BF9A2B91033F002BFC7E /* Localizable.strings in Resources */,
 				B794E0C42B768D84009E5697 /* LaunchScreen.storyboard in Resources */,
 				B794E0C12B768D84009E5697 /* Assets.xcassets in Resources */,
+				B71B792F2C0E3A130036DC6E /* MainTabBarViewController.xib in Resources */,
 				B7D957232B7BDA8F00AC33D1 /* MemoryDetailsViewController.xib in Resources */,
 				B71615282B78AE01008E7FB8 /* DashboardViewController.xib in Resources */,
 			);
@@ -658,26 +816,37 @@
 				B7D957212B7BDA8F00AC33D1 /* MemoryDetailsInteractor.swift in Sources */,
 				B71615252B78AE01008E7FB8 /* DashboardViewController.swift in Sources */,
 				B7D957242B7BDA8F00AC33D1 /* MemoryDetailsService.swift in Sources */,
+				B71B79292C0E3A130036DC6E /* MainTabBarRouter.swift in Sources */,
+				B71B79452C0E442C0036DC6E /* SettingFactory.swift in Sources */,
 				B755BF972B9100D3002BFC7E /* UIViewControllerExtension.swift in Sources */,
 				B7B76EFE2B7FD35400D15D67 /* NSPredicateExtension.swift in Sources */,
+				B71B79282C0E3A130036DC6E /* MainTabBarWorker.swift in Sources */,
 				B71615232B78AE01008E7FB8 /* DashboardEndpoint.swift in Sources */,
+				B71B792E2C0E3A130036DC6E /* MainTabBarLogger.swift in Sources */,
 				B794E0F32B768FDC009E5697 /* UserDefaultsManager.swift in Sources */,
 				B7D9571B2B7BDA8F00AC33D1 /* MemoryDetailsPresenter.swift in Sources */,
+				B71B794D2C0E442C0036DC6E /* SettingLogger.swift in Sources */,
+				B71B79472C0E442C0036DC6E /* SettingWorker.swift in Sources */,
 				B794E0BF2B768D83009E5697 /* CuteFondMemories.xcdatamodeld in Sources */,
 				B7F40F992B7A8EC200EDA856 /* AnnotaionInfoModel.swift in Sources */,
+				B71B794F2C0E442C0036DC6E /* SettingService.swift in Sources */,
+				B71B792B2C0E3A130036DC6E /* MainTabBarModels.swift in Sources */,
 				B7F40F9B2B7A8F4100EDA856 /* Location.swift in Sources */,
 				B7EEBE942B81435300D85DA5 /* MemoryDetailsFileWorker.swift in Sources */,
 				B716151F2B78AE01008E7FB8 /* DashboardFactory.swift in Sources */,
 				B7B76EFC2B7FCC6000D15D67 /* PersistanceManager.swift in Sources */,
+				B71B79262C0E3A130036DC6E /* MainTabBarFactory.swift in Sources */,
 				B7D9572E2B7BE9AD00AC33D1 /* UITextFieldExtension.swift in Sources */,
 				B794E1022B7692B2009E5697 /* HTTPMethod.swift in Sources */,
 				B71615202B78AE01008E7FB8 /* DashboardPresenter.swift in Sources */,
 				B794E0FE2B76927C009E5697 /* EndPoint.swift in Sources */,
+				B71B794C2C0E442C0036DC6E /* SettingInteractor.swift in Sources */,
 				B7D9571E2B7BDA8F00AC33D1 /* MemoryDetailsEndpoint.swift in Sources */,
 				B794E0B72B768D83009E5697 /* SceneDelegate.swift in Sources */,
 				B7D9571C2B7BDA8F00AC33D1 /* MemoryDetailsWorker.swift in Sources */,
 				B74684C92B7CA82F001CA9DC /* UIViewExtension.swift in Sources */,
 				B794E0F92B769191009E5697 /* Logger.swift in Sources */,
+				B71B792C2C0E3A130036DC6E /* MainTabBarViewController.swift in Sources */,
 				B7D957222B7BDA8F00AC33D1 /* MemoryDetailsLogger.swift in Sources */,
 				B724F4F92B77ED8D003BEB03 /* LocationService.swift in Sources */,
 				B71615332B78B38F008E7FB8 /* XibLoadableExtension.swift in Sources */,
@@ -692,13 +861,20 @@
 				B794E1042B7692CA009E5697 /* NetworkError.swift in Sources */,
 				B794E0F62B7690A1009E5697 /* DependencyContainer.swift in Sources */,
 				B71615292B78AE01008E7FB8 /* DashboardService.swift in Sources */,
+				B71B79492C0E442C0036DC6E /* SettingEndpoint.swift in Sources */,
+				B71B794A2C0E442C0036DC6E /* SettingModels.swift in Sources */,
 				B7D9571A2B7BDA8F00AC33D1 /* MemoryDetailsFactory.swift in Sources */,
 				B7F2756D2B8B162400B245B2 /* DashboardFileWorker.swift in Sources */,
 				B794E10A2B76939F009E5697 /* URLResponseExtension.swift in Sources */,
 				B71615222B78AE01008E7FB8 /* DashboardRouter.swift in Sources */,
 				B74684C72B7CA1E8001CA9DC /* UITextViewExtension.swift in Sources */,
+				B71B79272C0E3A130036DC6E /* MainTabBarPresenter.swift in Sources */,
+				B71B794B2C0E442C0036DC6E /* SettingViewController.swift in Sources */,
+				B71B792D2C0E3A130036DC6E /* MainTabBarInteractor.swift in Sources */,
 				B794E0F12B768FC5009E5697 /* StorageManager.swift in Sources */,
+				B71B79482C0E442C0036DC6E /* SettingRouter.swift in Sources */,
 				B7D9571F2B7BDA8F00AC33D1 /* MemoryDetailsModels.swift in Sources */,
+				B71B79462C0E442C0036DC6E /* SettingPresenter.swift in Sources */,
 				B7D9571D2B7BDA8F00AC33D1 /* MemoryDetailsRouter.swift in Sources */,
 				B724F4FB2B77EF97003BEB03 /* CLLocationManagerProtocol.swift in Sources */,
 				B7B76EFA2B7FC87300D15D67 /* Memory+Helper.swift in Sources */,

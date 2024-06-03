@@ -15,8 +15,8 @@ protocol SettingServiceFactory {
     func makeSettingService() -> SettingService
 }
 
-class SettingFactory {
- @MainActor func makeSettingViewController() -> SettingViewController {
+class SettingFactory: SettingFactoryProtocol {
+    @MainActor func makeSettingViewController() -> SettingViewController {
         let viewController = SettingViewController()
         let interactor = SettingInteractor()
         let presenter = SettingPresenter()
@@ -33,8 +33,8 @@ class SettingFactory {
         
         return viewController
     }
-
-func makeSettingService() -> SettingService {
-return SettingService(httpClient: URLSession.shared)
-}
+    
+    func makeSettingService() -> SettingService {
+        return SettingService(httpClient: URLSession.shared)
+    }
 }

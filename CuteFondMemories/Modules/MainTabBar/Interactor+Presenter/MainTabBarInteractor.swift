@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MainTabBarBusinessLogic {
-    //    func doSomething(request: MainTabBar.Something.Request)
+    func viewDidLoad(request: MainTabBar.ViewDidLoad.Request)
 }
 
 protocol MainTabBarDataStore {}
@@ -31,12 +31,16 @@ class MainTabBarInteractor: MainTabBarDataStore {
     var worker: MainTabBarWorkerLogic?
 }
 
+// MARK: - Business Logics
+extension MainTabBarInteractor: MainTabBarBusinessLogic {
+    func viewDidLoad(request: MainTabBar.ViewDidLoad.Request) {
+        
+    }
+}
+
 // MARK: - Methods
+
 // MARK: Public
 extension MainTabBarInteractor {}
-
 // MARK: Private
 private extension MainTabBarInteractor {}
-
-// MARK: - Business Logics
-extension MainTabBarInteractor: MainTabBarBusinessLogic {}

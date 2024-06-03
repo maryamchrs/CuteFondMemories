@@ -31,7 +31,7 @@ class MainTabBarRouter: NSObject, MainTabBarDataPassing {
     // MARK: Public
     weak var viewController: MainTabBarViewController?
     var dataStore: MainTabBarDataStore?
-    var factory: MainTabBarFactoryProtocolr?
+    var factory: MainTabBarFactoryProtocol?
 }
 
 // MARK: - Methods

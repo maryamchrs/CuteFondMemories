@@ -29,10 +29,10 @@ final class SettingService {
 
 // MARK: - Methods
 
-// MARK: Public
-extension SettingService {
-func getSomeDataFromServer() async throws {
-//        guard let urlRequest = DashboardEndpoint.something.urlRequest else { return }
-//        return try await httpClient.perform(urlRequest)
-//    }
+// MARK: SettingServiceProtocol
+extension SettingService: SettingServiceProtocol {
+    func getSomeDataFromServer() async throws {
+        //        guard let urlRequest = DashboardEndpoint.something.urlRequest else { return }
+        //        return try await httpClient.perform(urlRequest)
+    }
 }
