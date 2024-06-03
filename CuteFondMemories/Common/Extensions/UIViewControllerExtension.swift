@@ -7,6 +7,8 @@
 
 import UIKit
 
+extension UIViewController: NibLoadable {}
+
 extension UIViewController {
 
     func showAlert(_ title: String?,

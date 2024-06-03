@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Constants {
+enum Constants {
+    
     static let baseUrl: String = ""
     
     struct LondonCLLocation2D {

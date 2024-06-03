@@ -42,3 +42,20 @@ extension NibLoadable where Self: UIViewController {
     }
 }
 
+extension NibLoadable where Self: UITabBarController {
+    static var nibName: String {
+        return String(describing: self)
+    }
+
+    static var bundle: Bundle {
+        return Bundle(for: Self.self)
+    }
+    
+    static func loadFromNib() -> Self {
+        func instanceFromNib<T: UITabBarController>() -> T {
+            return T(nibName: String(describing: self), bundle: nil)
+        }
+        return instanceFromNib()
+    }
+}
+
