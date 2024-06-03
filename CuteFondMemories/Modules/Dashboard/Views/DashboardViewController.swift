@@ -14,7 +14,7 @@ import MapKit
     func displayMemoryDetailsScene(viewModel: Dashboard.MemoryDetailsScene.ViewModel)
 }
 
-@MainActor final class DashboardViewController: UIViewController, NibLoadable {
+@MainActor final class DashboardViewController: UIViewController {
     // MARK: - Object lifecycle
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

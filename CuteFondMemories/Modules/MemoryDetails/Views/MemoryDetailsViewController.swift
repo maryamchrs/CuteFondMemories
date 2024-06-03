@@ -20,7 +20,7 @@ protocol MemoryDetailsViewControllerDelegate: AnyObject {
     func displayChosenImage(viewModel: MemoryDetails.ChosenImage.ViewModel)
 }
 
-@MainActor final class MemoryDetailsViewController: UIViewController, NibLoadable {
+@MainActor final class MemoryDetailsViewController: UIViewController {
     // MARK: - Object lifecycle
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
