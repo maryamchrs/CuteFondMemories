@@ -45,8 +45,8 @@ extension MainTabBarViewController {
         setupUI()
         setColor()
         setFont()
-        tabBar.barTintColor = .white
-                tabBar.isTranslucent = false
+        
+        selectedIndex = 0
     }
 }
 
@@ -71,9 +71,11 @@ extension MainTabBarViewController {}
 // MARK: - Appearance
 extension MainTabBarViewController {
     func setColor() {
-//        tabBar.barTintColor = .white
-//        tabBar.tintColor = UIColor.white // tab bar icon tint color
-//        UITabBar.appearance().barTintColor = UIColor.blue // tab bar background color
+        tabBar.backgroundColor = .blueishGreen
+        tabBar.tintColor = .lightRoseGold
+        tabBar.unselectedItemTintColor = .lightRoseGold
+        tabBar.shadowImage = UIImage()
+        tabBar.backgroundImage = UIImage()
     }
     
     func setFont() {}
