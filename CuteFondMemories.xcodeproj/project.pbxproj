@@ -533,13 +533,13 @@
 			isa = PBXGroup;
 			children = (
 				B704D1182B890B8300492B10 /* DateExtension.swift */,
+				B755BF9D2B910439002BFC7E /* StringExtension.swift */,
 				B7D9572D2B7BE9AD00AC33D1 /* UITextFieldExtension.swift */,
 				B74684C62B7CA1E8001CA9DC /* UITextViewExtension.swift */,
 				B755BF962B9100D3002BFC7E /* UIViewControllerExtension.swift */,
 				B74684C82B7CA82F001CA9DC /* UIViewExtension.swift */,
 				B794E1092B76939F009E5697 /* URLResponseExtension.swift */,
 				B71615322B78B38F008E7FB8 /* XibLoadableExtension.swift */,
-				B755BF9D2B910439002BFC7E /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
