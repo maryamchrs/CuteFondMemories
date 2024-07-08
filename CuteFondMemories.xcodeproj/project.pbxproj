@@ -72,6 +72,15 @@
 		B7B76EFA2B7FC87300D15D67 /* Memory+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B76EF92B7FC87300D15D67 /* Memory+Helper.swift */; };
 		B7B76EFC2B7FCC6000D15D67 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B76EFB2B7FCC6000D15D67 /* PersistanceManager.swift */; };
 		B7B76EFE2B7FD35400D15D67 /* NSPredicateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B76EFD2B7FD35400D15D67 /* NSPredicateExtension.swift */; };
+		B7C4ED6D2C3C54A100A16490 /* MemoryPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C4ED6C2C3C54A100A16490 /* MemoryPreviewView.swift */; };
+		B7C4ED6F2C3C566C00A16490 /* MemoryPreviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C4ED6E2C3C566C00A16490 /* MemoryPreviewInteractor.swift */; };
+		B7C4ED712C3C569400A16490 /* MemoryPreviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C4ED702C3C569400A16490 /* MemoryPreviewPresenter.swift */; };
+		B7C4ED752C3C579000A16490 /* MemoryPreviewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C4ED742C3C579000A16490 /* MemoryPreviewModels.swift */; };
+		B7C4ED792C3C585300A16490 /* MemoryPreviewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C4ED782C3C585300A16490 /* MemoryPreviewFactory.swift */; };
+		B7C4ED7B2C3C592300A16490 /* MemoryPreviewEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C4ED7A2C3C592300A16490 /* MemoryPreviewEndpoint.swift */; };
+		B7C4ED7D2C3C594600A16490 /* MemoryPreviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C4ED7C2C3C594600A16490 /* MemoryPreviewService.swift */; };
+		B7C4ED7F2C3C596D00A16490 /* MemoryPreviewLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C4ED7E2C3C596D00A16490 /* MemoryPreviewLogger.swift */; };
+		B7C4ED812C3C5A3300A16490 /* MemoryPreviewWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C4ED802C3C5A3300A16490 /* MemoryPreviewWorker.swift */; };
 		B7D9571A2B7BDA8F00AC33D1 /* MemoryDetailsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D9570E2B7BDA8F00AC33D1 /* MemoryDetailsFactory.swift */; };
 		B7D9571B2B7BDA8F00AC33D1 /* MemoryDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D9570F2B7BDA8F00AC33D1 /* MemoryDetailsPresenter.swift */; };
 		B7D9571C2B7BDA8F00AC33D1 /* MemoryDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D957102B7BDA8F00AC33D1 /* MemoryDetailsWorker.swift */; };
@@ -177,6 +186,15 @@
 		B7B76EF92B7FC87300D15D67 /* Memory+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Memory+Helper.swift"; sourceTree = "<group>"; };
 		B7B76EFB2B7FCC6000D15D67 /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
 		B7B76EFD2B7FD35400D15D67 /* NSPredicateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPredicateExtension.swift; sourceTree = "<group>"; };
+		B7C4ED6C2C3C54A100A16490 /* MemoryPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryPreviewView.swift; sourceTree = "<group>"; };
+		B7C4ED6E2C3C566C00A16490 /* MemoryPreviewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryPreviewInteractor.swift; sourceTree = "<group>"; };
+		B7C4ED702C3C569400A16490 /* MemoryPreviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryPreviewPresenter.swift; sourceTree = "<group>"; };
+		B7C4ED742C3C579000A16490 /* MemoryPreviewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryPreviewModels.swift; sourceTree = "<group>"; };
+		B7C4ED782C3C585300A16490 /* MemoryPreviewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryPreviewFactory.swift; sourceTree = "<group>"; };
+		B7C4ED7A2C3C592300A16490 /* MemoryPreviewEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryPreviewEndpoint.swift; sourceTree = "<group>"; };
+		B7C4ED7C2C3C594600A16490 /* MemoryPreviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryPreviewService.swift; sourceTree = "<group>"; };
+		B7C4ED7E2C3C596D00A16490 /* MemoryPreviewLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryPreviewLogger.swift; sourceTree = "<group>"; };
+		B7C4ED802C3C5A3300A16490 /* MemoryPreviewWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryPreviewWorker.swift; sourceTree = "<group>"; };
 		B7D9570E2B7BDA8F00AC33D1 /* MemoryDetailsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsFactory.swift; sourceTree = "<group>"; };
 		B7D9570F2B7BDA8F00AC33D1 /* MemoryDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsPresenter.swift; sourceTree = "<group>"; };
 		B7D957102B7BDA8F00AC33D1 /* MemoryDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsWorker.swift; sourceTree = "<group>"; };
@@ -555,6 +573,7 @@
 		B794E10C2B7694AF009E5697 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B7C4ED6B2C3C547700A16490 /* MemoryPreview */,
 				B71615122B78ADA6008E7FB8 /* Dashboard */,
 				B71B79192C0E39E50036DC6E /* MainTabBar */,
 				B7D9570D2B7BD9E300AC33D1 /* MemoryDetails */,
@@ -571,6 +590,78 @@
 				B7B76EFB2B7FCC6000D15D67 /* PersistanceManager.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		B7C4ED6B2C3C547700A16490 /* MemoryPreview */ = {
+			isa = PBXGroup;
+			children = (
+				B7C4ED7E2C3C596D00A16490 /* MemoryPreviewLogger.swift */,
+				B7C4ED822C3C5CB700A16490 /* Factory */,
+				B7C4ED832C3C5CC500A16490 /* Interactor+Presenter  */,
+				B7C4ED842C3C5F7100A16490 /* Model */,
+				B7C4ED852C3C5F8100A16490 /* Router */,
+				B7C4ED862C3C5F8A00A16490 /* Services */,
+				B7C4ED872C3C5FA200A16490 /* View */,
+				B7C4ED882C3C5FAB00A16490 /* Workers */,
+			);
+			path = MemoryPreview;
+			sourceTree = "<group>";
+		};
+		B7C4ED822C3C5CB700A16490 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				B7C4ED782C3C585300A16490 /* MemoryPreviewFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		B7C4ED832C3C5CC500A16490 /* Interactor+Presenter  */ = {
+			isa = PBXGroup;
+			children = (
+				B7C4ED6E2C3C566C00A16490 /* MemoryPreviewInteractor.swift */,
+				B7C4ED702C3C569400A16490 /* MemoryPreviewPresenter.swift */,
+			);
+			path = "Interactor+Presenter ";
+			sourceTree = "<group>";
+		};
+		B7C4ED842C3C5F7100A16490 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B7C4ED742C3C579000A16490 /* MemoryPreviewModels.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B7C4ED852C3C5F8100A16490 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B7C4ED862C3C5F8A00A16490 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B7C4ED7A2C3C592300A16490 /* MemoryPreviewEndpoint.swift */,
+				B7C4ED7C2C3C594600A16490 /* MemoryPreviewService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B7C4ED872C3C5FA200A16490 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B7C4ED6C2C3C54A100A16490 /* MemoryPreviewView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B7C4ED882C3C5FAB00A16490 /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				B7C4ED802C3C5A3300A16490 /* MemoryPreviewWorker.swift */,
+			);
+			path = Workers;
 			sourceTree = "<group>";
 		};
 		B7D9570D2B7BD9E300AC33D1 /* MemoryDetails */ = {
@@ -819,6 +910,7 @@
 				B71B79292C0E3A130036DC6E /* MainTabBarRouter.swift in Sources */,
 				B71B79452C0E442C0036DC6E /* SettingFactory.swift in Sources */,
 				B755BF972B9100D3002BFC7E /* UIViewControllerExtension.swift in Sources */,
+				B7C4ED6F2C3C566C00A16490 /* MemoryPreviewInteractor.swift in Sources */,
 				B7B76EFE2B7FD35400D15D67 /* NSPredicateExtension.swift in Sources */,
 				B71B79282C0E3A130036DC6E /* MainTabBarWorker.swift in Sources */,
 				B71615232B78AE01008E7FB8 /* DashboardEndpoint.swift in Sources */,
@@ -835,6 +927,7 @@
 				B7EEBE942B81435300D85DA5 /* MemoryDetailsFileWorker.swift in Sources */,
 				B716151F2B78AE01008E7FB8 /* DashboardFactory.swift in Sources */,
 				B7B76EFC2B7FCC6000D15D67 /* PersistanceManager.swift in Sources */,
+				B7C4ED812C3C5A3300A16490 /* MemoryPreviewWorker.swift in Sources */,
 				B71B79262C0E3A130036DC6E /* MainTabBarFactory.swift in Sources */,
 				B7D9572E2B7BE9AD00AC33D1 /* UITextFieldExtension.swift in Sources */,
 				B794E1022B7692B2009E5697 /* HTTPMethod.swift in Sources */,
@@ -850,8 +943,10 @@
 				B7D957222B7BDA8F00AC33D1 /* MemoryDetailsLogger.swift in Sources */,
 				B724F4F92B77ED8D003BEB03 /* LocationService.swift in Sources */,
 				B71615332B78B38F008E7FB8 /* XibLoadableExtension.swift in Sources */,
+				B7C4ED7F2C3C596D00A16490 /* MemoryPreviewLogger.swift in Sources */,
 				B7D957202B7BDA8F00AC33D1 /* MemoryDetailsViewController.swift in Sources */,
 				B794E1062B7692EB009E5697 /* Constants.swift in Sources */,
+				B7C4ED7B2C3C592300A16490 /* MemoryPreviewEndpoint.swift in Sources */,
 				B794E1002B769297009E5697 /* HTTPClient.swift in Sources */,
 				B794E0FC2B769226009E5697 /* APIHTTPRequestMapper.swift in Sources */,
 				B755BF9E2B910439002BFC7E /* StringExtension.swift in Sources */,
@@ -865,12 +960,16 @@
 				B71B794A2C0E442C0036DC6E /* SettingModels.swift in Sources */,
 				B7D9571A2B7BDA8F00AC33D1 /* MemoryDetailsFactory.swift in Sources */,
 				B7F2756D2B8B162400B245B2 /* DashboardFileWorker.swift in Sources */,
+				B7C4ED6D2C3C54A100A16490 /* MemoryPreviewView.swift in Sources */,
 				B794E10A2B76939F009E5697 /* URLResponseExtension.swift in Sources */,
 				B71615222B78AE01008E7FB8 /* DashboardRouter.swift in Sources */,
 				B74684C72B7CA1E8001CA9DC /* UITextViewExtension.swift in Sources */,
+				B7C4ED752C3C579000A16490 /* MemoryPreviewModels.swift in Sources */,
+				B7C4ED792C3C585300A16490 /* MemoryPreviewFactory.swift in Sources */,
 				B71B79272C0E3A130036DC6E /* MainTabBarPresenter.swift in Sources */,
 				B71B794B2C0E442C0036DC6E /* SettingViewController.swift in Sources */,
 				B71B792D2C0E3A130036DC6E /* MainTabBarInteractor.swift in Sources */,
+				B7C4ED7D2C3C594600A16490 /* MemoryPreviewService.swift in Sources */,
 				B794E0F12B768FC5009E5697 /* StorageManager.swift in Sources */,
 				B71B79482C0E442C0036DC6E /* SettingRouter.swift in Sources */,
 				B7D9571F2B7BDA8F00AC33D1 /* MemoryDetailsModels.swift in Sources */,
@@ -879,6 +978,7 @@
 				B724F4FB2B77EF97003BEB03 /* CLLocationManagerProtocol.swift in Sources */,
 				B7B76EFA2B7FC87300D15D67 /* Memory+Helper.swift in Sources */,
 				B71615262B78AE01008E7FB8 /* DashboardInteractor.swift in Sources */,
+				B7C4ED712C3C569400A16490 /* MemoryPreviewPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
