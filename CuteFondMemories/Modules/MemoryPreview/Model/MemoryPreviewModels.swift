@@ -3,21 +3,36 @@
 //  CuteFondMemories
 //
 //  Created by Maryam Chrs on 08/07/2024.
-//  Copyright (c) 2024 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import UIKit
 
 enum MemoryPreview {
-    // MARK: Use cases
     
-    enum Something {
+    enum ViewDidLoad {
         struct Request {
         }
         struct Response {
         }
     }
     
-    struct ViewModel {}
+    enum PrefilledData {
+        struct Request {
+        }
+        struct Response {
+            let title: String?
+            let description: String?
+            let date: Date?
+            let image: UIImage?
+        }
+    }
+    
+    struct ViewModel {
+        var title: String?
+        var description: String?
+        var date: Date?
+        var image: UIImage?
+        var loading: Bool = false
+    }
 }
 

@@ -15,11 +15,35 @@ struct MemoryPreviewView<Presenter: MemoryPreviewPresentationLogic>: View {
     
     var body: some View {
         ScrollView {
-            Text("Test")
+            VStack {
+                if let image = presenter.viewModel.image {
+                    Image(uiImage: image)
+                        .resizable()
+                        .frame(height: UIScreen.main.bounds.height * 2/3 )
+                }
+                Text(presenter.viewModel.title ?? "")
+                    .foregroundStyle(Color.black)
+                    .font(.title)
+                Text(presenter.viewModel.description ?? "")
+                    .foregroundStyle(Color.black)
+                    .font(.subheadline)
+            }
+            .onViewDidLoad {
+                interactor?.viewDidLoad(request: MemoryPreview.ViewDidLoad.Request())
+            }
+          
         }
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
 #Preview {
     MemoryPreviewView(interactor: MemoryPreviewInteractor(), presenter: MemoryPreviewPresenter())
+}
+
+extension UINavigationController {
+    
+    func setNavigationBarColor(color : UIColor){
+        self.navigationBar.barTintColor = color
+    }
 }

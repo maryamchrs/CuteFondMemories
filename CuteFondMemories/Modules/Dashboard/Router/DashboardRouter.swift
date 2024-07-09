@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 protocol DashboardRoutingLogic {
     @MainActor func presentMemoryDetailsView(memory: Memory?,
@@ -49,12 +50,16 @@ extension DashboardRouter: DashboardRoutingLogic {
     @MainActor func presentMemoryDetailsView(memory: Memory?,
                                              latitude: Double,
                                              longitude: Double) {
-        let destinationViewController = MemoryDetailsFactory().makeMemoryDetailsViewController(memory: memory,
-                                                                                               latitude: latitude,
-                                                                                               longitude: longitude)
-        destinationViewController.delegate = viewController
-        destinationViewController.modalTransitionStyle = .coverVertical
-        destinationViewController.modalPresentationStyle = .fullScreen
+        
+        let destinationViewController = UIHostingController(rootView: MemoryPreviewFactory().makeMemoryPreviewView(memory: memory, latitude: latitude, longitude: longitude))
+        //MemoryPreviewFactory().makeMemoryPreviewView()
+        
+//        let destinationViewController = MemoryDetailsFactory().makeMemoryDetailsViewController(memory: memory,
+//                                                                                               latitude: latitude,
+//                                                                                               longitude: longitude)
+//        destinationViewController.delegate = viewController
+//        destinationViewController.modalTransitionStyle = .coverVertical
+//        destinationViewController.modalPresentationStyle = .fullScreen
         viewController?.navigationController?.pushViewController(destinationViewController, animated: true)
     }
 }

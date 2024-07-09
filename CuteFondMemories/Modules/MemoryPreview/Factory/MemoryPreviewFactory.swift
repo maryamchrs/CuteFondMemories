@@ -17,8 +17,13 @@ protocol MemoryPreviewServiceFactory {
 
 final class MemoryPreviewFactory: DependencyContainer {
     
-    @MainActor func makeMemoryPreviewView() -> MemoryPreviewView<MemoryPreviewPresenter> {
+    @MainActor func makeMemoryPreviewView(memory: Memory?,
+                                          latitude: Double,
+                                          longitude: Double) -> MemoryPreviewView<MemoryPreviewPresenter> {
         let interactor = MemoryPreviewInteractor()
+        interactor.memory = memory
+        interactor.latitude = latitude
+        interactor.longitude = longitude
         let presenter = MemoryPreviewPresenter()
         let worker = MemoryPreviewWorker(service: makeMemoryPreviewService())
         interactor.presenter = presenter

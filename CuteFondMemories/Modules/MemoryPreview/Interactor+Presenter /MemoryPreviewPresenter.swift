@@ -7,10 +7,12 @@
 
 import UIKit
 
+@MainActor
 protocol MemoryPreviewPresentationLogic: ObservableObject {
     var viewModel: MemoryPreview.ViewModel { get }
 }
 
+@MainActor
 final class MemoryPreviewPresenter {
     // MARK: - Object lifecycle
     
@@ -33,7 +35,14 @@ final class MemoryPreviewPresenter {
 private extension MemoryPreviewPresenter {}
 
 // MARK: Public
-extension MemoryPreviewPresenter {}
+extension MemoryPreviewPresenter {
+    func presenPrefilledData(response: MemoryPreview.PrefilledData.Response) {
+        viewModel.title = response.title
+        viewModel.description = response.description
+        viewModel.image = response.image
+        viewModel.date = response.date
+    }
+}
 
 // MARK: - Presentation Logic
 extension MemoryPreviewPresenter: MemoryPreviewPresentationLogic {}
