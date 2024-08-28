@@ -109,6 +109,7 @@
 		B79795712C7FAA3100A3B591 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79795652C7FAA3100A3B591 /* NetworkMonitor.swift */; };
 		B79795742C7FAC6500A3B591 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79795732C7FAC6500A3B591 /* UIFontExtension.swift */; };
 		B79795762C7FAE3C00A3B591 /* FontInfoTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79795752C7FAE3C00A3B591 /* FontInfoTypes.swift */; };
+		B79795782C7FB3FA00A3B591 /* TabbarItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79795772C7FB3FA00A3B591 /* TabbarItemModel.swift */; };
 		B79930002B97A4F800DF40EC /* Seeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7992FFF2B97A4F800DF40EC /* Seeds.swift */; };
 		B7A6956B2C3DD60700870827 /* ViewDidLoadModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6956A2C3DD60700870827 /* ViewDidLoadModifier.swift */; };
 		B7A6956D2C3DD63800870827 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6956C2C3DD63800870827 /* ViewExtension.swift */; };
@@ -266,6 +267,7 @@
 		B79795652C7FAA3100A3B591 /* NetworkMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		B79795732C7FAC6500A3B591 /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		B79795752C7FAE3C00A3B591 /* FontInfoTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontInfoTypes.swift; sourceTree = "<group>"; };
+		B79795772C7FB3FA00A3B591 /* TabbarItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarItemModel.swift; sourceTree = "<group>"; };
 		B7992FFF2B97A4F800DF40EC /* Seeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seeds.swift; sourceTree = "<group>"; };
 		B7A6956A2C3DD60700870827 /* ViewDidLoadModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDidLoadModifier.swift; sourceTree = "<group>"; };
 		B7A6956C2C3DD63800870827 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 			isa = PBXGroup;
 			children = (
 				B71B791F2C0E3A130036DC6E /* MainTabBarModels.swift */,
+				B79795772C7FB3FA00A3B591 /* TabbarItemModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1244,6 +1247,7 @@
 				B71615242B78AE01008E7FB8 /* DashboardModels.swift in Sources */,
 				B79795162C7FA43B00A3B591 /* OnboardingRouter.swift in Sources */,
 				B79795762C7FAE3C00A3B591 /* FontInfoTypes.swift in Sources */,
+				B79795782C7FB3FA00A3B591 /* TabbarItemModel.swift in Sources */,
 				B71615212B78AE01008E7FB8 /* DashboardWorker.swift in Sources */,
 				B71615272B78AE01008E7FB8 /* DashboardLogger.swift in Sources */,
 				B794E0F62B7690A1009E5697 /* DependencyContainer.swift in Sources */,

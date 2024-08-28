@@ -71,7 +71,7 @@ extension MainTabBarViewController {}
 // MARK: - Appearance
 extension MainTabBarViewController {
     func setColor() {
-        tabBar.backgroundColor = .blueishGreen
+        tabBar.backgroundColor = .tabbar
         tabBar.tintColor = .lightRoseGold
         tabBar.unselectedItemTintColor = .lightRoseGold
         tabBar.shadowImage = UIImage()

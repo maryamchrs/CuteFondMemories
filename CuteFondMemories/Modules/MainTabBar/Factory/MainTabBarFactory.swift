@@ -40,17 +40,17 @@ class MainTabBarFactory: MainTabBarFactoryProtocol {
     
     @MainActor func makeDashboardViewController() -> DashboardViewController {
         let destinationVC = DashboardFactory().makeDashboardViewController()
-        destinationVC.tabBarItem = UITabBarItem(title: "Home",
-                                                image: UIImage(systemName: "house.fill"),
-                                                tag: 0)
+        destinationVC.tabBarItem = UITabBarItem(title: TabbarItem.home.title,
+                                                image: UIImage(named: TabbarItem.home.imageName),
+                                                tag: TabbarItem.home.tag)
         return destinationVC
     }
     
     @MainActor func makeSettingViewController() -> SettingViewController {
         let destinationVC = SettingFactory().makeSettingViewController()
-        destinationVC.tabBarItem = UITabBarItem(title: "Setting",
-                                                image: UIImage(systemName: "slider.vertical.3"),
-                                                tag: 1)
+        destinationVC.tabBarItem = UITabBarItem(title: TabbarItem.setting.title,
+                                                image: UIImage(named: TabbarItem.setting.imageName),
+                                                tag: TabbarItem.setting.tag)
         return destinationVC
     }
 }
