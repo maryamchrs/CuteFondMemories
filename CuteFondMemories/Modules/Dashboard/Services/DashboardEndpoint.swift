@@ -12,6 +12,11 @@ enum DashboardEndpoint {
 }
 
 extension DashboardEndpoint: EndPoint {
+    
+    var baseURL: String {
+        ""
+    }
+    
     var path: String {
         "/"
     }

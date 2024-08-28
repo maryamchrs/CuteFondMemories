@@ -13,6 +13,10 @@ enum MemoryDetailsEndpoint {
 
 extension MemoryDetailsEndpoint: EndPoint {
     
+    var baseURL: String {
+        return ""
+    }
+    
     var path: String {
         "/"
     }

@@ -12,7 +12,9 @@ enum SettingEndpoint {
 }
 
 extension SettingEndpoint: EndPoint {
-    
+    var baseURL: String {
+        ""
+    }
     var path: String {
         "/"
     }

@@ -13,6 +13,10 @@ enum MemoryPreviewEndpoint {
 
 extension MemoryPreviewEndpoint: EndPoint {
     
+    var baseURL: String {
+        ""
+    }
+    
     var path: String {
         "/"
     }
