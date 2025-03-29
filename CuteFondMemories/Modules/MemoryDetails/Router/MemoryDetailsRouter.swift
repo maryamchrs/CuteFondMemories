@@ -2,7 +2,7 @@
 //  MemoryDetailsRouter.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 13/02/2024.
+//  Created by Maryam Chaharsooghi on 13/02/2024.
 //
 
 import UIKit
@@ -17,24 +17,27 @@ protocol MemoryDetailsDataPassing {
     var dataStore: MemoryDetailsDataStore? { get }
 }
 
-final class MemoryDetailsRouter: NSObject, MemoryDetailsDataPassing {
+final class MemoryDetailsRouter: NSObject, MemoryDetailsDataPassing, Loggable {
     // MARK: - Object lifecycle
-    override init() {
-        MemoryDetailsLogger.logInit(owner: String(describing: MemoryDetailsRouter.self))
+    init(logger: DefaultLoggerProtocol = Logger()) {
+        self.logger = logger
+        super.init()
+        logInit()
     }
     
     // MARK: - Deinit
     deinit {
-        MemoryDetailsLogger.logDeinit(owner: String(describing: MemoryDetailsRouter.self))
+        logDeinit()
     }
     
     // MARK: - Properties
     
     // MARK: Public
     weak var viewController: MemoryDetailsViewController?
-    weak var umagePickerViewController: UIImagePickerController?
+    weak var imagePickerViewController: UIImagePickerController?
     weak var factory: MemoryDetailsFactory?
     var dataStore: MemoryDetailsDataStore?
+    private(set) var logger: DefaultLoggerProtocol
     
 }
 
@@ -52,14 +55,14 @@ extension MemoryDetailsRouter: MemoryDetailsRoutingLogic {
     }
     
     func presentImagePicker(_ imagePicker: UIImagePickerController) {
-        umagePickerViewController = imagePicker
-        if umagePickerViewController != nil {
+        imagePickerViewController = imagePicker
+        if imagePickerViewController != nil {
             viewController?.present(imagePicker, animated: false, completion: nil)
         }
     }
     
     func dismissImagePickerView() {
-        umagePickerViewController?.dismiss(animated: true)
-        umagePickerViewController = nil
+        imagePickerViewController?.dismiss(animated: true)
+        imagePickerViewController = nil
     }
 }

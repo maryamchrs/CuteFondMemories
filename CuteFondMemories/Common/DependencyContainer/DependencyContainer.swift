@@ -2,23 +2,28 @@
 //  DependencyContainer.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 09/02/2024.
+//  Created by Maryam Chaharsooghi on 09/02/2024.
 //
 
 import Foundation
 
 class DependencyContainer {
-    private let storageManager: StorageManager = StorageManager(userDefaultManager: UserDefaultsManager(),
-                                                                persistanceManager: PersistanceManager.shared)
-    private lazy var locationService: LocationService = LocationService()
+    private let storageManager: StorageManagerProtocol = StorageManager(userDefaultManager: UserDefaultsManager(),
+                                                                persistenceManager: PersistenceManager.shared)
+    private lazy var locationService: LocationServiceProtocol = LocationService()
+    
 }
 
 extension DependencyContainer {
-    func makeStorageManager() -> StorageManager {
+    func makeStorageManager() -> StorageManagerProtocol {
         storageManager
     }
     
     func makeLocationService() -> LocationServiceProtocol {
         locationService
+    }
+    
+    func makeMemoryRepository() -> MemoryRepositoryProtocol {
+        MemoryRepository()
     }
 }

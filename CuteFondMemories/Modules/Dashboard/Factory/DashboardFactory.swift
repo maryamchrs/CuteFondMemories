@@ -2,38 +2,47 @@
 //  DashboardFactory.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 11/02/2024.
+//  Created by Maryam Chaharsooghi on 11/02/2024.
 //
 
 import Foundation
 
 protocol DashboardFactoryProtocol {
-    func makeDashboardViewController() -> DashboardViewController
+    @MainActor func makeDashboardViewController() -> DashboardViewController
 }
 
-final class DashboardFactory: DependencyContainer, DashboardFactoryProtocol {
+final class DashboardFactory: DependencyContainer, DashboardFactoryProtocol, Loggable {
     
+    init(logger: DefaultLoggerProtocol = Logger()) {
+        self.logger = logger
+        super.init()
+        logInit()
+    }
+    
+    // MARK: - Deinit
+    deinit {
+        logDeinit()
+    }
+    
+    private(set) var logger: DefaultLoggerProtocol
+}
+
+extension DashboardFactory {
     @MainActor func makeDashboardViewController() -> DashboardViewController {
         let viewController = DashboardViewController()
-        let interactor = DashboardInteractor()
         let presenter = DashboardPresenter()
+        let worker = DashboardWorker()
+        let interactor = DashboardInteractor(presenter: presenter,
+                                             worker: worker,
+                                             locationService: makeLocationService())
+        
         let router = DashboardRouter()
-        let worker = DashboardWorker(service: makeDashboardService())
-        let fileWorker = DashboardFileWorker(storageManager: makeStorageManager())
         viewController.interactor = interactor
         viewController.router = router
-        interactor.presenter = presenter
-        interactor.worker = worker
-        interactor.fileWorker = fileWorker
-        interactor.locationService = makeLocationService()
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
         router.factory = self
         return viewController
-    }
-    
-    func makeDashboardService() -> DashboardService {
-        return DashboardService(httpClient: URLSession.shared)
     }
 }

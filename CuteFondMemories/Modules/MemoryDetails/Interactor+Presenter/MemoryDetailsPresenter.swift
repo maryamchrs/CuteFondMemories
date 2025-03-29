@@ -2,35 +2,37 @@
 //  MemoryDetailsPresenter.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 13/02/2024.
+//  Created by Maryam Chaharsooghi on 13/02/2024.
 //
 
 import UIKit
 
 protocol MemoryDetailsPresentationLogic {
     func presentMainButtonTitle(response: MemoryDetails.MainButtonTitle.Response) async
-    func presenPrefilledData(response: MemoryDetails.PrefilledData.Response) async
+    func presentPrefilledData(response: MemoryDetails.PrefilledData.Response) async
     func presentActionSuccess(response: MemoryDetails.ActionWasSuccessful.Response) async
     func presentChosenImage(response: MemoryDetails.ChosenImage.Response) async
     func presentPickerImageView(response: MemoryDetails.PickerImageSetup.Response) async
     func presentSelectedDate(response: MemoryDetails.DatePicker.Response) async
 }
 
-final class MemoryDetailsPresenter {
+final class MemoryDetailsPresenter: Loggable {
     // MARK: - Object lifecycle
-    init() {
-        MemoryDetailsLogger.logInit(owner: String(describing: MemoryDetailsPresenter.self))
+    init(logger: DefaultLoggerProtocol = Logger()) {
+        self.logger = logger
+        logInit()
     }
     
     // MARK: - Deinit
     deinit {
-        MemoryDetailsLogger.logDeinit(owner: String(describing: MemoryDetailsPresenter.self))
+        logDeinit()
     }
     
     // MARK: - Properties
     
     // MARK: Public
     weak var viewController: MemoryDetailsDisplayLogic?
+    private(set) var logger: DefaultLoggerProtocol
 }
 
 // MARK: - Methods
@@ -47,7 +49,7 @@ extension MemoryDetailsPresenter: MemoryDetailsPresentationLogic {
         await viewController?.displayMainButtonTitle(viewModel: viewModel)
     }
     
-    func presenPrefilledData(response: MemoryDetails.PrefilledData.Response) async {
+    func presentPrefilledData(response: MemoryDetails.PrefilledData.Response) async {
         let viewModel = MemoryDetails.PrefilledData.ViewModel(title: response.title, description: response.description, date: response.date, image: response.image)
         await viewController?.displayPrefilledData(viewModel: viewModel)
     }

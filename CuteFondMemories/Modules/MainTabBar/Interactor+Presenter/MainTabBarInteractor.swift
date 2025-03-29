@@ -2,7 +2,7 @@
 //  MainTabBarInteractor.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 03/06/2024.
+//  Created by Maryam Chaharsooghi on 03/06/2024.
 //
 
 import UIKit
@@ -13,29 +13,35 @@ protocol MainTabBarBusinessLogic {
 
 protocol MainTabBarDataStore {}
 
-class MainTabBarInteractor: MainTabBarDataStore {
+final class MainTabBarInteractor: MainTabBarDataStore, Loggable {
     // MARK: - Object lifecycle
-    init() {
-        MainTabBarLogger.logInit(owner: String(describing: MainTabBarInteractor.self))
+    init(
+        presenter: MainTabBarPresentationLogic,
+        worker: MainTabBarWorkerLogic?,
+        logger: DefaultLoggerProtocol = Logger()
+    ) {
+        self.presenter = presenter
+        self.worker = worker
+        self.logger = logger
+        logInit()
     }
     
     // MARK: - Deinit
     deinit {
-        MainTabBarLogger.logDeinit(owner: String(describing: MainTabBarInteractor.self))
+        logDeinit()
     }
     
     // MARK: - Properties
     
     // MARK: Public
-    var presenter: MainTabBarPresentationLogic?
-    var worker: MainTabBarWorkerLogic?
+    private(set) var presenter: MainTabBarPresentationLogic?
+    private(set) var worker: MainTabBarWorkerLogic?
+    private(set) var logger: DefaultLoggerProtocol
 }
 
 // MARK: - Business Logics
 extension MainTabBarInteractor: MainTabBarBusinessLogic {
-    func viewDidLoad(request: MainTabBar.ViewDidLoad.Request) {
-        
-    }
+    func viewDidLoad(request: MainTabBar.ViewDidLoad.Request) {}
 }
 
 // MARK: - Methods

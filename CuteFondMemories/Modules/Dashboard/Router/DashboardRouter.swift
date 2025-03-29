@@ -2,10 +2,11 @@
 //  DashboardRouter.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 11/02/2024.
+//  Created by Maryam Chaharsooghi on 11/02/2024.
 //
 
 import UIKit
+import SwiftUI
 
 protocol DashboardRoutingLogic {
     @MainActor func presentMemoryDetailsView(memory: Memory?,
@@ -17,15 +18,17 @@ protocol DashboardDataPassing {
     var dataStore: DashboardDataStore? { get }
 }
 
-final class DashboardRouter: NSObject, DashboardDataPassing {
+final class DashboardRouter: NSObject, DashboardDataPassing, Loggable {
     // MARK: - Object lifecycle
-    override init() {
-        DashboardLogger.logInit(owner: String(describing: DashboardRouter.self))
+    init(logger: DefaultLoggerProtocol = Logger()) {
+        self.logger = logger
+        super.init()
+        logInit()
     }
     
     // MARK: - Deinit
     deinit {
-        DashboardLogger.logDeinit(owner: String(describing: DashboardRouter.self))
+        logDeinit()
     }
     
     // MARK: - Properties
@@ -34,6 +37,7 @@ final class DashboardRouter: NSObject, DashboardDataPassing {
     weak var viewController: DashboardViewController?
     weak var factory: DashboardFactory?
     var dataStore: DashboardDataStore?
+    private(set) var logger: DefaultLoggerProtocol
 }
 
 // MARK: - Methods
@@ -49,12 +53,11 @@ extension DashboardRouter: DashboardRoutingLogic {
     @MainActor func presentMemoryDetailsView(memory: Memory?,
                                              latitude: Double,
                                              longitude: Double) {
-        let destinationViewController = MemoryDetailsFactory().makeMemoryDetailsViewController(memory: memory,
-                                                                                               latitude: latitude,
-                                                                                               longitude: longitude)
-        destinationViewController.delegate = viewController
-        destinationViewController.modalTransitionStyle = .coverVertical
-        destinationViewController.modalPresentationStyle = .fullScreen
+        let memoryPreviewFactory: MemoryPreviewViewFactoryProtocol = MemoryPreviewFactory()
+        let destinationViewController = UIHostingController(rootView: memoryPreviewFactory.makeMemoryPreviewView(memory: memory, latitude: latitude, longitude: longitude))
+//        destinationViewController.delegate = viewController
+//        destinationViewController.modalTransitionStyle = .coverVertical
+//        destinationViewController.modalPresentationStyle = .fullScreen
         viewController?.navigationController?.pushViewController(destinationViewController, animated: true)
     }
 }

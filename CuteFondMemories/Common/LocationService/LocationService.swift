@@ -2,7 +2,7 @@
 //  LocationService.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 10/02/2024.
+//  Created by Maryam Chaharsooghi on 10/02/2024.
 //
 
 import Foundation
@@ -17,9 +17,9 @@ protocol LocationServiceProtocol: AnyObject {
 
 final class LocationService: NSObject {
     
-    private var manager: CLLocationManagerProtocol?
+    private(set) var manager: CLLocationManagerProtocol?
     
-    private let locationSubject = PassthroughSubject<CLLocationCoordinate2D?, Never>()
+    private(set) var locationSubject = PassthroughSubject<CLLocationCoordinate2D?, Never>()
     var locationPublisher: (AnyPublisher<CLLocationCoordinate2D?, Never>)? {
         locationSubject.eraseToAnyPublisher()
     }

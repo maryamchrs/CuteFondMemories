@@ -2,7 +2,7 @@
 //  MemoryDetailsViewController.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 13/02/2024.
+//  Created by Maryam Chaharsooghi on 13/02/2024.
 //
 
 import UIKit
@@ -20,27 +20,31 @@ protocol MemoryDetailsViewControllerDelegate: AnyObject {
     func displayChosenImage(viewModel: MemoryDetails.ChosenImage.ViewModel)
 }
 
-@MainActor final class MemoryDetailsViewController: UIViewController {
+@MainActor final class MemoryDetailsViewController: UIViewController, Loggable {
     // MARK: - Object lifecycle
     required init?(coder aDecoder: NSCoder) {
+        self.logger = Logger()
         super.init(coder: aDecoder)
+        logInit()
         fatalError("MemoryDetailsViewController - Initialization using coder Not Allowed.")
     }
     
-    @MainActor init() {
+    @MainActor init(logger: DefaultLoggerProtocol = Logger()) {
+        self.logger = logger
         super.init(nibName: MemoryDetailsViewController.nibName, bundle: nil)
-        MemoryDetailsLogger.logInit(owner: String(describing: MemoryDetailsViewController.self))
+        logInit()
     }
     
     // MARK: - Deinit
     deinit {
-        MemoryDetailsLogger.logDeinit(owner: String(describing: MemoryDetailsViewController.self))
+        logDeinit()
     }
     
     // MARK: - Properties
     
     // MARK: Private
     private var imagePicker = UIImagePickerController()
+    private(set) var logger: DefaultLoggerProtocol
     
     // MARK: Public
     var interactor: MemoryDetailsBusinessLogic?
@@ -48,15 +52,15 @@ protocol MemoryDetailsViewControllerDelegate: AnyObject {
     weak var delegate: MemoryDetailsViewControllerDelegate?
     
     // MARK: - Outlets
-    @IBOutlet private weak var scrollView: UIScrollView!
-    @IBOutlet private weak var containerView: UIView!
-    @IBOutlet private weak var exitButton: UIButton!
-    @IBOutlet private weak var titleTextFeild: UITextField!
-    @IBOutlet private weak var descriptionTextView: UITextView!
-    @IBOutlet private weak var datePiker: UIDatePicker!
-    @IBOutlet private weak var mainButton: UIButton!
-    @IBOutlet private weak var DescriptionTextViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private(set) weak var scrollView: UIScrollView!
+    @IBOutlet private(set) weak var containerView: UIView!
+    @IBOutlet private(set) weak var exitButton: UIButton!
+    @IBOutlet private(set) weak var titleTextFeild: UITextField!
+    @IBOutlet private(set) weak var descriptionTextView: UITextView!
+    @IBOutlet private(set) weak var datePiker: UIDatePicker!
+    @IBOutlet private(set) weak var mainButton: UIButton!
+    @IBOutlet private(set) weak var DescriptionTextViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private(set) weak var imageView: UIImageView!
     
 }
 

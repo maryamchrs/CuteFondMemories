@@ -2,7 +2,7 @@
 //  MemoryDetailsInteractor.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 13/02/2024.
+//  Created by Maryam Chaharsooghi on 13/02/2024.
 //
 
 import UIKit
@@ -21,25 +21,27 @@ protocol MemoryDetailsDataStore {
     var longitude: Double { get set }
 }
 
-final class MemoryDetailsInteractor: MemoryDetailsDataStore {
+final class MemoryDetailsInteractor: MemoryDetailsDataStore, Loggable {
     // MARK: - Object lifecycle
-    init() {
-        MemoryDetailsLogger.logInit(owner: String(describing: MemoryDetailsInteractor.self))
-    }
+    init(
+        presenter: MemoryDetailsPresentationLogic?,
+        worker: MemoryDetailsWorkerLogic?,
+        logger: DefaultLoggerProtocol = Logger()) {
+            self.presenter = presenter
+            self.worker = worker
+            self.logger = logger
+            logInit()
+        }
     
     // MARK: - Deinit
     deinit {
         viewDidLoadTask?.cancel()
-        MemoryDetailsLogger.logDeinit(owner: String(describing: MemoryDetailsInteractor.self))
+        logDeinit()
     }
     
     // MARK: - Properties
     
     // MARK: Public
-    var presenter: MemoryDetailsPresentationLogic?
-    var worker: MemoryDetailsWorkerLogic?
-    var fileWorker: MemoryDetailsFileWorkerLogic?
-    
     var state: MemoryDetails.State {
         return memory != nil ? .edit : .add
     }
@@ -49,6 +51,10 @@ final class MemoryDetailsInteractor: MemoryDetailsDataStore {
     var memory: Memory?
     
     // MARK: Private
+    private(set) var presenter: MemoryDetailsPresentationLogic?
+    private(set) var worker: MemoryDetailsWorkerLogic?
+    private(set) var logger: DefaultLoggerProtocol
+    
     private var memories: [Memory] = []
     private var selectedDate: Date?
     private var viewDidLoadTask: (Task<(), Never>)?
@@ -82,37 +88,37 @@ extension MemoryDetailsInteractor: MemoryDetailsBusinessLogic {
                                                                              description: memory.descriptionOfMemory,
                                                                              date: memory.date,
                                                                              image: UIImage(data: memory.image ?? Data()))
-            await presenter.presenPrefilledData(response: prefilledDataResponse)
+            await presenter.presentPrefilledData(response: prefilledDataResponse)
         }
     }
     
     func mainButtonTapped(request: MemoryDetails.MainButton.Request) {
         Task {
-            guard let title = request.title, let desctiprionOfMemory = request.description else {
+            guard let title = request.title, let descriptionOfMemory = request.description else {
                 //TODO: - Show an error message.
                 return
             }
             do {
                 switch state {
                 case .add:
-                    Logger.log(text: "Save this memory to the core data")
-                    try await fileWorker?.saveMemory(title: title,
-                                                     desctiprionOfMemory: desctiprionOfMemory,
-                                                     date: request.date,
-                                                     image: nil,
-                                                     latitude: latitude,
-                                                     longitude: longitude)
-                    
-                    await presenter?.presentActionSuccess(response: MemoryDetails.ActionWasSuccessful.Response())
+                    logger.log(text: "Save this memory to the core data")
+//                    try await fileWorker?.saveMemory(title: title,
+//                                                     desctiprionOfMemory: desctiprionOfMemory,
+//                                                     date: request.date,
+//                                                     image: nil,
+//                                                     latitude: latitude,
+//                                                     longitude: longitude)
+//                    
+//                    await presenter?.presentActionSuccess(response: MemoryDetails.ActionWasSuccessful.Response())
                     
                 case .edit:
-                    Logger.log(text: "Update this memory to the core data")
+                    logger.log(text: "Update this memory to the core data")
                     guard let memory else { return }
                     memory.title = title
-                    memory.descriptionOfMemory = desctiprionOfMemory
+                    memory.descriptionOfMemory = descriptionOfMemory
                     memory.date = selectedDate ?? memory.date
                     memory.image = request.image?.jpegData(compressionQuality: 1)
-                    try await fileWorker?.updateMemory(memory: memory)
+//                    try await fileWorker?.updateMemory(memory: memory)
                     
                     await presenter?.presentActionSuccess(response: MemoryDetails.ActionWasSuccessful.Response())
                 }
@@ -123,20 +129,20 @@ extension MemoryDetailsInteractor: MemoryDetailsBusinessLogic {
     }
     
     func datePickerChanged(request: MemoryDetails.DatePicker.Request) {
-        Logger.log(text: "\(request.selectedDate)")
-        Logger.log(text: request.selectedDate.withoutTime)
+        logger.log(text: "\(request.selectedDate)")
+        logger.log(text: request.selectedDate.withoutTime)
         selectedDate = request.selectedDate
     }
     
     func oneImageSelected(request: MemoryDetails.ChosenImage.Request) {
         Task {
-            guard let fileWorker, let presenter, let selectedImage = request.selectedImage else { return }
+            guard let presenter, let selectedImage = request.selectedImage else { return }
             let imageData = selectedImage.jpegData(compressionQuality: 1)
     
             await presenter.presentChosenImage(response: MemoryDetails.ChosenImage.Response(imageData: imageData))
             if let memory {
                 memory.image = imageData
-                try? await fileWorker.updateMemory(memory: memory)
+//                try? await fileWorker.updateMemory(memory: memory)
             }
         }
     }

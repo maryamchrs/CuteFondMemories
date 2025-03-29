@@ -2,7 +2,7 @@
 //  MemoryDetailsEndpoint.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 13/02/2024.
+//  Created by Maryam Chaharsooghi on 13/02/2024.
 //
 
 import Foundation
@@ -12,6 +12,10 @@ enum MemoryDetailsEndpoint {
 }
 
 extension MemoryDetailsEndpoint: EndPoint {
+    
+    var baseURL: String {
+        return ""
+    }
     
     var path: String {
         "/"

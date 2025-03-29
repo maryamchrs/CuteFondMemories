@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 09/02/2024.
+//  Created by Maryam Chaharsooghi on 09/02/2024.
 //
 
 import UIKit

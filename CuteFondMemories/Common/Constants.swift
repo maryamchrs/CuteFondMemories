@@ -2,17 +2,27 @@
 //  Constants.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 09/02/2024.
+//  Created by Maryam Chaharsooghi on 09/02/2024.
 //
 
 import Foundation
 
 enum Constants {
     
+    // TODO: Move it into Build Configs
     static let baseUrl: String = ""
     
-    struct LondonCLLocation2D {
-        static let latitude: Double = 51.50735
-        static let longitude: Double = -0.12776
+    enum LondonCLLocation2D {
+        case latitude
+        case longitude
+        
+        var `default`: Double {
+            switch self {
+            case .latitude:
+                51.50735
+            case .longitude:
+                -0.12776
+            }
+        }
     }
 }

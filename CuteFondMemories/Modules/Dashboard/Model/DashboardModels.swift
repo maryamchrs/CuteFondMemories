@@ -2,7 +2,7 @@
 //  DashboardModels.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 11/02/2024.
+//  Created by Maryam Chaharsooghi on 11/02/2024.
 //
 
 import UIKit
@@ -38,7 +38,7 @@ enum Dashboard {
         }
     }
     
-    enum AddingAnnotaion {
+    enum AddingAnnotation {
         struct Request {
             let selectedLocation: CLLocationCoordinate2D
         }
@@ -46,7 +46,7 @@ enum Dashboard {
             let memories: [Memory]
         }
         struct ViewModel {
-            let annotaions: [CLLocationCoordinate2D]
+            let annotations: [CLLocationCoordinate2D]
         }
     }
     

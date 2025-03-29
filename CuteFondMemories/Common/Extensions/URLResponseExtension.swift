@@ -2,7 +2,7 @@
 //  URLResponse.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 09/02/2024.
+//  Created by Maryam Chaharsooghi on 09/02/2024.
 //
 
 import Foundation
@@ -34,8 +34,7 @@ extension  URLRequest {
             if let httpBodyData = self.httpBody, let httpBodyString = String(data: httpBodyData, encoding: .utf8) {
                 curlCommand += " -d '\(httpBodyString)'"
             }
-            
-            Logger.log(text: curlCommand)
+            debugPrint(curlCommand)
         }
     }
     
