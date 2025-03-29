@@ -2,7 +2,7 @@
 //  DashboardInteractor.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 11/02/2024.
+//  Created by Maryam Chaharsooghi on 11/02/2024.
 //
 
 import UIKit
@@ -10,34 +10,41 @@ import Combine
 
 protocol DashboardBusinessLogic {
     func viewDidLoad(request: Dashboard.ViewDidLoad.Request)
-    func oneLocationSelected(request: Dashboard.AddingAnnotaion.Request)
-    func oneAnnotaionSelected(request: Dashboard.AddingAnnotaion.Request)
-    func oneMemoryAddedSuccessfuly(request: Dashboard.MemoryListUpdated.Request)
+    func oneLocationSelected(request: Dashboard.AddingAnnotation.Request)
+    func oneAnnotationSelected(request: Dashboard.AddingAnnotation.Request)
+    func oneMemoryAddedSuccessfully(request: Dashboard.MemoryListUpdated.Request)
 }
 
 protocol DashboardDataStore {}
 
-final class DashboardInteractor: DashboardDataStore {
+final class DashboardInteractor: DashboardDataStore, Loggable {
     // MARK: - Object lifecycle
-    init() {
-        DashboardLogger.logInit(owner: String(describing: DashboardInteractor.self))
+    init(presenter: DashboardPresentationLogic?,
+         worker: DashboardWorkerLogic?,
+         locationService: LocationServiceProtocol?,
+         logger: DefaultLoggerProtocol = Logger()
+    ) {
+        self.presenter = presenter
+        self.worker = worker
+        self.locationService = locationService
+        self.logger = logger
+        logInit()
     }
     
     // MARK: - Deinit
     deinit {
         cancellable.removeAll()
-        DashboardLogger.logDeinit(owner: String(describing: DashboardInteractor.self))
+        logDeinit()
     }
     
     // MARK: - Properties
     
     // MARK: Public
-    var presenter: DashboardPresentationLogic?
-    var worker: DashboardWorkerLogic?
-    var fileWorker: DashboardFileWorker?
-    
-    var locationService: LocationServiceProtocol?
-    private var cancellable = Set<AnyCancellable>()
+    private(set) var presenter: DashboardPresentationLogic?
+    private(set) var worker: DashboardWorkerLogic?
+    private(set) var locationService: LocationServiceProtocol?
+    private(set) var cancellable = Set<AnyCancellable>()
+    private(set) var logger: DefaultLoggerProtocol
 }
 
 // MARK: - Methods
@@ -60,24 +67,24 @@ private extension DashboardInteractor {
     }
     
     func changeCameraLocation(latitude: Double, longitude: Double) async {
-        let response = Dashboard.DisplayLocation.Response(latitude: Constants.LondonCLLocation2D.latitude,
-                                                          longitude: Constants.LondonCLLocation2D.longitude,
+        let response = Dashboard.DisplayLocation.Response(latitude: Constants.LondonCLLocation2D.latitude.default,
+                                                          longitude: Constants.LondonCLLocation2D.longitude.default,
                                                           latitudinalMeters: 1500,
                                                           longitudinalMeters: 1500,
                                                           withAnimation: true)
         await presenter?.presentCameraOnLocation(response: response)
     }
     
-    func findMemoryIfExists(latitude: Double, longitude: Double) async -> Memory? {
-        try? await fileWorker?.retriveMemoryBasedOnLocation(latitude: latitude,
-                                                            longitude: longitude)
-    }
-    
-    func findAllExistedMemories() async throws {
-        if let memories = try await fileWorker?.fetchMemories() {
-            await presenter?.presentAnnotation(response: Dashboard.AddingAnnotaion.Response(memories: memories))
-        }
-    }
+//    func findMemoryIfExists(latitude: Double, longitude: Double) async -> Memory? {
+//        try? await fileWorker?.retriveMemoryBasedOnLocation(latitude: latitude,
+//                                                            longitude: longitude)
+//    }
+//    
+//    func findAllExistedMemories() async throws {
+//        if let memories = try await fileWorker?.fetchMemories() {
+//            await presenter?.presentAnnotation(response: Dashboard.AddingAnnotaion.Response(memories: memories))
+//        }
+//    }
 }
 // MARK: - Business Logics
 extension DashboardInteractor: DashboardBusinessLogic {
@@ -86,39 +93,39 @@ extension DashboardInteractor: DashboardBusinessLogic {
         Task {
             addObserver()
             locationService?.requestLocation()
-            try await findAllExistedMemories()
+//            try await findAllExistedMemories()
         }
     }
     
-    func oneLocationSelected(request: Dashboard.AddingAnnotaion.Request) {
+    func oneLocationSelected(request: Dashboard.AddingAnnotation.Request) {
         Task {
-            let latitude = request.selectedLocation.latitude
-            let longitude = request.selectedLocation.longitude
-            let memory = await findMemoryIfExists(latitude: latitude, longitude: longitude)
-            let response = Dashboard.MemoryDetailsScene.Response(memory: memory,
-                                                                 latitude: latitude,
-                                                                 longitude: longitude)
-            
-            await presenter?.presentMemoryDetailsScene(response: response)
+//            let latitude = request.selectedLocation.latitude
+//            let longitude = request.selectedLocation.longitude
+//            let memory = await findMemoryIfExists(latitude: latitude, longitude: longitude)
+//            let response = Dashboard.MemoryDetailsScene.Response(memory: memory,
+//                                                                 latitude: latitude,
+//                                                                 longitude: longitude)
+//            
+//            await presenter?.presentMemoryDetailsScene(response: response)
         }
     }
     
-    func oneAnnotaionSelected(request: Dashboard.AddingAnnotaion.Request) {
+    func oneAnnotationSelected(request: Dashboard.AddingAnnotation.Request) {
         Task {
-            let latitude = request.selectedLocation.latitude
-            let longitude = request.selectedLocation.longitude
-            let memory = await findMemoryIfExists(latitude: latitude, longitude: longitude)
-            let response = Dashboard.MemoryDetailsScene.Response(memory: memory,
-                                                                 latitude: latitude,
-                                                                 longitude: longitude)
-            
-            await presenter?.presentMemoryDetailsScene(response: response)
+//            let latitude = request.selectedLocation.latitude
+//            let longitude = request.selectedLocation.longitude
+//            let memory = await findMemoryIfExists(latitude: latitude, longitude: longitude)
+//            let response = Dashboard.MemoryDetailsScene.Response(memory: memory,
+//                                                                 latitude: latitude,
+//                                                                 longitude: longitude)
+//            
+//            await presenter?.presentMemoryDetailsScene(response: response)
         }
     }
     
-    func oneMemoryAddedSuccessfuly(request: Dashboard.MemoryListUpdated.Request) {
+    func oneMemoryAddedSuccessfully(request: Dashboard.MemoryListUpdated.Request) {
         Task {
-            try await findAllExistedMemories()
+//            try await findAllExistedMemories()
         }
     }
 }

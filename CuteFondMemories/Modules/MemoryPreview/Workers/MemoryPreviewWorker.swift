@@ -2,29 +2,29 @@
 //  MemoryPreviewWorker.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 08/07/2024.
+//  Created by Maryam Chaharsooghi on 08/07/2024.
 //
 
 import UIKit
 
 protocol MemoryPreviewWorkerLogic {}
 
-class MemoryPreviewWorker {
+final class MemoryPreviewWorker: Loggable {
     // MARK: - Object lifecycle
-    init(service: MemoryPreviewServiceProtocol) {
-        MemoryPreviewLogger.logInit(owner: String(describing: MemoryPreviewWorker.self))
-        self.service = service
+    init(logger: DefaultLoggerProtocol = Logger()) {
+        self.logger = logger
+        logInit()
     }
     
     // MARK: - Deinit
     deinit {
-        MemoryPreviewLogger.logDeinit(owner: String(describing: MemoryPreviewWorker.self))
+        logDeinit()
     }
     
     // MARK: - Properties
     
     // MARK: Private
-    private let service: MemoryPreviewServiceProtocol
+    private(set) var logger: DefaultLoggerProtocol
 }
 
 // MARK: - Methods

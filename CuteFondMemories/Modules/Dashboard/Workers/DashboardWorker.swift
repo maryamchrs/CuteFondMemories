@@ -2,29 +2,29 @@
 //  DashboardWorker.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 11/02/2024.
+//  Created by Maryam Chaharsooghi on 11/02/2024.
 //
 
 import UIKit
 
 protocol DashboardWorkerLogic {}
 
-final class DashboardWorker {
+final class DashboardWorker: Loggable {
     // MARK: - Object lifecycle
-    init(service: DashboardService) {
-        DashboardLogger.logInit(owner: String(describing: DashboardWorker.self))
-        self.service = service
+    init(logger: DefaultLoggerProtocol = Logger()) {
+        self.logger = logger
+        logInit()
     }
     
     // MARK: - Deinit
     deinit {
-        DashboardLogger.logDeinit(owner: String(describing: DashboardWorker.self))
+        logDeinit()
     }
     
     // MARK: - Properties
     
     // MARK: Private
-    private let service: DashboardService
+    private(set) var logger: DefaultLoggerProtocol
 }
 
 // MARK: - Methods

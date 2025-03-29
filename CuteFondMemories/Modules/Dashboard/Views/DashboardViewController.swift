@@ -2,7 +2,7 @@
 //  DashboardViewController.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 11/02/2024.
+//  Created by Maryam Chaharsooghi on 11/02/2024.
 //
 
 import UIKit
@@ -10,34 +10,38 @@ import MapKit
 
 @MainActor protocol DashboardDisplayLogic: AnyObject {
     func displayCameraOnLocation(viewModel: Dashboard.DisplayLocation.ViewModel)
-    func displayAnnotations(viewModel: Dashboard.AddingAnnotaion.ViewModel)
+    func displayAnnotations(viewModel: Dashboard.AddingAnnotation.ViewModel)
     func displayMemoryDetailsScene(viewModel: Dashboard.MemoryDetailsScene.ViewModel)
 }
 
-@MainActor final class DashboardViewController: UIViewController {
+@MainActor final class DashboardViewController: UIViewController, Loggable {
     // MARK: - Object lifecycle
     required init?(coder aDecoder: NSCoder) {
+        self.logger = Logger()
         super.init(coder: aDecoder)
+        logInit()
         fatalError("DashboardViewController - Initialization using coder Not Allowed.")
     }
     
-    @MainActor init() {
+    @MainActor init(logger: DefaultLoggerProtocol = Logger()) {
+        self.logger = logger
         super.init(nibName: DashboardViewController.nibName, bundle: nil)
-        DashboardLogger.logInit(owner: String(describing: DashboardViewController.self))
+        logInit()
     }
     
     // MARK: - Deinit
     deinit {
-        DashboardLogger.logDeinit(owner: String(describing: DashboardViewController.self))
+        logDeinit()
     }
     
     // MARK: - Properties
     
-    // MARK: Private
-    
     // MARK: Public
     var interactor: DashboardBusinessLogic?
     var router: (NSObjectProtocol & DashboardRoutingLogic & DashboardDataPassing)?
+    
+    // MARK: Private
+    private(set) var logger: DefaultLoggerProtocol
     
     // MARK: - Outlets
     @IBOutlet private weak var mapView: MKMapView!
@@ -71,7 +75,7 @@ private extension DashboardViewController {
         mapView.addGestureRecognizer(longPressGesture)
     }
     
-    func addAnnotaions(markers: [CLLocationCoordinate2D]) {
+    func addAnnotations(markers: [CLLocationCoordinate2D]) {
         // Add a pin at the touched point for demonstration
         mapView.addAnnotations(markers.map {
             let annotation = MKPointAnnotation()
@@ -92,8 +96,8 @@ extension DashboardViewController: DashboardDisplayLogic {
         mapView.setRegion(viewRegion, animated: viewModel.withAnimation)
     }
     
-    func displayAnnotations(viewModel: Dashboard.AddingAnnotaion.ViewModel) {
-        addAnnotaions(markers: viewModel.annotaions)
+    func displayAnnotations(viewModel: Dashboard.AddingAnnotation.ViewModel) {
+        addAnnotations(markers: viewModel.annotations)
     }
     
     func displayMemoryDetailsScene(viewModel: Dashboard.MemoryDetailsScene.ViewModel) {
@@ -113,7 +117,7 @@ extension DashboardViewController {
         let touchPoint = gestureReconizer.location(in: mapView)
         let coordinate = mapView.convert(touchPoint, 
                                          toCoordinateFrom: mapView)
-        let request = Dashboard.AddingAnnotaion.Request(selectedLocation: coordinate)
+        let request = Dashboard.AddingAnnotation.Request(selectedLocation: coordinate)
         interactor?.oneLocationSelected(request: request)
     }
 }
@@ -133,14 +137,14 @@ extension DashboardViewController: MKMapViewDelegate {
         // You can retrieve the coordinates of the touched point from the annotation.
         if let annotation = view.annotation {
             let coordinate = annotation.coordinate
-            interactor?.oneAnnotaionSelected(request: Dashboard.AddingAnnotaion.Request(selectedLocation: coordinate))
+            interactor?.oneAnnotationSelected(request: Dashboard.AddingAnnotation.Request(selectedLocation: coordinate))
         }
     }
 }
 // MARK: - MKMapViewDelegate
 extension DashboardViewController: MemoryDetailsViewControllerDelegate {
     func memoryAddedSuccessfully() {
-        interactor?.oneMemoryAddedSuccessfuly(request: Dashboard.MemoryListUpdated.Request())
+        interactor?.oneMemoryAddedSuccessfully(request: Dashboard.MemoryListUpdated.Request())
     }
 }
 

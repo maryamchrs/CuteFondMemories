@@ -2,7 +2,7 @@
 //  UIFontExtension.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 28/08/2024.
+//  Created by Maryam Chaharsooghi on 28/08/2024.
 //
 
 import UIKit
@@ -24,4 +24,8 @@ extension UIFont {
             
             return isScaled ? UIFontMetrics.default.scaledFont(for: font) : font
         }
+    
+    func withWeight(_ weight: UIFont.Weight) -> UIFont {
+        UIFont.systemFont(ofSize: pointSize, weight: weight)
+    }
 }

@@ -2,7 +2,7 @@
 //  OnboardingRouter.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 28/08/2024.
+//  Created by Maryam Chaharsooghi on 28/08/2024.
 //
 
 import UIKit
@@ -15,15 +15,17 @@ protocol OnboardingDataPassing {
     var dataStore: OnboardingDataStore? { get }
 }
 
-class OnboardingRouter: NSObject, OnboardingDataPassing {
+final class OnboardingRouter: NSObject, OnboardingDataPassing, Loggable {
     // MARK: - Object lifecycle
-    override init() {
-        OnboardingLogger.logInit(owner: String(describing: OnboardingRouter.self))
+    init(logger: DefaultLoggerProtocol = Logger()) {
+        self.logger = logger
+        super.init()
+        logInit()
     }
     
     // MARK: - Deinit
     deinit {
-        OnboardingLogger.logDeinit(owner: String(describing: OnboardingRouter.self))
+        logDeinit()
     }
     
     // MARK: - Properties
@@ -31,7 +33,7 @@ class OnboardingRouter: NSObject, OnboardingDataPassing {
     // MARK: Public
     weak var viewController: OnboardingViewController?
     var dataStore: OnboardingDataStore?
-//    var factory: OnboardingFactoryProtocolr?
+    private(set) var logger: DefaultLoggerProtocol
 }
 
 // MARK: - Methods

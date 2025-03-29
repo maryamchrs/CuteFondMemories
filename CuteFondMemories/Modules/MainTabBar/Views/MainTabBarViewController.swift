@@ -2,37 +2,41 @@
 //  MainTabBarViewController.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 03/06/2024.
+//  Created by Maryam Chaharsooghi on 03/06/2024.
 //
 
 import UIKit
 
 @MainActor protocol MainTabBarDisplayLogic: AnyObject {}
 
-@MainActor final class MainTabBarViewController: UITabBarController {
+@MainActor final class MainTabBarViewController: UITabBarController, Loggable {
     // MARK: - Object lifecycle
     required init?(coder aDecoder: NSCoder) {
+        self.logger = Logger()
         super.init(coder: aDecoder)
+        logInit()
         fatalError("MainTabBarViewController - Initialization using coder Not Allowed.")
     }
     
-   @MainActor init() {
+   @MainActor init(logger: DefaultLoggerProtocol = Logger()) {
+       self.logger = logger
        super.init(nibName: MainTabBarViewController.nibName, bundle: nil)
-        MainTabBarLogger.logInit(owner: String(describing: MainTabBarViewController.self))
+       logInit()
     }
     
     // MARK: - Deinit
     deinit {
-        MainTabBarLogger.logDeinit(owner: String(describing: MainTabBarViewController.self))
+        logDeinit()
     }
     
     // MARK: - Properties
     
-    // MARK: Private
-    
     // MARK: Public
     var interactor: MainTabBarBusinessLogic?
     var router: (NSObjectProtocol & MainTabBarRoutingLogic & MainTabBarDataPassing)?
+    // MARK: Private
+    private(set) var logger: DefaultLoggerProtocol
+    
     // MARK: - Outlets
 }
 
@@ -72,8 +76,6 @@ extension MainTabBarViewController {}
 extension MainTabBarViewController {
     func setColor() {
         tabBar.backgroundColor = .tabbar
-        tabBar.tintColor = .lightRoseGold
-        tabBar.unselectedItemTintColor = .lightRoseGold
         tabBar.shadowImage = UIImage()
         tabBar.backgroundImage = UIImage()
     }

@@ -2,7 +2,7 @@
 //  MainTabBarFactory.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 03/06/2024.
+//  Created by Maryam Chaharsooghi on 03/06/2024.
 //
 
 import Foundation
@@ -13,44 +13,32 @@ import UIKit
     func makeDashboardViewController() -> DashboardViewController
 }
 
-protocol MainTabBarServiceFactory {}
-
-class MainTabBarFactory: MainTabBarFactoryProtocol {
+final class MainTabBarFactory: MainTabBarFactoryProtocol {
     
     @MainActor func makeMainTabBarViewController() -> MainTabBarViewController {
         let viewController = MainTabBarViewController()
-        let interactor = MainTabBarInteractor()
-        let presenter = MainTabBarPresenter()
+        let presenter: MainTabBarPresentationLogic = MainTabBarPresenter(viewController: viewController)
+        let worker: MainTabBarWorkerLogic = MainTabBarWorker()
+        let interactor = MainTabBarInteractor(presenter: presenter,
+                                              worker: worker)
+        
         let router = MainTabBarRouter()
-        let worker = MainTabBarWorker()
         viewController.interactor = interactor
         viewController.router = router
-        interactor.presenter = presenter
-        interactor.worker = worker
-        presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
-        router.factory = self
         
         let dashboardViewController = makeDashboardViewController()
-        let settingViewController = makeSettingViewController()
-        viewController.viewControllers = [dashboardViewController, settingViewController]
+        viewController.viewControllers = [dashboardViewController]
         return viewController
     }
     
     @MainActor func makeDashboardViewController() -> DashboardViewController {
+        let icon = UIImage(named: TabbarItem.home.imageName)
         let destinationVC = DashboardFactory().makeDashboardViewController()
         destinationVC.tabBarItem = UITabBarItem(title: TabbarItem.home.title,
-                                                image: UIImage(named: TabbarItem.home.imageName),
+                                                image: icon,
                                                 tag: TabbarItem.home.tag)
-        return destinationVC
-    }
-    
-    @MainActor func makeSettingViewController() -> SettingViewController {
-        let destinationVC = SettingFactory().makeSettingViewController()
-        destinationVC.tabBarItem = UITabBarItem(title: TabbarItem.setting.title,
-                                                image: UIImage(named: TabbarItem.setting.imageName),
-                                                tag: TabbarItem.setting.tag)
         return destinationVC
     }
 }

@@ -1,9 +1,6 @@
 /* 
   Localizable.strings
   CuteFondMemories
-
-  Created by Maryam Chrs on 29/02/2024.
-  
 */
 
 "pick_photo" = "Pick a photo";
@@ -11,3 +8,13 @@
 "photos" = "Photos";
 "camera" = "Camera";
 "cancel" = "Cancel";
+"onboarding_mainButton_title" = "Add your first memory";
+"onboarding_description" = "You'll smile and feel all warm inside when you look back at your sweet and unforgettable memories.
+
+You surely have lots of fantastic ones.
+Let's start making your own visual diary!";
+
+// MARK: - TabBar
+"home_tabBar_title" = "Home";
+"add_memory_tabBar_title" = "Add Memory";
+"setting_tabBar_title" = "Setting";

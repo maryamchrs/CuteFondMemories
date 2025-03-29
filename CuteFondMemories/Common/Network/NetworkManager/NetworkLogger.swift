@@ -37,7 +37,6 @@ final class NetworkLogger: LoggerProtocol {
         }
     }
 
-    
     func logResponse(_ response: HTTPURLResponse?, data: Data?) {
         guard needToShowLogs else { return }
         if let response {
@@ -48,7 +47,6 @@ final class NetworkLogger: LoggerProtocol {
         }
     }
 
-    
     func logError(_ error: Error, for request: URLRequest?) {
         guard needToShowLogs else { return }
         guard let request else {

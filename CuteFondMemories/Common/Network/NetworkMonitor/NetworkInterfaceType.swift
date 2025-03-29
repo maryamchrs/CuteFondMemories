@@ -2,13 +2,13 @@
 //  NetworkInterfaceType.swift
 //  Network-UnitTest
 //
-//  Created by Maryam Chrs on 11/07/2024.
+//  Created by Maryam Chaharsooghi on 11/07/2024.
 //
 
 import Foundation
 import Network
 
-enum NetworkInterfaceType : Sendable {
+enum NetworkInterfaceType: Sendable {
     
     /// A virtual or otherwise unknown interface type
     case other

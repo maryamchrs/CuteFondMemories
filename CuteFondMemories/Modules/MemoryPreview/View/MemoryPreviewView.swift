@@ -2,7 +2,7 @@
 //  MemoryPreviewView.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 08/07/2024.
+//  Created by Maryam Chaharsooghi on 08/07/2024.
 //
 
 import SwiftUI
@@ -38,12 +38,13 @@ struct MemoryPreviewView<Presenter: MemoryPreviewPresentationLogic>: View {
 }
 
 #Preview {
-    MemoryPreviewView(interactor: MemoryPreviewInteractor(), presenter: MemoryPreviewPresenter())
+    MemoryPreviewView(interactor: MemoryPreviewInteractor(presenter: nil,
+                                                          worker: nil),
+                      presenter: MemoryPreviewPresenter())
 }
 
 extension UINavigationController {
-    
-    func setNavigationBarColor(color : UIColor){
+    func setNavigationBarColor(color: UIColor) {
         self.navigationBar.barTintColor = color
     }
 }

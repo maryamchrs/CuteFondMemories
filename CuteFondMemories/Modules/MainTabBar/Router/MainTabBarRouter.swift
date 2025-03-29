@@ -2,7 +2,7 @@
 //  MainTabBarRouter.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 03/06/2024.
+//  Created by Maryam Chaharsooghi on 03/06/2024.
 //
 
 import UIKit
@@ -15,15 +15,17 @@ protocol MainTabBarDataPassing {
     var dataStore: MainTabBarDataStore? { get }
 }
 
-class MainTabBarRouter: NSObject, MainTabBarDataPassing {
+final class MainTabBarRouter: NSObject, MainTabBarDataPassing, Loggable {
     // MARK: - Object lifecycle
-    override init() {
-        MainTabBarLogger.logInit(owner: String(describing: MainTabBarRouter.self))
+    init(logger: DefaultLoggerProtocol = Logger()) {
+        self.logger = logger
+        super.init()
+        logInit()
     }
     
     // MARK: - Deinit
     deinit {
-        MainTabBarLogger.logDeinit(owner: String(describing: MainTabBarRouter.self))
+        logDeinit()
     }
     
     // MARK: - Properties
@@ -31,7 +33,8 @@ class MainTabBarRouter: NSObject, MainTabBarDataPassing {
     // MARK: Public
     weak var viewController: MainTabBarViewController?
     var dataStore: MainTabBarDataStore?
-    var factory: MainTabBarFactoryProtocol?
+    
+    private(set) var logger: DefaultLoggerProtocol
 }
 
 // MARK: - Methods
@@ -42,6 +45,4 @@ extension MainTabBarRouter {}
 private extension MainTabBarRouter {}
 
 // MARK: - Routing Logic
-extension MainTabBarRouter: MainTabBarRoutingLogic {
-
-}
+extension MainTabBarRouter: MainTabBarRoutingLogic {}

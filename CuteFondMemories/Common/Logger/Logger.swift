@@ -2,28 +2,52 @@
 //  Logger.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 09/02/2024.
+//  Created by Maryam Chaharsooghi on 09/02/2024.
 //
 
 import Foundation
 
-class Logger {
-    
-    class var prefix: String {
-        return "Unknown Prefixs"
+protocol DefaultLoggerProtocol {
+    func log(text: String)
+}
+
+protocol Loggable: AnyObject {
+    var logger: DefaultLoggerProtocol { get }
+}
+
+extension Loggable {
+    // Uses automatic reference to self as unowned to prevent retain cycles
+    private var className: String {
+        String(describing: type(of: self))
     }
     
-    class func logInit(owner: String) {
-        let string = "LifeCycle" + " ---> " + owner + " init"
-        debugPrint(string)
+    func logInit() {
+        // Using unowned here is safe because this will only be called during initialization
+        logger.log(text: "LIFECYCLE: ----> [\(className)] Initialized")
     }
     
-    class func logDeinit(prefix: String? = nil, owner: String) {
-        let string = "LifeCycle" + " ---> " + owner + " deinit"
-        debugPrint(string)
+    func logDeinit() {
+        // Using unowned here is safe because this will only be called during deinitialization
+        logger.log(text: "LIFECYCLE: ----> [\(className)] Deinitialized")
     }
     
-    class func log(text: String) {
-        debugPrint(prefix, text)
+    func log(_ text: String) {
+        logger.log(text: "----> [\(className)] \(text)")
+    }
+}
+
+struct Logger: DefaultLoggerProtocol {
+    private var needToShowLogs: Bool
+    private var logClosure: ((String) -> Void)?
+    
+    init(needToShowLogs: Bool = true,
+         logClosure: ((String) -> Void)? = nil) {
+        self.needToShowLogs = needToShowLogs
+        self.logClosure = logClosure ?? { debugPrint($0) }
+    }
+    
+    func log(text: String) {
+        guard needToShowLogs else { return }
+        logClosure?(text)
     }
 }

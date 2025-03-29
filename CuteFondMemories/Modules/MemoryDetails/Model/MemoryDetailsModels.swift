@@ -2,7 +2,7 @@
 //  MemoryDetailsModels.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 13/02/2024.
+//  Created by Maryam Chaharsooghi on 13/02/2024.
 //
 
 import UIKit
@@ -147,5 +147,14 @@ enum MemoryDetails {
         }
         struct ViewModel {
         }
+    }
+    
+    struct NewMemoryDetailsInfo {
+        let title: String
+        let descriptionOfMemory: String
+        let date: Date?
+        let image: Data?
+        let latitude: Double
+        let longitude: Double
     }
 }

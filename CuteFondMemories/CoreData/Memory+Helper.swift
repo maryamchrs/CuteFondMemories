@@ -2,7 +2,7 @@
 //  CDMemory+Helper.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 16/02/2024.
+//  Created by Maryam Chaharsooghi on 16/02/2024.
 //
 
 import Foundation
@@ -17,23 +17,29 @@ protocol MemoryProtocol {
 
 extension Memory: MemoryProtocol {
     
-    convenience init(title: String,
-                     desctiprionOfMemory: String,
-                     date: Date? = nil,
-                     image: Data? = nil,
-                     latitude: Double,
-                     longitude: Double,
-                     context: NSManagedObjectContext) {
-        self.init(context: context)
+    convenience init(
+        title: String,
+        descriptionOfMemory: String,
+        date: Date? = nil,
+        image: Data? = nil,
+        latitude: Double,
+        longitude: Double,
+        context: NSManagedObjectContext
+    ) {
+        self.init(
+            context: context
+        )
         self.title = title
-        self.descriptionOfMemory = desctiprionOfMemory
+        self.descriptionOfMemory = descriptionOfMemory
         self.date = date
         self.image = image
         self.latitude = latitude
         self.longitude = longitude
     }
     
-    static func save(_ memory: Memory) throws {
+    static func save(
+        _ memory: Memory
+    ) throws {
         guard let context = memory.managedObjectContext else { return }
         try context.save()
     }

@@ -1,7 +1,7 @@
 //
 //  NetworkMonitor.swift
 //
-//  Created by Maryam Chrs on 10/07/2024.
+//  Created by Maryam Chaharsooghi on 10/07/2024.
 //
 
 import Foundation
@@ -15,12 +15,10 @@ protocol NetworkMonitorProtocol: AnyObject {
     ///  AsyncStream<NetworkInfoModel>:  An asynchronous stream of NetworkInfoModel instances, providing real-time updates about network connectivity.
     func startMonitoringNetwork() -> AsyncStream<NetworkInfoModel>
     
-    
     /// The startMonitoringNetwork method initiates network monitoring using Combine's AnyPublisher<NetworkInfoModel, Never> to provide updates on network connectivity and interface type changes. It utilizes NWPathMonitor to observe changes in network paths and publishes NetworkInfoModel instances whenever there's a change in connectivity.
     /// - Returns:
     ///  AnyPublisher<NetworkInfoModel, Never>:  A publisher that emits NetworkInfoModel instances representing the current network status and interface type.
     func startMonitoringNetwork() -> AnyPublisher<NetworkInfoModel, Never>
-    
     
     /// The startMonitoringNetwork method stop monitoring the network
     func stopMonitoringNetwork()
@@ -144,5 +142,3 @@ extension NetworkMonitor {
                                 connectionType: .init(type: connectionType.first(where: path.usesInterfaceType)) ?? .other)
     }
 }
-
-

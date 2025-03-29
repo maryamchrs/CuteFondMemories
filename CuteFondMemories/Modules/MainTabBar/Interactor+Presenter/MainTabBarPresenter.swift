@@ -2,7 +2,7 @@
 //  MainTabBarPresenter.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 03/06/2024.
+//  Created by Maryam Chaharsooghi on 03/06/2024.
 //
 
 import UIKit
@@ -11,21 +11,25 @@ protocol MainTabBarPresentationLogic {
     //    func presentSomething(response: MainTabBar.Something.Response) async
 }
 
-class MainTabBarPresenter {
+final class MainTabBarPresenter: Loggable {
     // MARK: - Object lifecycle
-    init() {
-        MainTabBarLogger.logInit(owner: String(describing: MainTabBarPresenter.self))
+    init(viewController: MainTabBarDisplayLogic?,
+         logger: DefaultLoggerProtocol = Logger()) {
+        self.viewController = viewController
+        self.logger = logger
+        logInit()
     }
     
     // MARK: - Deinit
     deinit {
-        MainTabBarLogger.logDeinit(owner: String(describing: MainTabBarPresenter.self))
+        logDeinit()
     }
     
     // MARK: - Properties
     
     // MARK: Public
     weak var viewController: MainTabBarDisplayLogic?
+    private(set) var logger: DefaultLoggerProtocol
 }
 
 // MARK: - Methods

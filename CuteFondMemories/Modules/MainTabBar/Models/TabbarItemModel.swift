@@ -2,7 +2,7 @@
 //  TabbarItemModel.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 28/08/2024.
+//  Created by Maryam Chaharsooghi on 28/08/2024.
 //
 
 import Foundation
@@ -15,22 +15,19 @@ enum TabbarItem {
     var title: String {
         switch self {
         case .home:
-            "Home"
+            "home_tabBar_title".localize
         case .addMemory:
-            "Add Memory"
+            "add_memory_tabBar_title".localize
         case .setting:
-            "Setting"
+            "setting_tabBar_title".localize
         }
     }
     
     var tag: Int {
         switch self {
-        case .home:
-            0
-        case .addMemory:
-            1
-        case .setting:
-            2
+        case .home: 0
+        case .addMemory: 1
+        case .setting: 2
         }
     }
     

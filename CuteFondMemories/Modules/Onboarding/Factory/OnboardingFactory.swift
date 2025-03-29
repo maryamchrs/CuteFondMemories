@@ -2,39 +2,77 @@
 //  OnboardingFactory.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 28/08/2024.
+//  Created by Maryam Chaharsooghi on 28/08/2024.
 //
 
 import Foundation
 
 protocol OnboardingFactoryProtocol {
-    func makeOnboardingViewController() -> OnboardingViewController
+    @MainActor func makeOnboardingViewController() -> OnboardingViewController
 }
 
-protocol OnboardingServiceFactory {
-    func makeOnboardingService() -> OnboardingService
+final class OnboardingFactory: Loggable {
+    // MARK: - Properties
+    private(set) weak var interactor: OnboardingInteractor?
+    private(set) weak var presenter: OnboardingPresenter?
+    private(set) weak var router: OnboardingRouter?
+    private(set) var logger: DefaultLoggerProtocol
+    
+    init(logger: DefaultLoggerProtocol = Logger()) {
+        self.logger = logger
+        logInit()
+    }
+    
+    // MARK: - Deinit
+    deinit {
+        logDeinit()
+    }
 }
 
-class OnboardingFactory {
- @MainActor func makeOnboardingViewController() -> OnboardingViewController {
+// MARK: - Methods
+// MARK: Public
+extension OnboardingFactory {
+    @MainActor func makeOnboardingViewController() -> OnboardingViewController {
         let viewController = OnboardingViewController()
-        let interactor = OnboardingInteractor()
-        let presenter = OnboardingPresenter()
-        let router = OnboardingRouter()
-        let worker = OnboardingWorker(service: makeOnboardingService())
+        let interactor = getInteractor()
+        let presenter = getPresenter()
+        let router = getRouter()
         viewController.interactor = interactor
         viewController.router = router
-        interactor.presenter = presenter
-        interactor.worker = worker
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
-//        router.factory = self
-        
         return viewController
     }
-
-func makeOnboardingService() -> OnboardingService {
-return OnboardingService(httpClient: URLSession.shared)
 }
+
+// MARK: Private
+private extension OnboardingFactory {
+    func getInteractor() -> OnboardingInteractor {
+        guard let interactor = self.interactor else {
+            let interactor = OnboardingInteractor(presenter: getPresenter(),
+                                                  worker: OnboardingWorker())
+            self.interactor = interactor
+            return interactor
+        }
+        return interactor
+    }
+    
+    func getPresenter() -> OnboardingPresenter {
+        guard let presenter = self.presenter else {
+            let presenter = OnboardingPresenter()
+            self.presenter = presenter
+            return presenter
+        }
+        return presenter
+    }
+    
+    func getRouter() -> OnboardingRouter {
+        guard let router = self.router else {
+            let router = OnboardingRouter()
+            self.router = router
+            return router
+        }
+        return router
+    }
 }

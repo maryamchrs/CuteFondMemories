@@ -2,29 +2,30 @@
 //  OnboardingWorker.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 28/08/2024.
+//  Created by Maryam Chaharsooghi on 28/08/2024.
 //
 
 import UIKit
 
 protocol OnboardingWorkerLogic {}
 
-class OnboardingWorker {
+final class OnboardingWorker: Loggable {
+    
     // MARK: - Object lifecycle
-    init(service: OnboardingService) {
-        OnboardingLogger.logInit(owner: String(describing: OnboardingWorker.self))
-        self.service = service
+    init(logger: DefaultLoggerProtocol = Logger()) {
+        self.logger = logger
+        logInit()
     }
     
     // MARK: - Deinit
     deinit {
-        OnboardingLogger.logDeinit(owner: String(describing: OnboardingWorker.self))
+        logDeinit()
     }
     
     // MARK: - Properties
     
     // MARK: Private
-    private let service: OnboardingService
+    private(set) var logger: DefaultLoggerProtocol
 }
 
 // MARK: - Methods

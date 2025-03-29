@@ -2,7 +2,7 @@
 //  ErrorMapper.swift
 //  Network-UnitTest
 //
-//  Created by Maryam Chrs on 15/07/2024.
+//  Created by Maryam Chaharsooghi on 15/07/2024.
 //
 
 import Foundation

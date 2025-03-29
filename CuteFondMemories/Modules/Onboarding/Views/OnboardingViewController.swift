@@ -2,27 +2,33 @@
 //  OnboardingViewController.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 28/08/2024.
+//  Created by Maryam Chaharsooghi on 28/08/2024.
 //
 
 import UIKit
 
-@MainActor protocol OnboardingDisplayLogic: AnyObject {}
+@MainActor protocol OnboardingDisplayLogic: AnyObject {
+    func displayDescriptionText(viewModel: Onboarding.ShowDescription.ViewModel)
+}
 
-@MainActor final class OnboardingViewController: UIViewController {
+@MainActor
+final class OnboardingViewController: UIViewController, Loggable {
     // MARK: - Object lifecycle
-   @MainActor init() {
+    @MainActor init(logger: DefaultLoggerProtocol = Logger()) {
+        self.logger = logger
         super.init(nibName: OnboardingViewController.nibName, bundle: nil)
-        OnboardingLogger.logInit(owner: String(describing: OnboardingViewController.self))
+        logInit()
     }
     
     // MARK: - Deinit
     deinit {
-        OnboardingLogger.logDeinit(owner: String(describing: OnboardingViewController.self))
+        logDeinit()
     }
     
     required init?(coder aDecoder: NSCoder) {
+        self.logger = Logger()
         super.init(coder: aDecoder)
+        logInit()
         fatalError("OnboardingViewController - Initialization using coder Not Allowed.")
     }
     
@@ -33,8 +39,12 @@ import UIKit
     // MARK: Public
     var interactor: OnboardingBusinessLogic?
     var router: (NSObjectProtocol & OnboardingRoutingLogic & OnboardingDataPassing)?
+    private(set) var logger: DefaultLoggerProtocol
     
     // MARK: - Outlets
+    @IBOutlet private(set) weak var logoIcon: UIImageView!
+    @IBOutlet private(set) weak var descriptionLabel: UILabel!
+    @IBOutlet private(set) weak var mainButton: CustomButton!
 }
 
 // MARK: - View Controller
@@ -43,26 +53,53 @@ import UIKit
 extension OnboardingViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
+        setColor()
+        setFont()
+        
+        interactor?.viewDidLoad(request: Onboarding.ViewDidLoad.Request())
     }
 }
 
 // MARK: - Methods
 
 // MARK: Private
-private extension OnboardingViewController {}
+private extension OnboardingViewController {
+    func setupView() {
+        mainButton.setDataModel(
+            .init(
+                style: .normal,
+                title: "onboarding_mainButton_title".localize
+            )
+        )
+    }
+}
 
 // MARK: Public
 extension OnboardingViewController {}
 
 // MARK: - Display Logic
-extension OnboardingViewController: OnboardingDisplayLogic {}
+extension OnboardingViewController: OnboardingDisplayLogic {
+    func displayDescriptionText(viewModel: Onboarding.ShowDescription.ViewModel) {
+        descriptionLabel.attributedText = viewModel.mutableAttributedString
+    }
+}
 
 // MARK: - Actions
 extension OnboardingViewController {}
 
 // MARK: - Appearance
 extension OnboardingViewController {
-    func setColor() {}
+    func setColor() {
+        view.backgroundColor = .milky
+        descriptionLabel.textColor = .grayOne
+    }
     
-    func setFont() {}
+    func setFont() {
+        descriptionLabel.font = .customFont(
+            font: .montserrat,
+            style: .regular,
+            size: .h3
+        )
+    }
 }

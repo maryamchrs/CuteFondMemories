@@ -2,27 +2,29 @@
 //  MainTabBarWorker.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 03/06/2024.
+//  Created by Maryam Chaharsooghi on 03/06/2024.
 //
 
 import UIKit
 
 protocol MainTabBarWorkerLogic {}
 
-class MainTabBarWorker {
+final class MainTabBarWorker: Loggable {
     // MARK: - Object lifecycle
-    init() {
-        MainTabBarLogger.logInit(owner: String(describing: MainTabBarWorker.self))
+    init(logger: DefaultLoggerProtocol = Logger()) {
+        self.logger = logger
+        logInit()
     }
     
     // MARK: - Deinit
     deinit {
-        MainTabBarLogger.logDeinit(owner: String(describing: MainTabBarWorker.self))
+        logDeinit()
     }
     
     // MARK: - Properties
     
     // MARK: Private
+    private(set) var logger: DefaultLoggerProtocol
 }
 
 // MARK: - Methods

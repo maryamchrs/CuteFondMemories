@@ -2,7 +2,7 @@
 //  MemoryPreviewInteractor.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 08/07/2024.
+//  Created by Maryam Chaharsooghi on 08/07/2024.
 //
 
 import UIKit
@@ -17,28 +17,34 @@ protocol MemoryPreviewDataStore {
     var longitude: Double { get set }
 }
 
-final class MemoryPreviewInteractor: MemoryPreviewDataStore {
+final class MemoryPreviewInteractor: MemoryPreviewDataStore, Loggable {
     // MARK: - Object lifecycle
-    init() {
-        Logger.logInit(owner: String(describing: MemoryPreviewInteractor.self))
+    init(presenter: MemoryPreviewPresenterProtocol?,
+         worker: MemoryPreviewWorkerLogic?,
+         logger: DefaultLoggerProtocol = Logger()) {
+        self.presenter = presenter
+        self.worker = worker
+        self.logger = logger
+        logInit()
     }
     
     // MARK: - Deinit
     deinit {
-        Logger.logDeinit(owner: String(describing: MemoryPreviewInteractor.self))
+        logDeinit()
     }
     
     // MARK: - Properties
     
     // MARK: Public
-    var presenter: MemoryPreviewPresenter?
-    var worker: MemoryPreviewWorkerLogic?
     
-    //MARK: Private
     var memory: Memory?
     var latitude: Double = 0.0
     var longitude: Double = 0.0
     
+    // MARK: Private
+    private(set) var presenter: MemoryPreviewPresenterProtocol?
+    private(set) var worker: MemoryPreviewWorkerLogic?
+    private(set) var logger: DefaultLoggerProtocol
     private var viewDidLoadTask: (Task<(), Never>)?
 }
 
@@ -65,7 +71,7 @@ extension MemoryPreviewInteractor: MemoryPreviewBusinessLogic {
                                                                              description: memory.descriptionOfMemory,
                                                                              date: memory.date,
                                                                              image: UIImage(data: memory.image ?? Data()))
-            await presenter.presenPrefilledData(response: prefilledDataResponse)
+            await presenter.presentPrefilledData(response: prefilledDataResponse)
         }
     }
 }

@@ -2,7 +2,7 @@
 //  UserDefaultsManager.swift
 //  CuteFondMemories
 //
-//  Created by Maryam Chrs on 09/02/2024.
+//  Created by Maryam Chaharsooghi on 09/02/2024.
 //
 
 import Foundation
@@ -17,7 +17,7 @@ protocol UserDefaultsManagerProtocol {
     func getIsTheFirstTimeStatus() -> Bool
 }
 
-final class UserDefaultsManager: UserDefaultsManagerProtocol{
+final class UserDefaultsManager: UserDefaultsManagerProtocol {
     func saveIsTheFirstTimeStatus(_ isFirstTime: Bool) {
         UserDefaults.standard.setValue(isFirstTime,
                                        forKey: UserDefaultCase.isTheFirstTime.rawValue)
