@@ -35,7 +35,7 @@ final class MainTabBarFactory: MainTabBarFactoryProtocol {
     
     @MainActor func makeDashboardViewController() -> DashboardViewController {
         let icon = UIImage(named: TabbarItem.home.imageName)
-        let destinationVC = DashboardFactory().makeDashboardViewController()
+        let destinationVC = DashboardFactory(dependencies: DependencyContainer.shared).makeDashboardViewController()
         destinationVC.tabBarItem = UITabBarItem(title: TabbarItem.home.title,
                                                 image: icon,
                                                 tag: TabbarItem.home.tag)

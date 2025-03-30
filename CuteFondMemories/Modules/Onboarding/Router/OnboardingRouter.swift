@@ -7,7 +7,9 @@
 
 import UIKit
 
-protocol OnboardingRoutingLogic {
+protocol OnboardingRoutingLogic: NSObject, OnboardingDataPassing {
+    var viewController: OnboardingViewController? { get set }
+    var dataStore: OnboardingDataStore? { get set }
     //    func navigateToSomewhere()
 }
 
@@ -15,7 +17,7 @@ protocol OnboardingDataPassing {
     var dataStore: OnboardingDataStore? { get }
 }
 
-final class OnboardingRouter: NSObject, OnboardingDataPassing, Loggable {
+final class OnboardingRouter: NSObject, Loggable {
     // MARK: - Object lifecycle
     init(logger: DefaultLoggerProtocol = Logger()) {
         self.logger = logger

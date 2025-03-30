@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol OnboardingBusinessLogic {
+protocol OnboardingBusinessLogic: OnboardingDataStore, AnyObject {
     func viewDidLoad(request: Onboarding.ViewDidLoad.Request)
 }
 
 protocol OnboardingDataStore {}
 
-final class OnboardingInteractor: OnboardingDataStore, Loggable {
+final class OnboardingInteractor: Loggable {
     // MARK: - Object lifecycle
     init(presenter: OnboardingPresentationLogic?,
          worker: OnboardingWorkerLogic?,
@@ -35,6 +35,8 @@ final class OnboardingInteractor: OnboardingDataStore, Loggable {
     private(set) var presenter: OnboardingPresentationLogic?
     private(set) var worker: OnboardingWorkerLogic?
     private(set) var logger: DefaultLoggerProtocol
+    
+    private(set) var viewDidLoadTask: (Task<(), Never>)?
 }
 
 // MARK: - Methods
@@ -47,7 +49,8 @@ private extension OnboardingInteractor {}
 // MARK: - Business Logics
 extension OnboardingInteractor: OnboardingBusinessLogic {
     func viewDidLoad(request: Onboarding.ViewDidLoad.Request) {
-        Task {
+        viewDidLoadTask?.cancel()
+        viewDidLoadTask = Task {
             let description = "onboarding_description".localize
             let response = Onboarding.ShowDescription.Response(description: description)
             await presenter?.presentDescription(response: response)

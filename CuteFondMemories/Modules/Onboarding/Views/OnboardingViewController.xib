@@ -36,13 +36,16 @@ Let's start making your own visual diary!</string>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DXi-8D-PAH" customClass="CustomButton" customModule="CuteFondMemories" customModuleProvider="target">
-                    <rect key="frame" x="56.666666666666657" y="540.66666666666663" width="280" height="44"/>
+                    <rect key="frame" x="82" y="540.66666666666663" width="229" height="44"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="280" id="dIL-3J-Azt"/>
+                        <constraint firstAttribute="width" constant="229" id="dIL-3J-Azt"/>
                         <constraint firstAttribute="height" constant="44" id="s0m-ac-k9L"/>
                     </constraints>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Add your first memory"/>
+                    <connections>
+                        <action selector="mainButtonTapped:" destination="-1" eventType="touchUpInside" id="x5c-Jv-Slv"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="V8b-FG-iX0"/>

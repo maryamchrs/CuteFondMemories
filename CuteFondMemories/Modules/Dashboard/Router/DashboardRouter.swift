@@ -53,7 +53,7 @@ extension DashboardRouter: DashboardRoutingLogic {
     @MainActor func presentMemoryDetailsView(memory: Memory?,
                                              latitude: Double,
                                              longitude: Double) {
-        let memoryPreviewFactory: MemoryPreviewViewFactoryProtocol = MemoryPreviewFactory()
+        let memoryPreviewFactory: MemoryPreviewViewFactoryProtocol = MemoryPreviewFactory(dependencies: DependencyContainer.shared)
         let destinationViewController = UIHostingController(rootView: memoryPreviewFactory.makeMemoryPreviewView(memory: memory, latitude: latitude, longitude: longitude))
 //        destinationViewController.delegate = viewController
 //        destinationViewController.modalTransitionStyle = .coverVertical
