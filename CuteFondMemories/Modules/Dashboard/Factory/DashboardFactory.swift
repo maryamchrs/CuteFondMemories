@@ -11,11 +11,11 @@ protocol DashboardFactoryProtocol {
     @MainActor func makeDashboardViewController() -> DashboardViewController
 }
 
-final class DashboardFactory: DependencyContainer, DashboardFactoryProtocol, Loggable {
+final class DashboardFactory: DashboardFactoryProtocol, Loggable {
     
-    init(logger: DefaultLoggerProtocol = Logger()) {
-        self.logger = logger
-        super.init()
+    init(dependencies: DependencyContainerProtocol) {
+        self.dependencies = dependencies
+        self.logger = dependencies.logger
         logInit()
     }
     
@@ -24,6 +24,7 @@ final class DashboardFactory: DependencyContainer, DashboardFactoryProtocol, Log
         logDeinit()
     }
     
+    private(set) var dependencies: DependencyContainerProtocol
     private(set) var logger: DefaultLoggerProtocol
 }
 
@@ -34,7 +35,7 @@ extension DashboardFactory {
         let worker = DashboardWorker()
         let interactor = DashboardInteractor(presenter: presenter,
                                              worker: worker,
-                                             locationService: makeLocationService())
+                                             locationService: dependencies.makeLocationService())
         
         let router = DashboardRouter()
         viewController.interactor = interactor

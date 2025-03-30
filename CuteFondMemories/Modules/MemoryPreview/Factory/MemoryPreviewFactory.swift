@@ -13,8 +13,23 @@ protocol MemoryPreviewViewFactoryProtocol {
                                           longitude: Double) -> MemoryPreviewView<MemoryPreviewPresenter>
 }
 
-final class MemoryPreviewFactory: DependencyContainer, MemoryPreviewViewFactoryProtocol {
+final class MemoryPreviewFactory: MemoryPreviewViewFactoryProtocol, Loggable {
     
+    private(set) var dependencies: DependencyContainerProtocol
+    private(set) var logger: DefaultLoggerProtocol
+    
+    init(dependencies: DependencyContainerProtocol) {
+        self.dependencies = dependencies
+        self.logger = dependencies.logger
+        logInit()
+    }
+    
+    deinit {
+        logDeinit()
+    }
+}
+
+extension MemoryPreviewFactory {
     @MainActor func makeMemoryPreviewView(memory: Memory?,
                                           latitude: Double,
                                           longitude: Double) -> MemoryPreviewView<MemoryPreviewPresenter> {

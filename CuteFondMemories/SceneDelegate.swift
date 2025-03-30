@@ -8,7 +8,7 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -19,7 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
 //        let viewController = HomeFactory().makeHomeViewController()
-        let viewController = MainTabBarFactory().makeMainTabBarViewController()
+//        let viewController = MainTabBarFactory().makeMainTabBarViewController()
+        let viewController = OnboardingFactory(dependencies: DependencyContainer.shared).makeOnboardingViewController()
         window?.rootViewController = UINavigationController(rootViewController: viewController)
         window?.makeKeyAndVisible()
     }

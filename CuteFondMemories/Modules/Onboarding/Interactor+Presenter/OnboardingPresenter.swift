@@ -7,7 +7,8 @@
 
 import UIKit
 
-protocol OnboardingPresentationLogic {
+protocol OnboardingPresentationLogic: AnyObject {
+    var viewController: OnboardingDisplayLogic? { get set }
     func presentDescription(response: Onboarding.ShowDescription.Response) async
 }
 
@@ -45,11 +46,19 @@ extension OnboardingPresenter: OnboardingPresentationLogic {
             string: text
         )
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 10
-        attributedString.addAttribute(
-            NSAttributedString.Key.paragraphStyle,
-            value: paragraphStyle,
-            range: .init(location: 0, length: attributedString.length)
+        paragraphStyle.minimumLineHeight = 22
+        let attributes: [NSAttributedString.Key: Any] = [
+            .paragraphStyle: paragraphStyle,
+            .font: UIFont.customFont(
+                font: .montserrat,
+                style: .regular,
+                size: .h3
+            ),
+            .foregroundColor: UIColor.grayOne
+        ]
+        attributedString.addAttributes(
+            attributes,
+            range: NSRange(location: 0, length: attributedString.length)
         )
         let viewModel = Onboarding.ShowDescription.ViewModel(mutableAttributedString: attributedString)
         await viewController?.displayDescriptionText(viewModel: viewModel)

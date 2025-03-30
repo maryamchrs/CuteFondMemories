@@ -8,6 +8,8 @@
 import UIKit
 
 @MainActor protocol OnboardingDisplayLogic: AnyObject {
+    var interactor: OnboardingBusinessLogic? { get set }
+    var router: (NSObjectProtocol & OnboardingRoutingLogic & OnboardingDataPassing)? { get set }
     func displayDescriptionText(viewModel: Onboarding.ShowDescription.ViewModel)
 }
 
@@ -20,11 +22,6 @@ final class OnboardingViewController: UIViewController, Loggable {
         logInit()
     }
     
-    // MARK: - Deinit
-    deinit {
-        logDeinit()
-    }
-    
     required init?(coder aDecoder: NSCoder) {
         self.logger = Logger()
         super.init(coder: aDecoder)
@@ -32,22 +29,23 @@ final class OnboardingViewController: UIViewController, Loggable {
         fatalError("OnboardingViewController - Initialization using coder Not Allowed.")
     }
     
+    deinit {
+        logDeinit()
+    }
+    
     // MARK: - Properties
     
     // MARK: Private
-    
+    private(set) var logger: DefaultLoggerProtocol
     // MARK: Public
     var interactor: OnboardingBusinessLogic?
     var router: (NSObjectProtocol & OnboardingRoutingLogic & OnboardingDataPassing)?
-    private(set) var logger: DefaultLoggerProtocol
     
     // MARK: - Outlets
     @IBOutlet private(set) weak var logoIcon: UIImageView!
     @IBOutlet private(set) weak var descriptionLabel: UILabel!
     @IBOutlet private(set) weak var mainButton: CustomButton!
 }
-
-// MARK: - View Controller
 
 // MARK: Life Cycle
 extension OnboardingViewController {
@@ -63,6 +61,9 @@ extension OnboardingViewController {
 
 // MARK: - Methods
 
+// MARK: Public
+extension OnboardingViewController {}
+
 // MARK: Private
 private extension OnboardingViewController {
     func setupView() {
@@ -75,9 +76,6 @@ private extension OnboardingViewController {
     }
 }
 
-// MARK: Public
-extension OnboardingViewController {}
-
 // MARK: - Display Logic
 extension OnboardingViewController: OnboardingDisplayLogic {
     func displayDescriptionText(viewModel: Onboarding.ShowDescription.ViewModel) {
@@ -86,7 +84,11 @@ extension OnboardingViewController: OnboardingDisplayLogic {
 }
 
 // MARK: - Actions
-extension OnboardingViewController {}
+private extension OnboardingViewController {
+    @IBAction func mainButtonTapped(_ sender: Any) {
+        
+    }
+}
 
 // MARK: - Appearance
 extension OnboardingViewController {

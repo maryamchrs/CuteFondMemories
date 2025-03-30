@@ -13,17 +13,17 @@ protocol OnboardingFactoryProtocol {
 
 final class OnboardingFactory: Loggable {
     // MARK: - Properties
-    private(set) weak var interactor: OnboardingInteractor?
-    private(set) weak var presenter: OnboardingPresenter?
-    private(set) weak var router: OnboardingRouter?
     private(set) var logger: DefaultLoggerProtocol
     
-    init(logger: DefaultLoggerProtocol = Logger()) {
-        self.logger = logger
+    private(set) weak var interactor: OnboardingBusinessLogic?
+    private(set) weak var presenter: OnboardingPresentationLogic?
+    private(set) weak var router: OnboardingRoutingLogic?
+    
+    init(dependencies: DependencyContainerProtocol) {
+        self.logger = dependencies.logger
         logInit()
     }
     
-    // MARK: - Deinit
     deinit {
         logDeinit()
     }
@@ -37,18 +37,21 @@ extension OnboardingFactory {
         let interactor = getInteractor()
         let presenter = getPresenter()
         let router = getRouter()
-        viewController.interactor = interactor
-        viewController.router = router
-        presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
+        
+        configure(
+            viewController: viewController,
+            interactor: interactor,
+            presenter: presenter,
+            router: router
+        )
+        
         return viewController
     }
 }
 
 // MARK: Private
 private extension OnboardingFactory {
-    func getInteractor() -> OnboardingInteractor {
+    func getInteractor() -> OnboardingBusinessLogic {
         guard let interactor = self.interactor else {
             let interactor = OnboardingInteractor(presenter: getPresenter(),
                                                   worker: OnboardingWorker())
@@ -58,7 +61,7 @@ private extension OnboardingFactory {
         return interactor
     }
     
-    func getPresenter() -> OnboardingPresenter {
+    func getPresenter() -> OnboardingPresentationLogic {
         guard let presenter = self.presenter else {
             let presenter = OnboardingPresenter()
             self.presenter = presenter
@@ -67,7 +70,7 @@ private extension OnboardingFactory {
         return presenter
     }
     
-    func getRouter() -> OnboardingRouter {
+    func getRouter() -> OnboardingRoutingLogic {
         guard let router = self.router else {
             let router = OnboardingRouter()
             self.router = router
@@ -75,4 +78,19 @@ private extension OnboardingFactory {
         }
         return router
     }
+    
+    @MainActor func configure(
+           viewController: OnboardingViewController,
+           interactor: OnboardingBusinessLogic,
+           presenter: OnboardingPresentationLogic,
+           router: OnboardingRoutingLogic
+       ) {
+           viewController.interactor = interactor
+           viewController.router = router
+           
+           presenter.viewController = viewController
+           
+           router.viewController = viewController
+           router.dataStore = interactor
+       }
 }
