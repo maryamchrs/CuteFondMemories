@@ -14,24 +14,24 @@ import MapKit
     func displayMemoryDetailsScene(viewModel: Dashboard.MemoryDetailsScene.ViewModel)
 }
 
-@MainActor final class DashboardViewController: UIViewController, Loggable {
+@MainActor final class DashboardViewController: UIViewController {
     // MARK: - Object lifecycle
     required init?(coder aDecoder: NSCoder) {
         self.logger = Logger()
         super.init(coder: aDecoder)
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
         fatalError("DashboardViewController - Initialization using coder Not Allowed.")
     }
     
     @MainActor init(logger: DefaultLoggerProtocol = Logger()) {
         self.logger = logger
         super.init(nibName: DashboardViewController.nibName, bundle: nil)
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     // MARK: - Deinit
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties

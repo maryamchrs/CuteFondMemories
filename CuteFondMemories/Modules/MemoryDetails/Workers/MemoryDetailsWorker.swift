@@ -14,18 +14,18 @@ protocol MemoryDetailsWorkerLogic {
     func retrieveMemoryBasedOnLocation(latitude: Double, longitude: Double) async throws -> Memory?
 }
 
-final class MemoryDetailsWorker: Loggable {
+final class MemoryDetailsWorker {
     // MARK: - Object lifecycle
     init(memoryUseCase: MemoryUseCaseProtocol,
          logger: DefaultLoggerProtocol = Logger()) {
         self.memoryUseCase = memoryUseCase
         self.logger = logger
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     // MARK: - Deinit
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties

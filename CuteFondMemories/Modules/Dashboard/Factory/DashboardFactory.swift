@@ -11,17 +11,17 @@ protocol DashboardFactoryProtocol {
     @MainActor func makeDashboardViewController() -> DashboardViewController
 }
 
-final class DashboardFactory: DashboardFactoryProtocol, Loggable {
+final class DashboardFactory: DashboardFactoryProtocol {
     
     init(dependencies: DependencyContainerProtocol) {
         self.dependencies = dependencies
         self.logger = dependencies.logger
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     // MARK: - Deinit
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     private(set) var dependencies: DependencyContainerProtocol

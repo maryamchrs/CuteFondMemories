@@ -13,7 +13,7 @@ protocol HomeBusinessLogic {
 
 protocol HomeDataStore {}
 
-final class HomeInteractor: HomeDataStore, Loggable {
+final class HomeInteractor: HomeDataStore {
     // MARK: - Object lifecycle
     init(
         presenter: HomePresentationLogic?,
@@ -21,14 +21,14 @@ final class HomeInteractor: HomeDataStore, Loggable {
         logger: DefaultLoggerProtocol = Logger()
     ) {
         self.logger = logger
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
         self.presenter = presenter
         self.worker = worker
     }
     
     // MARK: - Deinit
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties

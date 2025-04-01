@@ -16,16 +16,16 @@ protocol MemoryDetailsPresentationLogic {
     func presentSelectedDate(response: MemoryDetails.DatePicker.Response) async
 }
 
-final class MemoryDetailsPresenter: Loggable {
+final class MemoryDetailsPresenter {
     // MARK: - Object lifecycle
     init(logger: DefaultLoggerProtocol = Logger()) {
         self.logger = logger
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     // MARK: - Deinit
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties

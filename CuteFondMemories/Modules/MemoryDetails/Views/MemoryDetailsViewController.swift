@@ -20,24 +20,24 @@ protocol MemoryDetailsViewControllerDelegate: AnyObject {
     func displayChosenImage(viewModel: MemoryDetails.ChosenImage.ViewModel)
 }
 
-@MainActor final class MemoryDetailsViewController: UIViewController, Loggable {
+@MainActor final class MemoryDetailsViewController: UIViewController {
     // MARK: - Object lifecycle
     required init?(coder aDecoder: NSCoder) {
         self.logger = Logger()
         super.init(coder: aDecoder)
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
         fatalError("MemoryDetailsViewController - Initialization using coder Not Allowed.")
     }
     
     @MainActor init(logger: DefaultLoggerProtocol = Logger()) {
         self.logger = logger
         super.init(nibName: MemoryDetailsViewController.nibName, bundle: nil)
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     // MARK: - Deinit
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties

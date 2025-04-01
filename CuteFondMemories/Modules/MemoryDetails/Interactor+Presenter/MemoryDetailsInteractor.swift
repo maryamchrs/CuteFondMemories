@@ -21,7 +21,7 @@ protocol MemoryDetailsDataStore {
     var longitude: Double { get set }
 }
 
-final class MemoryDetailsInteractor: MemoryDetailsDataStore, Loggable {
+final class MemoryDetailsInteractor: MemoryDetailsDataStore {
     // MARK: - Object lifecycle
     init(
         presenter: MemoryDetailsPresentationLogic?,
@@ -30,13 +30,13 @@ final class MemoryDetailsInteractor: MemoryDetailsDataStore, Loggable {
             self.presenter = presenter
             self.worker = worker
             self.logger = logger
-            logInit()
+            self.logger.logInit(String(describing: type(of: self)))
         }
     
     // MARK: - Deinit
     deinit {
         viewDidLoadTask?.cancel()
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties

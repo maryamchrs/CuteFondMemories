@@ -11,7 +11,7 @@ protocol MemoryDetailsFactoryProtocol {
     func makeMemoryDetailsViewController() -> MemoryDetailsViewController
 }
 
-final class MemoryDetailsFactory: Loggable {
+final class MemoryDetailsFactory {
    
     private(set) var dependencies: DependencyContainerProtocol
     private(set) var logger: DefaultLoggerProtocol
@@ -19,11 +19,11 @@ final class MemoryDetailsFactory: Loggable {
     init(dependencies: DependencyContainerProtocol) {
         self.dependencies = dependencies
         self.logger = dependencies.logger
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     @MainActor func makeMemoryDetailsViewController(memory: Memory?,

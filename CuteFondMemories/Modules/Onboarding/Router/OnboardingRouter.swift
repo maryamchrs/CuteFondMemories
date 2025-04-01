@@ -17,17 +17,17 @@ protocol OnboardingDataPassing {
     var dataStore: OnboardingDataStore? { get }
 }
 
-final class OnboardingRouter: NSObject, Loggable {
+final class OnboardingRouter: NSObject {
     // MARK: - Object lifecycle
     init(logger: DefaultLoggerProtocol = Logger()) {
         self.logger = logger
         super.init()
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     // MARK: - Deinit
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties

@@ -17,17 +17,17 @@ protocol MemoryDetailsDataPassing {
     var dataStore: MemoryDetailsDataStore? { get }
 }
 
-final class MemoryDetailsRouter: NSObject, MemoryDetailsDataPassing, Loggable {
+final class MemoryDetailsRouter: NSObject, MemoryDetailsDataPassing {
     // MARK: - Object lifecycle
     init(logger: DefaultLoggerProtocol = Logger()) {
         self.logger = logger
         super.init()
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     // MARK: - Deinit
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties

@@ -13,7 +13,7 @@ protocol MemoryPreviewViewFactoryProtocol {
                                           longitude: Double) -> MemoryPreviewView<MemoryPreviewPresenter>
 }
 
-final class MemoryPreviewFactory: MemoryPreviewViewFactoryProtocol, Loggable {
+final class MemoryPreviewFactory: MemoryPreviewViewFactoryProtocol {
     
     private(set) var dependencies: DependencyContainerProtocol
     private(set) var logger: DefaultLoggerProtocol
@@ -21,11 +21,11 @@ final class MemoryPreviewFactory: MemoryPreviewViewFactoryProtocol, Loggable {
     init(dependencies: DependencyContainerProtocol) {
         self.dependencies = dependencies
         self.logger = dependencies.logger
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
 }
 

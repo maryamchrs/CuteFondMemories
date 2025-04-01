@@ -11,15 +11,15 @@ protocol HomeFactoryProtocol {
     func makeHomeViewController() -> HomeViewController
 }
 
-final class HomeFactory: Loggable {
+final class HomeFactory {
     
     init(logger: DefaultLoggerProtocol = Logger()) {
         self.logger = logger
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     private(set) var logger: DefaultLoggerProtocol

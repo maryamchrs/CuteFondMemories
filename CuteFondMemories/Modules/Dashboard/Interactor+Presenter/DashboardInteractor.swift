@@ -17,7 +17,7 @@ protocol DashboardBusinessLogic {
 
 protocol DashboardDataStore {}
 
-final class DashboardInteractor: DashboardDataStore, Loggable {
+final class DashboardInteractor: DashboardDataStore {
     // MARK: - Object lifecycle
     init(presenter: DashboardPresentationLogic?,
          worker: DashboardWorkerLogic?,
@@ -28,13 +28,13 @@ final class DashboardInteractor: DashboardDataStore, Loggable {
         self.worker = worker
         self.locationService = locationService
         self.logger = logger
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     // MARK: - Deinit
     deinit {
         cancellable.removeAll()
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties

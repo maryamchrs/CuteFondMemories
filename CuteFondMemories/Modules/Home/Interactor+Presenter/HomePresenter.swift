@@ -11,19 +11,19 @@ protocol HomePresentationLogic {
     // func presentSomething(response: Home.Something.Response) async
 }
 
-final class HomePresenter: Loggable {
+final class HomePresenter {
     // MARK: - Object lifecycle
     init(viewController: HomeDisplayLogic?,
          logger: DefaultLoggerProtocol = Logger()
     ) {
         self.logger = logger
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
         self.viewController = viewController
     }
     
     // MARK: - Deinit
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties

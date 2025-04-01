@@ -13,7 +13,7 @@ protocol MainTabBarBusinessLogic {
 
 protocol MainTabBarDataStore {}
 
-final class MainTabBarInteractor: MainTabBarDataStore, Loggable {
+final class MainTabBarInteractor: MainTabBarDataStore {
     // MARK: - Object lifecycle
     init(
         presenter: MainTabBarPresentationLogic,
@@ -23,12 +23,12 @@ final class MainTabBarInteractor: MainTabBarDataStore, Loggable {
         self.presenter = presenter
         self.worker = worker
         self.logger = logger
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     // MARK: - Deinit
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties

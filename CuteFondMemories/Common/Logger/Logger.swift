@@ -9,34 +9,12 @@ import Foundation
 
 protocol DefaultLoggerProtocol {
     func log(text: String)
-}
-
-protocol Loggable: AnyObject {
-    var logger: DefaultLoggerProtocol { get }
-}
-
-extension Loggable {
-    // Uses automatic reference to self as unowned to prevent retain cycles
-    private var className: String {
-        String(describing: type(of: self))
-    }
-    
-    func logInit() {
-        // Using unowned here is safe because this will only be called during initialization
-        logger.log(text: "LIFECYCLE: ----> [\(className)] Initialized")
-    }
-    
-    func logDeinit() {
-        // Using unowned here is safe because this will only be called during deinitialization
-        logger.log(text: "LIFECYCLE: ----> [\(className)] Deinitialized")
-    }
-    
-    func log(_ text: String) {
-        logger.log(text: "----> [\(className)] \(text)")
-    }
+    func logInit(_ className: String)
+    func logDeinit(_ className: String)
 }
 
 struct Logger: DefaultLoggerProtocol {
+    
     private var needToShowLogs: Bool
     private var logClosure: ((String) -> Void)?
     
@@ -46,6 +24,14 @@ struct Logger: DefaultLoggerProtocol {
         self.logClosure = logClosure ?? { debugPrint($0) }
     }
     
+    func logInit(_ className: String) {
+        logClosure?("LIFECYCLE: ----> [\(className)] Initialized")
+    }
+    
+    func logDeinit(_ className: String) {
+        logClosure?("LIFECYCLE: ----> [\(className)] Deinitialized")
+    }
+
     func log(text: String) {
         guard needToShowLogs else { return }
         logClosure?(text)

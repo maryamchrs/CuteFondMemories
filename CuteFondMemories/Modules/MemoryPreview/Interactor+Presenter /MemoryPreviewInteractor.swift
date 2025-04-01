@@ -17,7 +17,7 @@ protocol MemoryPreviewDataStore {
     var longitude: Double { get set }
 }
 
-final class MemoryPreviewInteractor: MemoryPreviewDataStore, Loggable {
+final class MemoryPreviewInteractor: MemoryPreviewDataStore {
     // MARK: - Object lifecycle
     init(presenter: MemoryPreviewPresenterProtocol?,
          worker: MemoryPreviewWorkerLogic?,
@@ -25,12 +25,12 @@ final class MemoryPreviewInteractor: MemoryPreviewDataStore, Loggable {
         self.presenter = presenter
         self.worker = worker
         self.logger = logger
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     // MARK: - Deinit
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties

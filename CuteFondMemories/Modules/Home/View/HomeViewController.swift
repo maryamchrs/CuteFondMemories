@@ -9,24 +9,24 @@ import UIKit
 
 @MainActor protocol HomeDisplayLogic: AnyObject {}
 
-@MainActor final class HomeViewController: UIViewController, Loggable {
+@MainActor final class HomeViewController: UIViewController {
     // MARK: - Object lifecycle
     required init?(coder aDecoder: NSCoder) {
         self.logger = Logger()
         super.init(coder: aDecoder)
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
         fatalError("HomeViewController - Initialization using coder Not Allowed.")
     }
     
     @MainActor init(logger: DefaultLoggerProtocol = Logger()) {
         self.logger = logger
         super.init(nibName: HomeViewController.nibName, bundle: nil)
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     // MARK: - Deinit
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties

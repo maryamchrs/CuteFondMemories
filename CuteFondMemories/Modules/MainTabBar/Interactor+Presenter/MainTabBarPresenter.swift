@@ -11,18 +11,18 @@ protocol MainTabBarPresentationLogic {
     //    func presentSomething(response: MainTabBar.Something.Response) async
 }
 
-final class MainTabBarPresenter: Loggable {
+final class MainTabBarPresenter {
     // MARK: - Object lifecycle
     init(viewController: MainTabBarDisplayLogic?,
          logger: DefaultLoggerProtocol = Logger()) {
         self.viewController = viewController
         self.logger = logger
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     // MARK: - Deinit
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties
