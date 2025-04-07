@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol HomeWorkerLogic {}
+protocol HomeWorkerLogic: AnyObject {}
 
 final class HomeWorker {
     // MARK: - Object lifecycle

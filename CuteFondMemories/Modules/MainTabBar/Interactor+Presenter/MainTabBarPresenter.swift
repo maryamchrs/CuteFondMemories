@@ -7,15 +7,14 @@
 
 import UIKit
 
-protocol MainTabBarPresentationLogic {
+protocol MainTabBarPresentationLogic: AnyObject {
+    var viewController: MainTabBarDisplayLogic? { get set }
     //    func presentSomething(response: MainTabBar.Something.Response) async
 }
 
 final class MainTabBarPresenter {
     // MARK: - Object lifecycle
-    init(viewController: MainTabBarDisplayLogic?,
-         logger: DefaultLoggerProtocol = Logger()) {
-        self.viewController = viewController
+    init(logger: DefaultLoggerProtocol = Logger()) {
         self.logger = logger
         self.logger.logInit(String(describing: type(of: self)))
     }

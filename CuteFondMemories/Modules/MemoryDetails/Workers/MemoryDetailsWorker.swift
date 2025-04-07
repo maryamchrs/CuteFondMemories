@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol MemoryDetailsWorkerLogic {
+protocol MemoryDetailsWorkerLogic: AnyObject {
     func saveMemory(info: MemoryDetails.NewMemoryDetailsInfo) async throws
     func updateMemory(_ memory: Memory) async throws
     func fetchMemories() async throws -> [Memory]

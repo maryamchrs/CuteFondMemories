@@ -7,21 +7,23 @@
 
 import UIKit
 
-protocol MemoryDetailsRoutingLogic {
+protocol MemoryDetailsDataPassing: AnyObject {
+    var dataStore: MemoryDetailsDataStore? { get }
+}
+
+protocol MemoryDetailsRoutingLogic: MemoryDetailsDataPassing {
+    var viewController: MemoryDetailsViewController? { get set }
+    var dataStore: MemoryDetailsDataStore? { get set }
+    
     func dismiss()
     func presentImagePicker(_ imagePicker: UIImagePickerController)
     func dismissImagePickerView()
 }
 
-protocol MemoryDetailsDataPassing {
-    var dataStore: MemoryDetailsDataStore? { get }
-}
-
-final class MemoryDetailsRouter: NSObject, MemoryDetailsDataPassing {
+final class MemoryDetailsRouter {
     // MARK: - Object lifecycle
     init(logger: DefaultLoggerProtocol = Logger()) {
         self.logger = logger
-        super.init()
         self.logger.logInit(String(describing: type(of: self)))
     }
     
@@ -34,11 +36,10 @@ final class MemoryDetailsRouter: NSObject, MemoryDetailsDataPassing {
     
     // MARK: Public
     weak var viewController: MemoryDetailsViewController?
+    var dataStore: MemoryDetailsDataStore?
     weak var imagePickerViewController: UIImagePickerController?
     weak var factory: MemoryDetailsFactory?
-    var dataStore: MemoryDetailsDataStore?
     private(set) var logger: DefaultLoggerProtocol
-    
 }
 
 // MARK: - Methods

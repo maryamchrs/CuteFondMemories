@@ -7,7 +7,10 @@
 
 import UIKit
 
-@MainActor protocol HomeDisplayLogic: AnyObject {}
+@MainActor protocol HomeDisplayLogic: AnyObject {
+    var interactor: HomeBusinessLogic? { get set }
+    var router: HomeRoutingLogic? { get set }
+}
 
 @MainActor final class HomeViewController: UIViewController {
     // MARK: - Object lifecycle
@@ -33,7 +36,7 @@ import UIKit
     
     // MARK: Public
     var interactor: HomeBusinessLogic?
-    var router: (HomeRoutingLogic & HomeDataPassing)?
+    var router: HomeRoutingLogic?
     // MARK: Private
     private(set) var logger: DefaultLoggerProtocol
     

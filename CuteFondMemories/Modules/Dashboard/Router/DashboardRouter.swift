@@ -8,17 +8,19 @@
 import UIKit
 import SwiftUI
 
-protocol DashboardRoutingLogic {
+protocol DashboardRoutingLogic: NSObject, DashboardDataPassing {
+    var viewController: DashboardViewController? { get set }
+    var dataStore: DashboardDataStore? { get set }
     @MainActor func presentMemoryDetailsView(memory: Memory?,
                                              latitude: Double,
                                              longitude: Double)
 }
 
 protocol DashboardDataPassing {
-    var dataStore: DashboardDataStore? { get }
+    var dataStore: DashboardDataStore? { get set }
 }
 
-final class DashboardRouter: NSObject, DashboardDataPassing {
+final class DashboardRouter: NSObject {
     // MARK: - Object lifecycle
     init(logger: DefaultLoggerProtocol = Logger()) {
         self.logger = logger
@@ -35,7 +37,6 @@ final class DashboardRouter: NSObject, DashboardDataPassing {
     
     // MARK: Public
     weak var viewController: DashboardViewController?
-    weak var factory: DashboardFactory?
     var dataStore: DashboardDataStore?
     private(set) var logger: DefaultLoggerProtocol
 }

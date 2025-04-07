@@ -11,7 +11,7 @@ protocol OnboardingFactoryProtocol {
     @MainActor func makeOnboardingViewController() -> OnboardingViewController
 }
 
-final class OnboardingFactory {
+final class OnboardingFactory: OnboardingFactoryProtocol {
     // MARK: - Properties
     private(set) var logger: DefaultLoggerProtocol
     

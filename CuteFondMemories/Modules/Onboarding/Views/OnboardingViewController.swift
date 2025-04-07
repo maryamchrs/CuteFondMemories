@@ -9,7 +9,8 @@ import UIKit
 
 @MainActor protocol OnboardingDisplayLogic: AnyObject {
     var interactor: OnboardingBusinessLogic? { get set }
-    var router: (NSObjectProtocol & OnboardingRoutingLogic & OnboardingDataPassing)? { get set }
+    var router: OnboardingRoutingLogic? { get set }
+    
     func displayDescriptionText(viewModel: Onboarding.ShowDescription.ViewModel)
 }
 
@@ -39,7 +40,7 @@ final class OnboardingViewController: UIViewController {
     private(set) var logger: DefaultLoggerProtocol
     // MARK: Public
     var interactor: OnboardingBusinessLogic?
-    var router: (NSObjectProtocol & OnboardingRoutingLogic & OnboardingDataPassing)?
+    var router: OnboardingRoutingLogic?
     
     // MARK: - Outlets
     @IBOutlet private(set) weak var logoIcon: UIImageView!
@@ -86,7 +87,7 @@ extension OnboardingViewController: OnboardingDisplayLogic {
 // MARK: - Actions
 private extension OnboardingViewController {
     @IBAction func mainButtonTapped(_ sender: Any) {
-        
+        router?.navigateToTabbarViewController()
     }
 }
 

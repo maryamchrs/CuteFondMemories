@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-protocol DashboardBusinessLogic {
+protocol DashboardBusinessLogic: DashboardDataStore, AnyObject {
     func viewDidLoad(request: Dashboard.ViewDidLoad.Request)
     func oneLocationSelected(request: Dashboard.AddingAnnotation.Request)
     func oneAnnotationSelected(request: Dashboard.AddingAnnotation.Request)
@@ -17,7 +17,7 @@ protocol DashboardBusinessLogic {
 
 protocol DashboardDataStore {}
 
-final class DashboardInteractor: DashboardDataStore {
+final class DashboardInteractor {
     // MARK: - Object lifecycle
     init(presenter: DashboardPresentationLogic?,
          worker: DashboardWorkerLogic?,

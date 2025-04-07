@@ -12,6 +12,9 @@ protocol MemoryDetailsViewControllerDelegate: AnyObject {
 }
 
 @MainActor protocol MemoryDetailsDisplayLogic: AnyObject {
+    var interactor: MemoryDetailsBusinessLogic? { get set }
+    var router: MemoryDetailsRoutingLogic? { get set }
+    
     func displayMainButtonTitle(viewModel: MemoryDetails.MainButtonTitle.ViewModel)
     func displayPickerImageView(viewModel: MemoryDetails.PickerImageSetup.ViewModel)
     func displaySelectedDate(viewModel: MemoryDetails.DatePicker.ViewModel)
@@ -48,7 +51,7 @@ protocol MemoryDetailsViewControllerDelegate: AnyObject {
     
     // MARK: Public
     var interactor: MemoryDetailsBusinessLogic?
-    var router: (NSObjectProtocol & MemoryDetailsRoutingLogic & MemoryDetailsDataPassing)?
+    var router: MemoryDetailsRoutingLogic?
     weak var delegate: MemoryDetailsViewControllerDelegate?
     
     // MARK: - Outlets
@@ -199,10 +202,11 @@ private extension MemoryDetailsViewController {
     }
     
     @IBAction func mainButtonTapped(_ sender: Any) {
-        interactor?.mainButtonTapped(request: MemoryDetails.MainButton.Request(title: titleTextFeild.text,
-                                                                               description: descriptionTextView.text,
-                                                                               date: datePiker.date,
-                                                                               image: imageView.image))
+        let request = MemoryDetails.MainButton.Request(title: titleTextFeild.text,
+                                                       description: descriptionTextView.text,
+                                                       date: datePiker.date,
+                                                       image: imageView.image)
+        interactor?.mainButtonTapped(request: request)
     }
     
     @IBAction func closeButtunTapped(_ sender: Any) {

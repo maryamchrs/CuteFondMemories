@@ -7,7 +7,9 @@
 
 import UIKit
 
-protocol MemoryDetailsPresentationLogic {
+protocol MemoryDetailsPresentationLogic: AnyObject {
+    var viewController: MemoryDetailsDisplayLogic? { get set }
+    
     func presentMainButtonTitle(response: MemoryDetails.MainButtonTitle.Response) async
     func presentPrefilledData(response: MemoryDetails.PrefilledData.Response) async
     func presentActionSuccess(response: MemoryDetails.ActionWasSuccessful.Response) async

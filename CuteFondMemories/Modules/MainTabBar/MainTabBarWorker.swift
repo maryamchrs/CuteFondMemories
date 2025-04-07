@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol MainTabBarWorkerLogic {}
+protocol MainTabBarWorkerLogic: AnyObject {}
 
 final class MainTabBarWorker {
     // MARK: - Object lifecycle

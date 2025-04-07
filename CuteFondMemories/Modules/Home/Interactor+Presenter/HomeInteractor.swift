@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol HomeBusinessLogic {
+protocol HomeBusinessLogic: HomeDataStore, AnyObject  {
     // func doSomething(request: Home.Something.Request)
 }
 
@@ -20,10 +20,10 @@ final class HomeInteractor: HomeDataStore {
         worker: HomeWorkerLogic?,
         logger: DefaultLoggerProtocol = Logger()
     ) {
-        self.logger = logger
-        self.logger.logInit(String(describing: type(of: self)))
         self.presenter = presenter
         self.worker = worker
+        self.logger = logger
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     // MARK: - Deinit

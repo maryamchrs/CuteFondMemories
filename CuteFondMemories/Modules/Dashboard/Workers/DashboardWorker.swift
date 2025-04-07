@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol DashboardWorkerLogic {}
+protocol DashboardWorkerLogic: AnyObject {}
 
 final class DashboardWorker {
     // MARK: - Object lifecycle

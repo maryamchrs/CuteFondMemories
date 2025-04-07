@@ -8,7 +8,9 @@
 import UIKit
 import MapKit
 
-protocol DashboardPresentationLogic {
+protocol DashboardPresentationLogic: AnyObject {
+    var viewController: DashboardDisplayLogic? { get set }
+    
     func presentFirstlySetup(response: Dashboard.ViewDidLoad.Response) async
     func presentCameraOnLocation(response: Dashboard.DisplayLocation.Response) async
     func presentAnnotation(response: Dashboard.AddingAnnotation.Response) async
@@ -50,12 +52,12 @@ extension DashboardPresenter: DashboardPresentationLogic {
     }
     
     func presentCameraOnLocation(response: Dashboard.DisplayLocation.Response) async {
-        let viweModel = Dashboard.DisplayLocation.ViewModel(latitude: response.latitude, 
+        let viewModel = Dashboard.DisplayLocation.ViewModel(latitude: response.latitude,
                                                             longitude: response.longitude,
                                                             latitudinalMeters: response.latitudinalMeters, 
                                                             longitudinalMeters: response.longitudinalMeters,
                                                             withAnimation: response.withAnimation)
-        await viewController?.displayCameraOnLocation(viewModel: viweModel)
+        await viewController?.displayCameraOnLocation(viewModel: viewModel)
     }
     
     func presentAnnotation(response: Dashboard.AddingAnnotation.Response) async {

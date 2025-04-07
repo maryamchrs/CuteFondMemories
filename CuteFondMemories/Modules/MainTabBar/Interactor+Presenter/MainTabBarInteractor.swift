@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol MainTabBarBusinessLogic {
+protocol MainTabBarDataStore {}
+
+protocol MainTabBarBusinessLogic: MainTabBarDataStore, AnyObject {
     func viewDidLoad(request: MainTabBar.ViewDidLoad.Request)
 }
 
-protocol MainTabBarDataStore {}
-
-final class MainTabBarInteractor: MainTabBarDataStore {
+final class MainTabBarInteractor {
     // MARK: - Object lifecycle
     init(
         presenter: MainTabBarPresentationLogic,

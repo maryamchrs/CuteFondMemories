@@ -18,9 +18,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-//        let viewController = HomeFactory().makeHomeViewController()
-//        let viewController = MainTabBarFactory().makeMainTabBarViewController()
-        let viewController = OnboardingFactory(dependencies: DependencyContainer.shared).makeOnboardingViewController()
+//        let viewController = HomeFactory(dependencies: DependencyContainer.shared).makeHomeViewController()
+//        let viewController = MainTabBarFactory(dependencies: DependencyContainer.shared).makeMainTabBarViewController()
+        let onboardingFactory = OnboardingFactory(dependencies: DependencyContainer.shared)
+        let viewController = onboardingFactory.makeOnboardingViewController()
         window?.rootViewController = UINavigationController(rootViewController: viewController)
         window?.makeKeyAndVisible()
     }
