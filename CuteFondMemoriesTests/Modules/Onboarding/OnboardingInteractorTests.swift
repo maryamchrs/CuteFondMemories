@@ -10,21 +10,23 @@ import XCTest
 
 struct OnboardingInteractorTests {
     
-    @Test func init_shouldLogTheInitiationOfClass() throws {
-        
-        let presenter = MockOnboardingPresenter()
-        let worker = DummyOnboardingWorker()
-        let logger = MockDefaultLogger()
-        
-        let sut = OnboardingInteractor(
-            presenter: presenter,
-            worker: worker,
-            logger: logger
-        )
-        
-        try #require(logger.wasMethodCalled(.logInit).wasCalled)
-        #expect(logger.wasMethodCalled(.logInit).callCount == 1) // Will not executed
-        #expect(logger.className == String(describing: type(of: sut.self))) // Will not executed
+    @Suite("Life cycle") struct InitiationTests {
+        @Test func init_shouldLogTheInitiationOfClass() throws {
+            
+            let presenter = MockOnboardingPresenter()
+            let worker = DummyOnboardingWorker()
+            let logger = MockDefaultLogger()
+            
+            let sut = OnboardingInteractor(
+                presenter: presenter,
+                worker: worker,
+                logger: logger
+            )
+            
+            try #require(logger.wasMethodCalled(.logInit).wasCalled)
+            #expect(logger.wasMethodCalled(.logInit).callCount == 1) // Will not executed
+            #expect(logger.className == String(describing: type(of: sut.self))) // Will not executed
+        }
     }
     
     @Test("Check ViewDidLoad method")
