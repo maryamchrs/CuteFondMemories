@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol MainTabBarWorkerLogic {}
+protocol MainTabBarWorkerLogic: AnyObject {}
 
 final class MainTabBarWorker: Loggable {
     // MARK: - Object lifecycle

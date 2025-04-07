@@ -7,15 +7,16 @@
 
 import UIKit
 
-protocol HomeRoutingLogic {
-    // func navigateToSomewhere()
+protocol HomeRoutingLogic: AnyObject, HomeDataPassing {
+    var viewController: HomeViewController? { get set }
+    var dataStore: HomeDataStore? { get set }
 }
 
 protocol HomeDataPassing {
     var dataStore: HomeDataStore? { get }
 }
 
-final class HomeRouter: HomeDataPassing, Loggable {
+final class HomeRouter: Loggable {
     // MARK: - Object lifecycle
     init(logger: DefaultLoggerProtocol = Logger()) {
         self.logger = logger

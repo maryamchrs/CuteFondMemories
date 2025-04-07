@@ -7,19 +7,19 @@
 
 import UIKit
 
-protocol MainTabBarRoutingLogic {
-    //    func navigateToSomewhere()
-}
-
 protocol MainTabBarDataPassing {
     var dataStore: MainTabBarDataStore? { get }
 }
 
-final class MainTabBarRouter: NSObject, MainTabBarDataPassing, Loggable {
+protocol MainTabBarRoutingLogic: MainTabBarDataPassing, AnyObject {
+    var viewController: MainTabBarViewController? { get set }
+    var dataStore: MainTabBarDataStore? { get set }
+}
+
+final class MainTabBarRouter: Loggable {
     // MARK: - Object lifecycle
     init(logger: DefaultLoggerProtocol = Logger()) {
         self.logger = logger
-        super.init()
         logInit()
     }
     

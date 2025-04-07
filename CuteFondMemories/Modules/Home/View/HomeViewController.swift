@@ -33,7 +33,7 @@ import UIKit
     
     // MARK: Public
     var interactor: HomeBusinessLogic?
-    var router: (HomeRoutingLogic & HomeDataPassing)?
+    var router: HomeRoutingLogic?
     // MARK: Private
     private(set) var logger: DefaultLoggerProtocol
     

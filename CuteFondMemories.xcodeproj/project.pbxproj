@@ -471,7 +471,7 @@
 			isa = PBXGroup;
 			children = (
 				B744C1EC2C9607D700D9FA3D /* HomeWorker.swift */,
-				B744C2072C9608A100D9FA3D /* DependencyContainer */,
+				B744C2072C9608A100D9FA3D /* Factory */,
 				B744C2062C96088900D9FA3D /* Interactor+Presenter */,
 				B744C2052C96087B00D9FA3D /* Model */,
 				B744C2042C96087100D9FA3D /* Router */,
@@ -525,12 +525,12 @@
 			path = "Interactor+Presenter";
 			sourceTree = "<group>";
 		};
-		B744C2072C9608A100D9FA3D /* DependencyContainer */ = {
+		B744C2072C9608A100D9FA3D /* Factory */ = {
 			isa = PBXGroup;
 			children = (
 				B744C1EA2C9607D700D9FA3D /* HomeFactory.swift */,
 			);
-			path = DependencyContainer;
+			path = Factory;
 			sourceTree = "<group>";
 		};
 		B744C2082C960C7700D9FA3D /* Buttons */ = {
