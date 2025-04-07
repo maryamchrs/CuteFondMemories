@@ -49,6 +49,14 @@
 		B755BF972B9100D3002BFC7E /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B755BF962B9100D3002BFC7E /* UIViewControllerExtension.swift */; };
 		B755BF9A2B91033F002BFC7E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B755BF9C2B91033F002BFC7E /* Localizable.strings */; };
 		B755BF9E2B910439002BFC7E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B755BF9D2B910439002BFC7E /* StringExtension.swift */; };
+		B76C82EC2D9C25970028A93B /* OnboardingInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76C82EB2D9C25970028A93B /* OnboardingInteractorTests.swift */; };
+		B76C82F32D9C277A0028A93B /* MockDefaultLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76C82F22D9C277A0028A93B /* MockDefaultLogger.swift */; };
+		B76C82F52D9C28680028A93B /* MockStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76C82F42D9C28680028A93B /* MockStorageManager.swift */; };
+		B76C84A12D9C42D80028A93B /* MockOnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76C84A02D9C42D80028A93B /* MockOnboardingPresenter.swift */; };
+		B76C84A32D9C46410028A93B /* MockTrackable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76C84A22D9C46410028A93B /* MockTrackable.swift */; };
+		B76C84A52D9C47E40028A93B /* DummyOnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76C84A42D9C47E40028A93B /* DummyOnboardingPresenter.swift */; };
+		B76C84A72D9C485E0028A93B /* DummyOnboardingWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76C84A62D9C485E0028A93B /* DummyOnboardingWorker.swift */; };
+		B76C84A92D9C48BA0028A93B /* DummyDefaultLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76C84A82D9C48BA0028A93B /* DummyDefaultLogger.swift */; };
 		B7866DE52D97EE61003B6107 /* HomeMemoryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7866DE42D97EE61003B6107 /* HomeMemoryDataModel.swift */; };
 		B793026F2C81D82300E02CD4 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B793026E2C81D82300E02CD4 /* CustomButton.swift */; };
 		B794E0B52B768D83009E5697 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794E0B42B768D83009E5697 /* AppDelegate.swift */; };
@@ -195,6 +203,14 @@
 		B755BF962B9100D3002BFC7E /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		B755BF9B2B91033F002BFC7E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B755BF9D2B910439002BFC7E /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		B76C82EB2D9C25970028A93B /* OnboardingInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingInteractorTests.swift; sourceTree = "<group>"; };
+		B76C82F22D9C277A0028A93B /* MockDefaultLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDefaultLogger.swift; sourceTree = "<group>"; };
+		B76C82F42D9C28680028A93B /* MockStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorageManager.swift; sourceTree = "<group>"; };
+		B76C84A02D9C42D80028A93B /* MockOnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockOnboardingPresenter.swift; sourceTree = "<group>"; };
+		B76C84A22D9C46410028A93B /* MockTrackable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTrackable.swift; sourceTree = "<group>"; };
+		B76C84A42D9C47E40028A93B /* DummyOnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyOnboardingPresenter.swift; sourceTree = "<group>"; };
+		B76C84A62D9C485E0028A93B /* DummyOnboardingWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyOnboardingWorker.swift; sourceTree = "<group>"; };
+		B76C84A82D9C48BA0028A93B /* DummyDefaultLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDefaultLogger.swift; sourceTree = "<group>"; };
 		B7866DE42D97EE61003B6107 /* HomeMemoryDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMemoryDataModel.swift; sourceTree = "<group>"; };
 		B793026E2C81D82300E02CD4 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		B794E0B12B768D83009E5697 /* CuteFondMemories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CuteFondMemories.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -557,6 +573,44 @@
 			path = HomeMemoryItem;
 			sourceTree = "<group>";
 		};
+		B76C82ED2D9C26750028A93B /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				B76C849F2D9C42C30028A93B /* TestDoubles */,
+				B76C82EB2D9C25970028A93B /* OnboardingInteractorTests.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		B76C82EE2D9C267B0028A93B /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				B76C82ED2D9C26750028A93B /* Onboarding */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		B76C82F12D9C27520028A93B /* Common Test Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				B76C82F22D9C277A0028A93B /* MockDefaultLogger.swift */,
+				B76C82F42D9C28680028A93B /* MockStorageManager.swift */,
+				B76C84A22D9C46410028A93B /* MockTrackable.swift */,
+				B76C84A82D9C48BA0028A93B /* DummyDefaultLogger.swift */,
+			);
+			path = "Common Test Doubles";
+			sourceTree = "<group>";
+		};
+		B76C849F2D9C42C30028A93B /* TestDoubles */ = {
+			isa = PBXGroup;
+			children = (
+				B76C84A42D9C47E40028A93B /* DummyOnboardingPresenter.swift */,
+				B76C84A02D9C42D80028A93B /* MockOnboardingPresenter.swift */,
+				B76C84A62D9C485E0028A93B /* DummyOnboardingWorker.swift */,
+			);
+			path = TestDoubles;
+			sourceTree = "<group>";
+		};
 		B793026D2C81D80A00E02CD4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,6 +659,8 @@
 		B794E0CD2B768D84009E5697 /* CuteFondMemoriesTests */ = {
 			isa = PBXGroup;
 			children = (
+				B76C82F12D9C27520028A93B /* Common Test Doubles */,
+				B76C82EE2D9C267B0028A93B /* Modules */,
 				B794E0CE2B768D84009E5697 /* CuteFondMemoriesTests.swift */,
 				B704D1162B88FA0900492B10 /* XCTestCase+Extension.swift */,
 			);
@@ -1316,8 +1372,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B76C84A12D9C42D80028A93B /* MockOnboardingPresenter.swift in Sources */,
+				B76C84A72D9C485E0028A93B /* DummyOnboardingWorker.swift in Sources */,
+				B76C84A52D9C47E40028A93B /* DummyOnboardingPresenter.swift in Sources */,
 				B704D1172B88FA0900492B10 /* XCTestCase+Extension.swift in Sources */,
+				B76C82F52D9C28680028A93B /* MockStorageManager.swift in Sources */,
+				B76C84A92D9C48BA0028A93B /* DummyDefaultLogger.swift in Sources */,
+				B76C82EC2D9C25970028A93B /* OnboardingInteractorTests.swift in Sources */,
 				B794E0CF2B768D84009E5697 /* CuteFondMemoriesTests.swift in Sources */,
+				B76C82F32D9C277A0028A93B /* MockDefaultLogger.swift in Sources */,
+				B76C84A32D9C46410028A93B /* MockTrackable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,24 +12,24 @@ import UIKit
     var router: MainTabBarRoutingLogic? { get set }
 }
 
-@MainActor final class MainTabBarViewController: UITabBarController, Loggable {
+@MainActor final class MainTabBarViewController: UITabBarController {
     // MARK: - Object lifecycle
     required init?(coder aDecoder: NSCoder) {
         self.logger = Logger()
         super.init(coder: aDecoder)
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
         fatalError("MainTabBarViewController - Initialization using coder Not Allowed.")
     }
     
    @MainActor init(logger: DefaultLoggerProtocol = Logger()) {
        self.logger = logger
        super.init(nibName: MainTabBarViewController.nibName, bundle: nil)
-       logInit()
+       self.logger.logInit(String(describing: type(of: self)))
     }
     
     // MARK: - Deinit
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties

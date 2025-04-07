@@ -16,18 +16,18 @@ protocol MemoryPreviewPresenterProtocol {
     func presentPrefilledData(response: MemoryPreview.PrefilledData.Response)
 }
 
-final class MemoryPreviewPresenter: Loggable {
+final class MemoryPreviewPresenter {
     
     // MARK: - Object lifecycle
     init(viewModel: MemoryPreview.ViewModel = MemoryPreview.ViewModel(),
          logger: DefaultLoggerProtocol = Logger()) {
         self.viewModel = viewModel
         self.logger = logger
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
 
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties

@@ -21,7 +21,7 @@ protocol MemoryDetailsBusinessLogic: MemoryDetailsDataStore, AnyObject {
     func oneActionOnAlertViewSelected(request: MemoryDetails.ActionOnAlertView.Request)
 }
 
-final class MemoryDetailsInteractor: Loggable {
+final class MemoryDetailsInteractor {
     // MARK: - Object lifecycle
     init(
         presenter: MemoryDetailsPresentationLogic?,
@@ -30,13 +30,13 @@ final class MemoryDetailsInteractor: Loggable {
             self.presenter = presenter
             self.worker = worker
             self.logger = logger
-            logInit()
+            self.logger.logInit(String(describing: type(of: self)))
         }
     
     // MARK: - Deinit
     deinit {
         viewDidLoadTask?.cancel()
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties

@@ -20,17 +20,17 @@ protocol DashboardDataPassing {
     var dataStore: DashboardDataStore? { get set }
 }
 
-final class DashboardRouter: NSObject, Loggable {
+final class DashboardRouter: NSObject {
     // MARK: - Object lifecycle
     init(logger: DefaultLoggerProtocol = Logger()) {
         self.logger = logger
         super.init()
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     // MARK: - Deinit
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties

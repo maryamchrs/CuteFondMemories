@@ -11,7 +11,7 @@ protocol OnboardingFactoryProtocol {
     @MainActor func makeOnboardingViewController() -> OnboardingViewController
 }
 
-final class OnboardingFactory: Loggable, OnboardingFactoryProtocol {
+final class OnboardingFactory: OnboardingFactoryProtocol {
     // MARK: - Properties
     private(set) var logger: DefaultLoggerProtocol
     
@@ -21,11 +21,11 @@ final class OnboardingFactory: Loggable, OnboardingFactoryProtocol {
     
     init(dependencies: DependencyContainerProtocol) {
         self.logger = dependencies.logger
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
 }
 

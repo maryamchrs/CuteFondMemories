@@ -11,16 +11,16 @@ protocol HomeFactoryProtocol {
     @MainActor func makeHomeViewController() -> HomeViewController
 }
 
-final class HomeFactory: HomeFactoryProtocol, Loggable  {
+final class HomeFactory: HomeFactoryProtocol  {
     
     // MARK: - LifeCycle
     init(dependencies: DependencyContainerProtocol) {
-        self.logger = dependencies.logger
-        logInit()
+        logger = dependencies.logger
+        logger.logInit(String(describing: type(of: self)))
     }
     
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties

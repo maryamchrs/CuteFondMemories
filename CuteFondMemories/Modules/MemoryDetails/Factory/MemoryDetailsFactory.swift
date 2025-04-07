@@ -13,17 +13,17 @@ protocol MemoryDetailsFactoryProtocol {
                                                     longitude: Double) -> MemoryDetailsViewController
 }
 
-final class MemoryDetailsFactory: MemoryDetailsFactoryProtocol, Loggable {
+final class MemoryDetailsFactory: MemoryDetailsFactoryProtocol {
     
     // MARK: - LifeCycle
     init(dependencies: DependencyContainerProtocol) {
         self.dependencies = dependencies
         self.logger = dependencies.logger
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties
@@ -48,6 +48,13 @@ extension MemoryDetailsFactory {
         interactor.memory = memory
         interactor.latitude = latitude
         interactor.longitude = longitude
+        
+        configure(
+            viewController: viewController,
+            interactor: interactor,
+            presenter: presenter,
+            router: router
+        )
         
         return viewController
     }

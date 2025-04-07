@@ -15,23 +15,23 @@ import UIKit
 }
 
 @MainActor
-final class OnboardingViewController: UIViewController, Loggable {
+final class OnboardingViewController: UIViewController {
     // MARK: - Object lifecycle
     @MainActor init(logger: DefaultLoggerProtocol = Logger()) {
         self.logger = logger
         super.init(nibName: OnboardingViewController.nibName, bundle: nil)
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     required init?(coder aDecoder: NSCoder) {
         self.logger = Logger()
         super.init(coder: aDecoder)
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
         fatalError("OnboardingViewController - Initialization using coder Not Allowed.")
     }
     
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties

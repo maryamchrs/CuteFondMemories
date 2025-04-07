@@ -20,16 +20,16 @@ protocol MemoryDetailsRoutingLogic: MemoryDetailsDataPassing {
     func dismissImagePickerView()
 }
 
-final class MemoryDetailsRouter: Loggable {
+final class MemoryDetailsRouter {
     // MARK: - Object lifecycle
     init(logger: DefaultLoggerProtocol = Logger()) {
         self.logger = logger
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     // MARK: - Deinit
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties
@@ -40,7 +40,6 @@ final class MemoryDetailsRouter: Loggable {
     weak var imagePickerViewController: UIImagePickerController?
     weak var factory: MemoryDetailsFactory?
     private(set) var logger: DefaultLoggerProtocol
-    
 }
 
 // MARK: - Methods

@@ -16,16 +16,16 @@ protocol HomeDataPassing {
     var dataStore: HomeDataStore? { get }
 }
 
-final class HomeRouter: Loggable {
+final class HomeRouter {
     // MARK: - Object lifecycle
     init(logger: DefaultLoggerProtocol = Logger()) {
         self.logger = logger
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     // MARK: - Deinit
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties

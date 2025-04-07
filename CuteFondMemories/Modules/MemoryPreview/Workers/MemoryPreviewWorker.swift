@@ -9,16 +9,16 @@ import UIKit
 
 protocol MemoryPreviewWorkerLogic {}
 
-final class MemoryPreviewWorker: Loggable {
+final class MemoryPreviewWorker {
     // MARK: - Object lifecycle
     init(logger: DefaultLoggerProtocol = Logger()) {
         self.logger = logger
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     // MARK: - Deinit
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties

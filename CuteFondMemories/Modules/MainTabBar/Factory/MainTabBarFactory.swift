@@ -12,16 +12,16 @@ protocol MainTabBarFactoryProtocol {
      @MainActor func makeMainTabBarViewController() -> MainTabBarViewController
 }
 
-final class MainTabBarFactory: Loggable, MainTabBarFactoryProtocol {
+final class MainTabBarFactory: MainTabBarFactoryProtocol {
     
     // MARK: - Life cycle
     init(dependencies: DependencyContainerProtocol) {
-        self.logger = dependencies.logger
-        logInit()
+        logger = dependencies.logger
+        logger.logInit(String(describing: type(of: self)))
     }
     
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
 
     // MARK: - Properties

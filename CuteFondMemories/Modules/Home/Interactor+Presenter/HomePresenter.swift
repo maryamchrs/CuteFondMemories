@@ -9,19 +9,18 @@ import UIKit
 
 protocol HomePresentationLogic: AnyObject {
     var viewController: HomeDisplayLogic? { get set }
-    // func presentSomething(response: Home.Something.Response) async
 }
 
-final class HomePresenter: Loggable {
+final class HomePresenter {
     // MARK: - Object lifecycle
     init(logger: DefaultLoggerProtocol = Logger()) {
         self.logger = logger
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     // MARK: - Deinit
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties

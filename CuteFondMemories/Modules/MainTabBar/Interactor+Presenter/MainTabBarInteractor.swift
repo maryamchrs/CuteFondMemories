@@ -7,13 +7,13 @@
 
 import UIKit
 
+protocol MainTabBarDataStore {}
+
 protocol MainTabBarBusinessLogic: MainTabBarDataStore, AnyObject {
     func viewDidLoad(request: MainTabBar.ViewDidLoad.Request)
 }
 
-protocol MainTabBarDataStore {}
-
-final class MainTabBarInteractor: Loggable {
+final class MainTabBarInteractor {
     // MARK: - Object lifecycle
     init(
         presenter: MainTabBarPresentationLogic,
@@ -23,12 +23,12 @@ final class MainTabBarInteractor: Loggable {
         self.presenter = presenter
         self.worker = worker
         self.logger = logger
-        logInit()
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     // MARK: - Deinit
     deinit {
-        logDeinit()
+        logger.logDeinit(String(describing: type(of: self)))
     }
     
     // MARK: - Properties
