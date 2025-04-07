@@ -7,7 +7,10 @@
 
 import UIKit
 
-@MainActor protocol MainTabBarDisplayLogic: AnyObject {}
+@MainActor protocol MainTabBarDisplayLogic: AnyObject {
+    var interactor: MainTabBarBusinessLogic? { get set }
+    var router: MainTabBarRoutingLogic? { get set }
+}
 
 @MainActor final class MainTabBarViewController: UITabBarController, Loggable {
     // MARK: - Object lifecycle
@@ -33,7 +36,7 @@ import UIKit
     
     // MARK: Public
     var interactor: MainTabBarBusinessLogic?
-    var router: (NSObjectProtocol & MainTabBarRoutingLogic & MainTabBarDataPassing)?
+    var router: MainTabBarRoutingLogic?
     // MARK: Private
     private(set) var logger: DefaultLoggerProtocol
     

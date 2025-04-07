@@ -7,14 +7,14 @@
 
 import UIKit
 
+protocol OnboardingDataPassing {
+    var dataStore: OnboardingDataStore? { get }
+    @MainActor func navigateToTabbarViewController()
+}
+
 protocol OnboardingRoutingLogic: NSObject, OnboardingDataPassing {
     var viewController: OnboardingViewController? { get set }
     var dataStore: OnboardingDataStore? { get set }
-    //    func navigateToSomewhere()
-}
-
-protocol OnboardingDataPassing {
-    var dataStore: OnboardingDataStore? { get }
 }
 
 final class OnboardingRouter: NSObject, Loggable {
@@ -47,5 +47,10 @@ private extension OnboardingRouter {}
 
 // MARK: - Routing Logic
 extension OnboardingRouter: OnboardingRoutingLogic {
-
+    @MainActor func navigateToTabbarViewController() {
+        let destinationViewController = MainTabBarFactory(
+            dependencies: DependencyContainer.shared
+        ).makeMainTabBarViewController()
+        viewController?.navigationController?.pushViewController(destinationViewController, animated: true)
+    }
 }

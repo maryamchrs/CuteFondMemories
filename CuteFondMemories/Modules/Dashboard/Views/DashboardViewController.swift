@@ -9,6 +9,9 @@ import UIKit
 import MapKit
 
 @MainActor protocol DashboardDisplayLogic: AnyObject {
+    var interactor: DashboardBusinessLogic? { get set }
+    var router: DashboardRoutingLogic? { get set }
+    
     func displayCameraOnLocation(viewModel: Dashboard.DisplayLocation.ViewModel)
     func displayAnnotations(viewModel: Dashboard.AddingAnnotation.ViewModel)
     func displayMemoryDetailsScene(viewModel: Dashboard.MemoryDetailsScene.ViewModel)
@@ -38,7 +41,7 @@ import MapKit
     
     // MARK: Public
     var interactor: DashboardBusinessLogic?
-    var router: (NSObjectProtocol & DashboardRoutingLogic & DashboardDataPassing)?
+    var router: DashboardRoutingLogic?
     
     // MARK: Private
     private(set) var logger: DefaultLoggerProtocol

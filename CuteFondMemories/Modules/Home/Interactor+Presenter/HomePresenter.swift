@@ -7,18 +7,16 @@
 
 import UIKit
 
-protocol HomePresentationLogic {
+protocol HomePresentationLogic: AnyObject {
+    var viewController: HomeDisplayLogic? { get set }
     // func presentSomething(response: Home.Something.Response) async
 }
 
 final class HomePresenter: Loggable {
     // MARK: - Object lifecycle
-    init(viewController: HomeDisplayLogic?,
-         logger: DefaultLoggerProtocol = Logger()
-    ) {
+    init(logger: DefaultLoggerProtocol = Logger()) {
         self.logger = logger
         logInit()
-        self.viewController = viewController
     }
     
     // MARK: - Deinit
@@ -29,7 +27,7 @@ final class HomePresenter: Loggable {
     // MARK: - Properties
     
     // MARK: Public
-    private(set) weak var viewController: HomeDisplayLogic?
+    weak var viewController: HomeDisplayLogic?
     private(set) var logger: DefaultLoggerProtocol
 }
 

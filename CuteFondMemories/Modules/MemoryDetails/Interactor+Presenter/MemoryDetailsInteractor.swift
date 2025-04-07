@@ -7,7 +7,13 @@
 
 import UIKit
 
-protocol MemoryDetailsBusinessLogic {
+protocol MemoryDetailsDataStore {
+    var memory: Memory? { get set }
+    var latitude: Double { get set }
+    var longitude: Double { get set }
+}
+
+protocol MemoryDetailsBusinessLogic: MemoryDetailsDataStore, AnyObject {
     func viewDidLoad(request: MemoryDetails.ViewDidLoad.Request)
     func mainButtonTapped(request: MemoryDetails.MainButton.Request)
     func datePickerChanged(request: MemoryDetails.DatePicker.Request)
@@ -15,13 +21,7 @@ protocol MemoryDetailsBusinessLogic {
     func oneActionOnAlertViewSelected(request: MemoryDetails.ActionOnAlertView.Request)
 }
 
-protocol MemoryDetailsDataStore {
-    var memory: Memory? { get set }
-    var latitude: Double { get set }
-    var longitude: Double { get set }
-}
-
-final class MemoryDetailsInteractor: MemoryDetailsDataStore, Loggable {
+final class MemoryDetailsInteractor: Loggable {
     // MARK: - Object lifecycle
     init(
         presenter: MemoryDetailsPresentationLogic?,
