@@ -21,7 +21,7 @@ final class OnboardingInteractor {
         self.presenter = presenter
         self.worker = worker
         self.logger = logger
-         self.logger.logInit(String(describing: type(of: self)))
+        self.logger.logInit(String(describing: type(of: self)))
     }
     
     // MARK: - Deinit
@@ -37,7 +37,7 @@ final class OnboardingInteractor {
     private(set) var worker: OnboardingWorkerLogic
     private(set) var logger: DefaultLoggerProtocol
     
-    var viewDidLoadTask: (Task<(), Never>)?
+    private(set) var viewDidLoadTask: (Task<(), Never>)?
 }
 
 // MARK: - Methods

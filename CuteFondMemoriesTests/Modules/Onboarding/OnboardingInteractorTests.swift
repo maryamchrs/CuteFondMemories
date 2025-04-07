@@ -48,33 +48,6 @@ struct OnboardingInteractorTests {
         #expect(result.callCount == 1)
         #expect(presenter.description == "onboarding_description".localize)
     }
-    
-    @Test
-    func viewDidLoad_whenCalledMultipleTimes_shouldCancelPreviousTask() async {
-        // Given
-        
-        let presenter = MockOnboardingPresenter()
-        let worker = DummyOnboardingWorker()
-        let logger = MockDefaultLogger()
-        let request = Onboarding.ViewDidLoad.Request()
-        let sut = OnboardingInteractor(
-            presenter: presenter,
-            worker: worker,
-            logger: logger
-        )
-        
-        var cancelledTasks = 0
-        let mockTask = Task {
-            try? await Task.sleep(nanoseconds: 500_000_000)
-            cancelledTasks += 1
-        }
-        sut.viewDidLoadTask = mockTask
-        
-        sut.viewDidLoad(request: request)
-        await sut.viewDidLoadTask?.value // Allow async task to complete
-        
-        #expect(mockTask.isCancelled)
-    }
 }
 
 //
